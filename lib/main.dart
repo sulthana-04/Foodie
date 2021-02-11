@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:foodieadmin/pages/login.dart';
 
 void main(){
+  runApp(
+     MaterialApp(
+      home:Login(),)
 
-  runApp(MaterialApp(home:Foodie()));
+  );
 }
 
-class Foodie extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      
-    );
-  }
-}
