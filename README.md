@@ -1,4 +1,4 @@
-# foodie
+# foodieadmin
 
 A new Flutter project.
 
