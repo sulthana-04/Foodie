@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:foodieadmin/assets.dart';
 import 'package:foodieadmin/goldPages/admin.dart';
 import 'package:foodieadmin/goldWidgets/adminText.dart';
 import 'package:foodieadmin/goldWidgets/btForgetPassword.dart';

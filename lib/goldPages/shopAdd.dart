@@ -118,39 +118,38 @@ class ShopAdd extends StatelessWidget {
                 TextBox(
                   hintText: 'Password',
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    ColorButton(
-                      buttonAction: () {
-                        _showMyDialog();
-
-                        //Discard all data and return to home page
-                        // Navigator.pushReplacement(
-                        //   context,
-                        //   PageRouteBuilder(
-                        //     pageBuilder: (context, animation1, animation2) =>
-                        //         Admin(),
-                        //     transitionDuration: Duration(seconds: 0),
-                        //   ),
-                        // );
-                      },
-                      buttonColor: Colors.red,
-                      buttonText: 'CANCEL',
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 45, vertical: 8),
-                    ),
-                    ColorButton(
-                      buttonAction: () {
-                        //Add new hotel/shope to the database !!!!
-                        print('Create a new hotel entry');
-                      },
-                      buttonColor: themegreen,
-                      buttonText: 'CREATE',
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 45, vertical: 8),
-                    ),
-                  ],
+                SizedBox(
+                  width: double.maxFinite,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Expanded(
+                        flex: 1,
+                        child: ColorButton(
+                          buttonAction: () {
+                            _showMyDialog();
+                          },
+                          buttonColor: Colors.red,
+                          buttonText: 'CANCEL',
+                          padding:
+                              EdgeInsets.symmetric(horizontal: 45, vertical: 8),
+                        ),
+                      ),
+                      Expanded(
+                        flex: 1,
+                        child: ColorButton(
+                          buttonAction: () {
+                            //Add new hotel/shope to the database !!!!
+                            print('Create a new hotel entry');
+                          },
+                          buttonColor: themegreen,
+                          buttonText: 'CREATE',
+                          padding:
+                              EdgeInsets.symmetric(horizontal: 45, vertical: 8),
+                        ),
+                      ),
+                    ],
+                  ),
                 )
               ],
             ),
