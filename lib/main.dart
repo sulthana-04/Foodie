@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'goldPages/splashScreen.dart';
+import 'package:foodieadmin/goldPages/splashScreen.dart';
 
 void main() {
   runApp(MaterialApp(debugShowCheckedModeBanner: false, home: Foodie()));
 }
-
-

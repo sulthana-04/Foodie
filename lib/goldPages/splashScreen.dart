@@ -9,7 +9,7 @@ class Foodie extends StatefulWidget {
 
 class _FoodieState extends State<Foodie> {
   @override
-    void initState() {
+  void initState() {
     super.initState();
 
     _mockCheckForSession().then((status) {
@@ -29,11 +29,15 @@ class _FoodieState extends State<Foodie> {
     Navigator.of(context).pushReplacement(
         MaterialPageRoute(builder: (BuildContext context) => Login()));
   }
+
   Widget build(BuildContext context) {
     return Container(
-         alignment: Alignment.center,
-        child: Image.asset('images/logo-with-caption.png',width: 200,height: 200,), 
+      alignment: Alignment.center,
+      child: Image.asset(
+        'images/logo-with-caption.png',
+        width: 200,
+        height: 200,
+      ),
     );
   }
 }
-
