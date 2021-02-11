@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:foodieadmin/assets.dart';
-import 'package:foodieadmin/widgets/adminText.dart';
-import 'package:foodieadmin/widgets/btForgetPassword.dart';
-import 'package:foodieadmin/widgets/colorButton.dart';
-import 'package:foodieadmin/widgets/passwordBox.dart';
-import 'package:foodieadmin/widgets/textBox.dart';
+import 'package:foodieadmin/goldWidgets/adminText.dart';
+import 'package:foodieadmin/goldWidgets/btForgetPassword.dart';
+import 'package:foodieadmin/goldWidgets/colorButton.dart';
+import 'package:foodieadmin/goldWidgets/passwordBox.dart';
+import 'package:foodieadmin/goldWidgets/textBox.dart';
 
 class Login extends StatelessWidget {
   @override

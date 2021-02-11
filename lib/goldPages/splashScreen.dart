@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:foodie/goldPages/admin.dart';
+import 'package:foodieadmin/goldPages/admin.dart';
 
 class Foodie extends StatefulWidget {
   @override
