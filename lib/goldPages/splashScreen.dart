@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:foodieadmin/goldPages/admin.dart';
+import 'package:foodieadmin/goldPages/login.dart';
 
 class Foodie extends StatefulWidget {
   @override
@@ -26,7 +27,7 @@ class _FoodieState extends State<Foodie> {
 
   void _navigateToHome() {
     Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (BuildContext context) => Admin()));
+        MaterialPageRoute(builder: (BuildContext context) => Login()));
   }
 
   Widget build(BuildContext context) {
