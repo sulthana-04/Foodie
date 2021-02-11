@@ -14,12 +14,11 @@ class Admin extends StatelessWidget {
         child: Icon(Icons.add),
         backgroundColor: themegreen,
         onPressed: () {
-          Navigator.pushReplacement(
+          Navigator.push(
             context,
-            PageRouteBuilder(
-              pageBuilder: (context, animation1, animation2) => ShopAdd(),
-              transitionDuration: Duration(seconds: 0),
-            ),
+            MaterialPageRoute(builder: (context) {
+              return ShopAdd();
+            }),
           );
         },
       ),

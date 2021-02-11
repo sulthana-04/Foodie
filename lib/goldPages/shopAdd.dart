@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:foodieadmin/goldPages/admin.dart';
 import 'package:foodieadmin/goldWidgets/appbar.dart';
 import 'package:foodieadmin/goldWidgets/colorButton.dart';
 import 'package:foodieadmin/goldWidgets/goldSetting.dart';
@@ -7,6 +8,55 @@ import 'package:foodieadmin/goldWidgets/textBox.dart';
 class ShopAdd extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    Future<void> _showMyDialog() async {
+      return showDialog<void>(
+        context: context,
+        barrierDismissible: false, // user must tap button!
+        builder: (BuildContext context) {
+          return AlertDialog(
+            backgroundColor: themecolor,
+            title: Text(
+              'Discard Changes ?',
+              style: commonTextStyle,
+            ),
+            content: SingleChildScrollView(
+              child: ListBody(
+                children: <Widget>[
+                  Text(
+                    'Would you like to discard all changes',
+                    style: commonTextStyle,
+                  ),
+                ],
+              ),
+            ),
+            actions: <Widget>[
+              ColorButton(
+                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                buttonColor: themegreen,
+                buttonText: ('No'),
+                buttonAction: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+              ColorButton(
+                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                buttonColor: Colors.red,
+                buttonText: ('Yes'),
+                buttonAction: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) {
+                      return Admin();
+                    }),
+                  );
+                },
+              ),
+            ],
+          );
+        },
+      );
+    }
+
     return Scaffold(
       backgroundColor: themecolor,
       appBar: FoodieAppbar(),
@@ -55,18 +105,53 @@ class ShopAdd extends StatelessWidget {
                 TextBox(
                   hintText: 'Contact Number',
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                  ColorButton(
-                    buttonAction: (){
-                      print('Create a new hotel entry');
-                    },
-                    buttonColor: themegreen,
-                    buttonText: 'CREATE',
-                    padding: EdgeInsets.symmetric(horizontal: 70, vertical: 8),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 15),
+                  child: Divider(
+                    color: themegreen,
+                    thickness: 3,
                   ),
-                ],)
+                ),
+                TextBox(
+                  hintText: 'Email',
+                ),
+                TextBox(
+                  hintText: 'Password',
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    ColorButton(
+                      buttonAction: () {
+                        _showMyDialog();
+
+                        //Discard all data and return to home page
+                        // Navigator.pushReplacement(
+                        //   context,
+                        //   PageRouteBuilder(
+                        //     pageBuilder: (context, animation1, animation2) =>
+                        //         Admin(),
+                        //     transitionDuration: Duration(seconds: 0),
+                        //   ),
+                        // );
+                      },
+                      buttonColor: Colors.red,
+                      buttonText: 'CANCEL',
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 45, vertical: 8),
+                    ),
+                    ColorButton(
+                      buttonAction: () {
+                        //Add new hotel/shope to the database !!!!
+                        print('Create a new hotel entry');
+                      },
+                      buttonColor: themegreen,
+                      buttonText: 'CREATE',
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 45, vertical: 8),
+                    ),
+                  ],
+                )
               ],
             ),
           ),
