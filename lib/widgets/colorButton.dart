@@ -1,19 +1,29 @@
 import 'package:flutter/material.dart';
 
 class ColorButton extends StatelessWidget {
+  final void Function() buttonAction;
+  final String buttonText;
+  final Color buttonColor;
+  final EdgeInsetsGeometry padding;
+
+  const ColorButton(
+      {Key key,
+      this.buttonAction,
+      this.buttonText,
+      this.buttonColor,
+      this.padding})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
     return FlatButton(
-      onPressed: () {
-        print('Show home screen');
-      },
+      onPressed:buttonAction,
       child: Container(
-        padding: EdgeInsets.symmetric(vertical: (6), horizontal: 13),
+        padding: padding,
         child: Text(
-          'LOG IN',
+          buttonText,
           style: TextStyle(color: Colors.white),
         ),
-        color: Color.fromRGBO(48, 187, 0, 50),
+        color: buttonColor
       ),
     );
   }

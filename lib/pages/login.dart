@@ -45,7 +45,16 @@ class Login extends StatelessWidget {
                             PasswordBox(),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [CustomTextButton(), ColorButton()],
+                              children: [
+                                CustomTextButton(),
+                                ColorButton(
+                                  buttonAction: () {},
+                                  buttonColor: Color.fromRGBO(48, 187, 0, 50),
+                                  padding: EdgeInsets.symmetric(
+                                      vertical: (6), horizontal: 13),
+                                  buttonText: 'LOG IN',
+                                )
+                              ],
                             )
                           ]),
                     ),
