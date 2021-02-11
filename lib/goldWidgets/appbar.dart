@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:foodie/goldWidgets/goldSetting.dart';
+import 'package:foodieadmin/goldWidgets/goldSetting.dart';
 
 class FoodieAppbar extends StatefulWidget implements PreferredSizeWidget {
   final String title;
