@@ -132,7 +132,7 @@ class ShopAdd extends StatelessWidget {
                           buttonColor: Colors.red,
                           buttonText: 'CANCEL',
                           padding:
-                              EdgeInsets.symmetric(horizontal: 45, vertical: 8),
+                              EdgeInsets.symmetric(horizontal: 23, vertical: 8),
                         ),
                       ),
                       Expanded(
@@ -145,7 +145,7 @@ class ShopAdd extends StatelessWidget {
                           buttonColor: themegreen,
                           buttonText: 'CREATE',
                           padding:
-                              EdgeInsets.symmetric(horizontal: 45, vertical: 8),
+                              EdgeInsets.symmetric(horizontal: 23, vertical: 8),
                         ),
                       ),
                     ],
