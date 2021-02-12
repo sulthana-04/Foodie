@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:foodieadmin/goldPages/admin.dart';
-import 'package:foodieadmin/goldWidgets/adminOptions.dart';
 import 'package:foodieadmin/goldWidgets/appbar.dart';
 import 'package:foodieadmin/goldWidgets/colorButton.dart';
 import 'package:foodieadmin/goldWidgets/goldSetting.dart';

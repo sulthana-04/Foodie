@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 import 'package:flutter/material.dart';
 import 'package:foodieadmin/goldWidgets/goldSetting.dart';
 
@@ -42,5 +41,3 @@ class TextBox extends StatelessWidget {
     );
   }
 }
-=======
->>>>>>> Stashed changes

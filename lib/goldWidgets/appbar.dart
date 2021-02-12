@@ -19,7 +19,7 @@ class _FoodieAppbarState extends State<FoodieAppbar> {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-       leadingWidth: 500,
+       
        elevation: 0,
        shadowColor: themecolor,
        backgroundColor: themecolor,
@@ -58,8 +58,7 @@ class _FoodieAppbarState extends State<FoodieAppbar> {
 void choiceAction(String choice){
     if(choice == Constants.Settings){
       print('Settings');
-    }else if(choice == Constants.Subscribe){
-      print('Subscribe');
+  
     }else if(choice == Constants.SignOut){
       print('SignOut');
     }
