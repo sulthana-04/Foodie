@@ -8,6 +8,10 @@ import 'package:foodieadmin/goldWidgets/textBox.dart';
 class ShopAdd extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    double wt = MediaQuery.of(context).size.width;
+    double ht = MediaQuery.of(context).size.height;
+    print('width $wt');
+    print('height $ht');
     Future<void> _showMyDialog() async {
       return showDialog<void>(
         context: context,
@@ -31,7 +35,8 @@ class ShopAdd extends StatelessWidget {
             ),
             actions: <Widget>[
               ColorButton(
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                          padding: wt>600?  EdgeInsets.symmetric(horizontal: 50, vertical: 15) :
+                              EdgeInsets.symmetric(horizontal: 23, vertical: 8),
                 buttonColor: themegreen,
                 buttonText: ('No'),
                 buttonAction: () {
@@ -39,7 +44,8 @@ class ShopAdd extends StatelessWidget {
                 },
               ),
               ColorButton(
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                          padding: wt>600?  EdgeInsets.symmetric(horizontal: 50, vertical: 15) :
+                              EdgeInsets.symmetric(horizontal: 23, vertical: 8),
                 buttonColor: Colors.red,
                 buttonText: ('Yes'),
                 buttonAction: () {
@@ -131,7 +137,7 @@ class ShopAdd extends StatelessWidget {
                           },
                           buttonColor: Colors.red,
                           buttonText: 'CANCEL',
-                          padding:
+                          padding: wt>600?  EdgeInsets.symmetric(horizontal: 100, vertical: 20) :
                               EdgeInsets.symmetric(horizontal: 23, vertical: 8),
                         ),
                       ),
@@ -144,7 +150,7 @@ class ShopAdd extends StatelessWidget {
                           },
                           buttonColor: themegreen,
                           buttonText: 'CREATE',
-                          padding:
+                          padding: wt>600?  EdgeInsets.symmetric(horizontal: 100, vertical: 20) :
                               EdgeInsets.symmetric(horizontal: 23, vertical: 8),
                         ),
                       ),

@@ -3,6 +3,7 @@ import 'package:foodieadmin/goldWidgets/goldSetting.dart';
 
 class TextBox extends StatelessWidget {
   final double height;
+  final double width;
   final String hintText;
   final bool autoCorrect;
   final int maxLines;
@@ -13,7 +14,8 @@ class TextBox extends StatelessWidget {
       this.hintText = '',
       this.autoCorrect = true,
       this.maxLines = 1,
-      this.margin= const EdgeInsets.symmetric(vertical: 15)})
+      this.margin = const EdgeInsets.symmetric(vertical: 15),
+      this.width = double.maxFinite})
       : super(key: key);
 
   @override
@@ -22,7 +24,7 @@ class TextBox extends StatelessWidget {
       padding: EdgeInsets.only(left: 15),
       margin: margin,
       alignment: Alignment.center,
-      width: double.maxFinite,
+      width: width,
       height: height,
       color: Color.fromRGBO(16, 16, 16, 8),
       child: TextField(

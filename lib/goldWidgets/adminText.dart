@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 
 class AdminText extends StatelessWidget {
+  final double width;
+
+  const AdminText({Key key, this.width = double.maxFinite}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: double.maxFinite,
+      width: width,
       child: Row(children: [
         Text(
           'Admin Account',
