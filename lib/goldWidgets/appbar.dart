@@ -3,6 +3,7 @@ import 'package:foodieadmin/goldWidgets/constraints.dart';
 import 'package:foodieadmin/goldWidgets/goldSetting.dart';
 
 class FoodieAppbar extends StatefulWidget implements PreferredSizeWidget {
+ 
   final String title;
   FoodieAppbar({Key key, this.title})
       : preferredSize = Size.fromHeight(60.0),
@@ -17,7 +18,7 @@ class FoodieAppbar extends StatefulWidget implements PreferredSizeWidget {
 
 class _FoodieAppbarState extends State<FoodieAppbar> {
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) { 
     return AppBar(
        
        elevation: 0,
@@ -32,7 +33,7 @@ class _FoodieAppbarState extends State<FoodieAppbar> {
             padding: EdgeInsets.only(top:5),
             child:PopupMenuButton<String>(
               icon: Image.asset('images/arrowdown.png',),
-            onSelected: choiceAction,
+            onSelected:choiceAction,
             itemBuilder: (BuildContext context){
               return Constants.choices.map((String choice){
                 return PopupMenuItem<String>(
@@ -57,9 +58,13 @@ class _FoodieAppbarState extends State<FoodieAppbar> {
 
 void choiceAction(String choice){
     if(choice == Constants.Settings){
-      print('Settings');
-  
+    print("Setting");
+    
     }else if(choice == Constants.SignOut){
+      
       print('SignOut');
     }
     }
+    
+
+    
