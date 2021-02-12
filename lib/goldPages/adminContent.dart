@@ -1,5 +1,4 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:foodieadmin/goldWidgets/adminCard.dart';
 import 'package:foodieadmin/goldWidgets/goldSetting.dart';
@@ -35,11 +34,11 @@ class _AdmincontentsState extends State<Admincontents> {
                       //  color: Colors.green,
                       margin: EdgeInsets.symmetric(horizontal:width*0.1),
                        child: TextField(
-                         
+                          style: TextStyle(color:themewhite,fontSize: 18),
                 showCursor: false,
-                decoration: InputDecoration(
-                isDense: true,
+                decoration: InputDecoration(                
                 border: InputBorder.none,
+                
                 icon: Icon(Icons.search,color:themewhite,size: 35,),
                 hintText: "SEARCH FOR SHOPS AND HOTELS",
                 hintStyle: TextStyle(color:themedimwhite,fontSize: 14),
