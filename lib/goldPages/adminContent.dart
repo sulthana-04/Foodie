@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'package:foodieadmin/goldWidgets/adminCard.dart';
 import 'package:foodieadmin/goldWidgets/goldSetting.dart';
@@ -14,7 +15,9 @@ class _AdmincontentsState extends State<Admincontents> {
   
   @override
   Widget build(BuildContext context) {
-   
+    WidgetsFlutterBinding.ensureInitialized();
+    SystemChrome.setPreferredOrientations(
+      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
     return SingleChildScrollView(
@@ -36,6 +39,7 @@ class _AdmincontentsState extends State<Admincontents> {
                        
                        width: width,
                       //  color: Colors.green,
+                      
                       margin: EdgeInsets.symmetric(horizontal:width*0.1),
                        child: TextField(
                           style: TextStyle(color:themewhite,fontSize: 18),

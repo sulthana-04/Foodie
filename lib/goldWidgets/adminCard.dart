@@ -13,7 +13,7 @@ class _AdminCardState extends State<AdminCard> {
     final width = MediaQuery.of(context).size.width;
     return  Container(
         // width: width,
-        height: height*0.8,
+        height: height*0.73,
         // color: Colors.red,
         child:Center(
           child: Container( 
