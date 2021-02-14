@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:foodieadmin/goldPages/admin.dart';
 import 'package:foodieadmin/goldWidgets/appbar.dart';
 import 'package:foodieadmin/goldWidgets/colorButton.dart';
@@ -132,12 +133,12 @@ class ShopEdit extends StatelessWidget {
                             _showMyDialog();
                           },
                           buttonColor: Colors.red,
-                          buttonText: 'CANCEL',
-                          padding: wt > 600
+                          buttonText: 'DELETE ACCOUNT',
+                          padding: wt > 400
                               ? EdgeInsets.symmetric(
-                                  horizontal: 100, vertical: 20)
+                                  horizontal: 10, vertical: 20)
                               : EdgeInsets.symmetric(
-                                  horizontal: 23, vertical: 8),
+                                  horizontal: 15, vertical: 8),
                         ),
                       ),
                       Expanded(
@@ -148,12 +149,12 @@ class ShopEdit extends StatelessWidget {
                             print('Create a new hotel entry');
                           },
                           buttonColor: themegreen,
-                          buttonText: 'CREATE',
-                          padding: wt > 600
+                          buttonText: 'UPDATE',
+                          padding: wt > 400
                               ? EdgeInsets.symmetric(
-                                  horizontal: 100, vertical: 20)
+                                  horizontal: 45, vertical: 20)
                               : EdgeInsets.symmetric(
-                                  horizontal: 23, vertical: 8),
+                                  horizontal: 23, vertical: 16),
                         ),
                       ),
                     ],

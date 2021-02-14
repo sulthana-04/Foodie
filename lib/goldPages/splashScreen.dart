@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:foodieadmin/goldPages/admin.dart';
 import 'package:foodieadmin/goldPages/login.dart';
 
 class Foodie extends StatefulWidget {
