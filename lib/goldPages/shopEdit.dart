@@ -8,6 +8,8 @@ import 'package:foodieadmin/goldWidgets/textBox.dart';
 class ShopEdit extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    double wt = MediaQuery.of(context).size.width;
+
     Future<void> _showMyDialog() async {
       return showDialog<void>(
         context: context,
@@ -129,11 +131,13 @@ class ShopEdit extends StatelessWidget {
                           buttonAction: () {
                             _showMyDialog();
                           },
-                          
                           buttonColor: Colors.red,
-                          buttonText:'''DELETE ACCOUNT''',
-                          padding:
-                              EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+                          buttonText: 'CANCEL',
+                          padding: wt > 600
+                              ? EdgeInsets.symmetric(
+                                  horizontal: 100, vertical: 20)
+                              : EdgeInsets.symmetric(
+                                  horizontal: 23, vertical: 8),
                         ),
                       ),
                       Expanded(
@@ -144,12 +148,14 @@ class ShopEdit extends StatelessWidget {
                             print('Create a new hotel entry');
                           },
                           buttonColor: themegreen,
-                          buttonText: 'UPDATE',
-                          padding:
-                              EdgeInsets.symmetric(horizontal: 59, vertical: 8),
+                          buttonText: 'CREATE',
+                          padding: wt > 600
+                              ? EdgeInsets.symmetric(
+                                  horizontal: 100, vertical: 20)
+                              : EdgeInsets.symmetric(
+                                  horizontal: 23, vertical: 8),
                         ),
                       ),
-                     
                     ],
                   ),
                 )
