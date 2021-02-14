@@ -16,8 +16,8 @@ class _AdmincontentsState extends State<Admincontents> {
   @override
   Widget build(BuildContext context) {
     WidgetsFlutterBinding.ensureInitialized();
-    SystemChrome.setPreferredOrientations(
-      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+    // SystemChrome.setPreferredOrientations(
+    //   [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
     return SingleChildScrollView(
