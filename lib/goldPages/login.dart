@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:foodieadmin/animations/enterExitAniation.dart';
 import 'package:foodieadmin/goldPages/admin.dart';
 import 'package:foodieadmin/goldWidgets/adminText.dart';
 import 'package:foodieadmin/goldWidgets/btForgetPassword.dart';
@@ -57,11 +58,11 @@ class Login extends StatelessWidget {
                                     ColorButton(
                                       buttonAction: () {
                                         //Check the login credentials and give permission to  home page !!!!!!
-                                        Navigator.pop(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) => Admin()),
-                                        );
+                                        Navigator.push(
+                                            context,
+                                            EnterExitRoute(
+                                                exitPage: this,
+                                                enterPage: Admin()));
                                       },
                                       buttonColor: themegreen,
                                       padding: EdgeInsets.symmetric(

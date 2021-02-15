@@ -71,7 +71,7 @@ class OrderSummary extends StatelessWidget {
                   Text(
                     'CASH',
                     style: TextStyle(
-                      fontWeight: FontWeight.w400,
+                      fontWeight: FontWeight.w700,
                       color: themegreen,
                       fontSize: 20,
                     ),
@@ -98,6 +98,7 @@ class ItemCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
+    // double height = MediaQuery.of(context).size.height;
     TextStyle cardTextRight = TextStyle(
       color: Colors.white,
       fontSize: 18,
@@ -105,14 +106,14 @@ class ItemCard extends StatelessWidget {
     );
     return Card(
       child: Container(
-        height: 100,
-        width: width * .8,
+        height: width < 330 ? 75 : 100,
+        width: width < 330 ? null : width*.78,
         color: themedimbalck,
         child: Row(
           children: [
             Container(
-              width: 100,
-              height: 100,
+              width: width < 330 ? 70 : 100,
+              height: width < 330 ? 70 : 100,
               decoration: BoxDecoration(
                 color: Colors.blue,
                 borderRadius: BorderRadius.circular(12),
@@ -141,11 +142,11 @@ class ItemCard extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    'Price :             900/-',
+                    'Price :          900/-',
                     style: cardTextRight,
                   ),
                   Text(
-                    'Quantity :       1KG    x1',
+                    'Quantity :    1KG    x1',
                     style: cardTextRight,
                   ),
                 ],
@@ -185,7 +186,9 @@ class BillCard extends StatelessWidget {
             Padding(padding: EdgeInsets.symmetric(vertical: 5)),
             Text('9876543210', style: normal),
             Padding(
-              padding: EdgeInsets.only(top: 30,),
+              padding: EdgeInsets.only(
+                top: 30,
+              ),
               child: SizedBox(
                 height: 90,
                 child: Column(
@@ -232,20 +235,21 @@ class BillCard extends StatelessWidget {
             ),
             Padding(
               padding: EdgeInsets.symmetric(vertical: 15),
-              child: Divider(thickness: 7,color: themegreen,),
+              child: Divider(
+                thickness: 7,
+                color: themegreen,
+              ),
             ),
-            Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'Total',
-                              style: normal,
-                            ),
-                            Text(
-                              '942.0',
-                              style: bold,
-                            ),
-                          ]),
+            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+              Text(
+                'Total',
+                style: normal,
+              ),
+              Text(
+                '942.0',
+                style: bold,
+              ),
+            ]),
           ]),
         ),
       ),

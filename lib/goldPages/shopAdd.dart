@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:foodieadmin/animations/sizeAnimation.dart';
 import 'package:foodieadmin/goldPages/admin.dart';
 import 'package:foodieadmin/goldWidgets/appbar.dart';
 import 'package:foodieadmin/goldWidgets/colorButton.dart';
@@ -51,10 +52,12 @@ class ShopAdd extends StatelessWidget {
                 buttonColor: Colors.red,
                 buttonText: ('Yes'),
                 buttonAction: () {
-                  Navigator.pop(
-                    context,
-                    MaterialPageRoute(builder: (context) => Admin()),
-                  );
+                  // Navigator.push(
+                  //   context,
+                  //   MaterialPageRoute(builder: (context) => Admin()),
+                  // );
+                  Navigator.pop(context);
+                  Navigator.pop(context, SizeRoute(page: Admin()));
                 },
               ),
             ],
@@ -65,7 +68,9 @@ class ShopAdd extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: themecolor,
-      appBar: FoodieAppbar(),
+      appBar: FoodieAppbar(
+        automaticallyImplyLeading: false,
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.only(top: 20, left: 25, right: 25),
