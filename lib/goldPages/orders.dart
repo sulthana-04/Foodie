@@ -69,8 +69,8 @@ class Orders extends StatelessWidget {
 class OrderCard extends StatelessWidget {
   final String hotelName;
   final String orderAmount;
-
-  const OrderCard({Key key, this.hotelName = '', this.orderAmount = '0'})
+  final Color  redorgreen;
+  const OrderCard({Key key, this.hotelName = '', this.orderAmount = '0', this.redorgreen})
       : super(key: key);
 
   @override
@@ -94,7 +94,7 @@ class OrderCard extends StatelessWidget {
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 18,
-                  color: themegreen,
+                  color: redorgreen,
                 ),
               ),
             ],

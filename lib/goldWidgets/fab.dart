@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:foodieadmin/goldPages/dashboard.dart';
+import 'package:foodieadmin/goldPages/shopAdd.dart';
 import 'package:foodieadmin/goldWidgets/goldSetting.dart';
 
 class FancyFab extends StatefulWidget {
@@ -75,32 +77,54 @@ class _FancyFabState extends State<FancyFab>
     return Container(
       child: FloatingActionButton(
         backgroundColor:  themegreen,
-        onPressed: (){},
+        onPressed: (){
+          Navigator.push(
+                     context,
+                     PageRouteBuilder(
+                     pageBuilder: (context, animation1,
+                     animation2) =>
+                     ShopAdd(),
+                     transitionDuration:
+                     Duration(seconds: 0),
+                     ),
+                     );
+        },
         tooltip: 'Add',
         child: Icon(Icons.add),
       ),
     );
   }
 
-  Widget image() {
+  Widget image() { 
     return Container(
       child: FloatingActionButton(backgroundColor: themegreen,
-        onPressed: null,
+        onPressed: (){
+           Navigator.push(
+                     context,
+                     PageRouteBuilder(
+                     pageBuilder: (context, animation1,
+                     animation2) =>
+                     Dashboard(),
+                     transitionDuration:
+                     Duration(seconds: 0),
+                     ),
+                     );
+        },
         tooltip: 'Image',
-        child: Icon(Icons.image),
+        child: Image.asset('images/dashboard.png',height: 25,width: 25,),
       ),
     );
   }
 
-  Widget inbox() {
-    return Container(
-      child: FloatingActionButton(backgroundColor: themegreen,
-        onPressed: null,
-        tooltip: 'Inbox',
-        child: Icon(Icons.inbox),
-      ),
-    );
-  }
+  // Widget inbox() {
+  //   return Container(
+  //     child: FloatingActionButton(backgroundColor: themegreen,
+  //       onPressed: null,
+  //       tooltip: 'Inbox',
+  //       child: Icon(Icons.inbox),
+  //     ),
+  //   );
+  // }
 
   Widget toggle() {
     return Container(
@@ -124,7 +148,7 @@ class _FancyFabState extends State<FancyFab>
         Transform(
           transform: Matrix4.translationValues(
             0.0,
-            _translateButton.value * 3.0,
+            _translateButton.value * 4.0,
             0.0,
           ),
           child: add(),
@@ -132,19 +156,19 @@ class _FancyFabState extends State<FancyFab>
         Transform(
           transform: Matrix4.translationValues(
             0.0,
-            _translateButton.value * 2.0,
+            _translateButton.value * 3.0,
             0.0,
           ),
           child: image(),
         ),
-        Transform(
-          transform: Matrix4.translationValues(
-            0.0,
-            _translateButton.value,
-            0.0,
-          ),
-          child: inbox(),
-        ),
+        // Transform(
+        //   transform: Matrix4.translationValues(
+        //     0.0,
+        //     _translateButton.value,
+        //     0.0,
+        //   ),),
+        //   // child: inbox(),
+        // ),
         toggle(),
       ],
     );
