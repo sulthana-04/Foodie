@@ -22,7 +22,7 @@ class OrderDetails extends StatelessWidget {
                     style: commonTextStyle,
                   ),
                 ),
-                OrderCard(),
+                OrderSummary(),
                 ItemCard(),
                 BillCard(),
               ],
@@ -34,7 +34,7 @@ class OrderDetails extends StatelessWidget {
   }
 }
 
-class OrderCard extends StatelessWidget {
+class OrderSummary extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TextStyle cardTextleft = TextStyle(

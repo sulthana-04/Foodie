@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:foodieadmin/animations/enterExitAniation.dart';
+import 'package:foodieadmin/goldPages/orderDetails.dart';
 import 'package:foodieadmin/goldWidgets/appbar.dart';
 import 'package:foodieadmin/goldWidgets/goldSetting.dart';
-import 'package:foodieadmin/goldWidgets/orderCard.dart';
 import 'package:foodieadmin/goldWidgets/searchbar.dart';
+import 'package:foodieadmin/goldWidgets/orderCard.dart';
 
 class Orders extends StatelessWidget {
   @override
@@ -14,8 +16,10 @@ class Orders extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 20),
           child: SizedBox(
+            height: MediaQuery.of(context).size.height,
             width: double.maxFinite,
             child: Column(
+              mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
@@ -26,38 +30,22 @@ class Orders extends StatelessWidget {
                   ),
                 ),
                 SearchBar(),
-                OrderCard(
-                  hotelName: 'Spoon',
-                  orderAmount: '10',
-                ),
-                OrderCard(
-                  hotelName: 'Lavish',
-                  orderAmount: '12',
-                ),
-                OrderCard(
-                  hotelName: 'Food Spot',
-                  orderAmount: '3',
-                ),
-                OrderCard(
-                  hotelName: 'Wait n Eat',
-                  orderAmount: '7',
-                ),
-                OrderCard(
-                  hotelName: 'Cafe Coffee Day',
-                  orderAmount: '5',
-                ),
-                OrderCard(
-                  hotelName: 'Madhurai',
-                  orderAmount: '2',
-                ),
-                OrderCard(
-                  hotelName: 'Alibaba and 41 Dishes',
-                  orderAmount: '17',
-                ),
-                OrderCard(
-                  hotelName: 'Pooram',
-                  orderAmount: '1',
-                ),
+                Expanded(
+                  child: ListView.builder(itemCount: 100,
+                  itemBuilder: (context, index){
+                    return  OrderCard(
+                     onPressed: () {
+                  Navigator.push(context,
+                      EnterExitRoute(exitPage: this , enterPage: OrderDetails()));
+              },
+                    hotelName: 'Spoon',
+                    orderAmount: '10',
+                    redorgreen: themegreen,
+                  );
+                  },),
+                )
+               
+               
               ],
             ),
           ),

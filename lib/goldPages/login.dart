@@ -21,7 +21,7 @@ class Login extends StatelessWidget {
         scrollDirection: Axis.vertical,
         child: SizedBox(
           width: double.maxFinite,
-          height: ht>wd?ht:wd,
+          height: ht > wd ? ht : wd,
           child: wd > 1000
               ? Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -57,15 +57,10 @@ class Login extends StatelessWidget {
                                     ColorButton(
                                       buttonAction: () {
                                         //Check the login credentials and give permission to  home page !!!!!!
-                                        Navigator.pushReplacement(
+                                        Navigator.pop(
                                           context,
-                                          PageRouteBuilder(
-                                            pageBuilder: (context, animation1,
-                                                    animation2) =>
-                                                Admin(),
-                                            transitionDuration:
-                                                Duration(seconds: 0),
-                                          ),
+                                          MaterialPageRoute(
+                                              builder: (context) => Admin()),
                                         );
                                       },
                                       buttonColor: themegreen,
@@ -107,12 +102,13 @@ class Login extends StatelessWidget {
                                 PasswordBox(),
                                 wd > 750
                                     ? SizedBox(
-                                      width: double.maxFinite,
-                                      child: Column(
-                                        crossAxisAlignment: CrossAxisAlignment.center,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
+                                        width: double.maxFinite,
+                                        child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
                                               ColorButton(
                                                 buttonAction: () {
                                                   //Check the login credentials and give permission to  home page !!!!!!
@@ -136,7 +132,7 @@ class Login extends StatelessWidget {
                                               ),
                                               CustomTextButton(),
                                             ]),
-                                    )
+                                      )
                                     : Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceBetween,
