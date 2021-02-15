@@ -2,7 +2,6 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:foodieadmin/goldWidgets/appbar.dart';
-import 'package:foodieadmin/goldWidgets/commonUsedCard.dart';
 import 'package:foodieadmin/goldWidgets/goldSetting.dart';
 import 'package:foodieadmin/goldWidgets/orderCard.dart';
 
@@ -76,7 +75,7 @@ class _DashboardState extends State<Dashboard> {
   Container(margin: EdgeInsets.symmetric(horizontal:27),
     child: OrderCard(
       onPressed: (){
-        
+
       },
                  hotelName: "Orders",
                  orderAmount: "20",
