@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:foodieadmin/animations/sizeAnimation.dart';
 import 'package:foodieadmin/goldPages/dashboard.dart';
 import 'package:foodieadmin/goldPages/shopAdd.dart';
 import 'package:foodieadmin/goldWidgets/goldSetting.dart';
@@ -77,18 +78,9 @@ class _FancyFabState extends State<FancyFab>
     return Container(
       child: FloatingActionButton(
         heroTag: 'button1',
-        backgroundColor:  themegreen,
-        onPressed: (){
-          Navigator.push(
-                     context,
-                     PageRouteBuilder(
-                     pageBuilder: (context, animation1,
-                     animation2) =>
-                     ShopAdd(),
-                     transitionDuration:
-                     Duration(seconds: 0),
-                     ),
-                     );
+        backgroundColor: themegreen,
+        onPressed: () {
+          Navigator.push(context, SizeRoute(page: ShopAdd()));
         },
         tooltip: 'Add',
         child: Icon(Icons.add),
@@ -96,24 +88,20 @@ class _FancyFabState extends State<FancyFab>
     );
   }
 
-  Widget image() { 
+  Widget image() {
     return Container(
-      child: FloatingActionButton(backgroundColor: themegreen,
-      heroTag: 'button2',
-        onPressed: (){
-           Navigator.push(
-                     context,
-                     PageRouteBuilder(
-                     pageBuilder: (context, animation1,
-                     animation2) =>
-                     Dashboard(),
-                     transitionDuration:
-                     Duration(seconds: 0),
-                     ),
-                     );
+      child: FloatingActionButton(
+        backgroundColor: themegreen,
+        heroTag: 'button2',
+        onPressed: () {
+          Navigator.push(context, SizeRoute(page: Dashboard()));
         },
         tooltip: 'Image',
-        child: Image.asset('images/dashboard.png',height: 25,width: 25,),
+        child: Image.asset(
+          'images/dashboard.png',
+          height: 25,
+          width: 25,
+        ),
       ),
     );
   }

@@ -18,7 +18,7 @@ class ShopAdd extends StatelessWidget {
         barrierDismissible: false, // user must tap button!
         builder: (BuildContext context) {
           return AlertDialog(
-            backgroundColor: themecolor,
+            backgroundColor: themedimbalck,
             title: Text(
               'Discard Changes ?',
               style: commonTextStyle,
@@ -35,8 +35,9 @@ class ShopAdd extends StatelessWidget {
             ),
             actions: <Widget>[
               ColorButton(
-                          padding: wt>600?  EdgeInsets.symmetric(horizontal: 50, vertical: 15) :
-                              EdgeInsets.symmetric(horizontal: 23, vertical: 8),
+                padding: wt > 600
+                    ? EdgeInsets.symmetric(horizontal: 50, vertical: 15)
+                    : EdgeInsets.symmetric(horizontal: 23, vertical: 8),
                 buttonColor: themegreen,
                 buttonText: ('No'),
                 buttonAction: () {
@@ -44,16 +45,15 @@ class ShopAdd extends StatelessWidget {
                 },
               ),
               ColorButton(
-                          padding: wt>600?  EdgeInsets.symmetric(horizontal: 50, vertical: 15) :
-                              EdgeInsets.symmetric(horizontal: 23, vertical: 8),
+                padding: wt > 600
+                    ? EdgeInsets.symmetric(horizontal: 50, vertical: 15)
+                    : EdgeInsets.symmetric(horizontal: 23, vertical: 8),
                 buttonColor: Colors.red,
                 buttonText: ('Yes'),
                 buttonAction: () {
-                  Navigator.push(
+                  Navigator.pop(
                     context,
-                    MaterialPageRoute(builder: (context) {
-                      return Admin();
-                    }),
+                    MaterialPageRoute(builder: (context) => Admin()),
                   );
                 },
               ),
@@ -137,8 +137,11 @@ class ShopAdd extends StatelessWidget {
                           },
                           buttonColor: Colors.red,
                           buttonText: 'CANCEL',
-                          padding: wt>600?  EdgeInsets.symmetric(horizontal: 100, vertical: 20) :
-                              EdgeInsets.symmetric(horizontal: 23, vertical: 8),
+                          padding: wt > 600
+                              ? EdgeInsets.symmetric(
+                                  horizontal: 100, vertical: 20)
+                              : EdgeInsets.symmetric(
+                                  horizontal: 23, vertical: 8),
                         ),
                       ),
                       Expanded(
@@ -150,8 +153,11 @@ class ShopAdd extends StatelessWidget {
                           },
                           buttonColor: themegreen,
                           buttonText: 'CREATE',
-                          padding: wt>600?  EdgeInsets.symmetric(horizontal: 100, vertical: 20) :
-                              EdgeInsets.symmetric(horizontal: 23, vertical: 8),
+                          padding: wt > 600
+                              ? EdgeInsets.symmetric(
+                                  horizontal: 100, vertical: 20)
+                              : EdgeInsets.symmetric(
+                                  horizontal: 23, vertical: 8),
                         ),
                       ),
                     ],
