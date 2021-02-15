@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:foodieadmin/goldWidgets/appbar.dart';
-import 'package:foodieadmin/goldWidgets/commonUsedCard.dart';
 import 'package:foodieadmin/goldWidgets/goldSetting.dart';
+import 'package:foodieadmin/goldWidgets/orderCard.dart';
 import 'package:foodieadmin/goldWidgets/searchbar.dart';
 
 class Orders extends StatelessWidget {
@@ -66,5 +66,4 @@ class Orders extends StatelessWidget {
     );
   }
 }
-
 
