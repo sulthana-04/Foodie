@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:foodieadmin/goldWidgets/appbar.dart';
 import 'package:foodieadmin/goldWidgets/goldSetting.dart';
 import 'package:foodieadmin/goldWidgets/orderCard.dart';
+import 'package:foodieadmin/goldWidgets/title.dart';
 
 class Dashboard extends StatefulWidget {
   @override
@@ -21,18 +22,7 @@ class _DashboardState extends State<Dashboard> {
       body: SingleChildScrollView(
               child: Column(
           children:[
-            Container(
-              padding: EdgeInsets.only(top:30,left:33),
-              // color: Colors.red,
-              height: 50,
-              width: width,
-              child: Text('Dashboard',
-              style: TextStyle(fontSize:20,
-              fontWeight: FontWeight.bold,
-              color: themewhite,
-              ),
-              ),
-              ),
+          FoodieTitle(title: 'Dashboard')  ,        
           SizedBox(height: 40),
           Container(
             margin: EdgeInsets.symmetric(horizontal: 30),

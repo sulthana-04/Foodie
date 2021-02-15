@@ -8,3 +8,4 @@ final themedimbalck = Color.fromRGBO(15, 15, 15, 10);
 
 TextStyle commonTextStyle = TextStyle(color: Colors.white, fontSize: 18);
 String logo = 'images/logo.png';
+Widget line= Divider(thickness: 7,color: themegreen,endIndent: 30,indent: 30,);
