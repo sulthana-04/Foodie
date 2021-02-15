@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:foodieadmin/animations/enterExitAniation.dart';
 import 'package:foodieadmin/goldPages/orders.dart';
@@ -22,21 +20,9 @@ class _DashboardState extends State<Dashboard> {
       backgroundColor: themecolor,
       appBar: FoodieAppbar(),
       body: SingleChildScrollView(
-        child: Column(children: [
-          Container(
-            padding: EdgeInsets.only(top: 30, left: 33),
-            // color: Colors.red,
-            height: 50,
-            width: width,
-            child: Text(
-              'Dashboard',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-                color: themewhite,
-              ),
-            ),
-          ),
+              child: Column(
+          children:[
+          FoodieTitle(title: 'Dashboard')  ,        
           SizedBox(height: 40),
           Container(
             margin: EdgeInsets.symmetric(horizontal: 30),
