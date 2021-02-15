@@ -14,7 +14,7 @@ class _DashboardState extends State<Dashboard> {
   @override
   Widget build(BuildContext context) {
     final width=MediaQuery.of(context).size.width;
-    final height=MediaQuery.of(context).size.height;
+    // final height=MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: themecolor,
       appBar: FoodieAppbar(),
@@ -74,6 +74,9 @@ class _DashboardState extends State<Dashboard> {
           
   Container(margin: EdgeInsets.symmetric(horizontal:27),
     child: OrderCard(
+      onPressed: (){
+        
+      },
                  hotelName: "Orders",
                  orderAmount: "20",
                  redorgreen: themegreen,
