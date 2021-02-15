@@ -5,7 +5,12 @@ import 'package:foodieadmin/goldWidgets/goldSetting.dart';
 class FoodieAppbar extends StatefulWidget implements PreferredSizeWidget {
   final String title;
   final bool automaticallyImplyLeading;
-  FoodieAppbar({Key key, this.title, this.automaticallyImplyLeading = true})
+  final Widget leading;
+  FoodieAppbar(
+      {Key key,
+      this.title,
+      this.automaticallyImplyLeading = true,
+      this.leading})
       : preferredSize = Size.fromHeight(60.0),
         super(key: key);
 
@@ -20,6 +25,7 @@ class _FoodieAppbarState extends State<FoodieAppbar> {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      leading: widget.leading,
       automaticallyImplyLeading: widget.automaticallyImplyLeading,
       elevation: 0,
       shadowColor: themecolor,

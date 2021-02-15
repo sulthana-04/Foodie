@@ -69,6 +69,11 @@ class ShopAdd extends StatelessWidget {
     return Scaffold(
       backgroundColor: themecolor,
       appBar: FoodieAppbar(
+        leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            onPressed: () {
+               _showMyDialog();
+            }),
         automaticallyImplyLeading: false,
       ),
       body: SingleChildScrollView(
