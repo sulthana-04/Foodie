@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:foodieadmin/goldWidgets/appbar.dart';
+import 'package:foodieadmin/goldWidgets/commonUsedCard.dart';
 import 'package:foodieadmin/goldWidgets/goldSetting.dart';
 import 'package:foodieadmin/goldWidgets/searchbar.dart';
 
@@ -30,31 +31,31 @@ class Orders extends StatelessWidget {
                   orderAmount: '10',
                 ),
                 OrderCard(
-                   hotelName: 'Lavish',
+                  hotelName: 'Lavish',
                   orderAmount: '12',
                 ),
                 OrderCard(
-                   hotelName: 'Food Spot',
+                  hotelName: 'Food Spot',
                   orderAmount: '3',
                 ),
                 OrderCard(
-                   hotelName: 'Wait n Eat',
+                  hotelName: 'Wait n Eat',
                   orderAmount: '7',
                 ),
                 OrderCard(
-                   hotelName: 'Cafe Coffee Day',
+                  hotelName: 'Cafe Coffee Day',
                   orderAmount: '5',
                 ),
-                 OrderCard(
-                   hotelName: 'Madhurai',
+                OrderCard(
+                  hotelName: 'Madhurai',
                   orderAmount: '2',
                 ),
-                 OrderCard(
-                   hotelName: 'Alibaba and 41 Dishes',
+                OrderCard(
+                  hotelName: 'Alibaba and 41 Dishes',
                   orderAmount: '17',
                 ),
-                 OrderCard(
-                   hotelName: 'Pooram',
+                OrderCard(
+                  hotelName: 'Pooram',
                   orderAmount: '1',
                 ),
               ],
@@ -66,41 +67,4 @@ class Orders extends StatelessWidget {
   }
 }
 
-class OrderCard extends StatelessWidget {
-  final String hotelName;
-  final String orderAmount;
-  final Color  redorgreen;
-  const OrderCard({Key key, this.hotelName = '', this.orderAmount = '0', this.redorgreen})
-      : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(vertical: 10),
-      child: Card(
-        child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 15),
-          color: themedimbalck,
-          height: 60,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                hotelName,
-                style: commonTextStyle,
-              ),
-              Text(
-                orderAmount,
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18,
-                  color: redorgreen,
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
