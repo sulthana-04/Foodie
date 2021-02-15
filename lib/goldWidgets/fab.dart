@@ -76,6 +76,7 @@ class _FancyFabState extends State<FancyFab>
   Widget add() {
     return Container(
       child: FloatingActionButton(
+        heroTag: 'button1',
         backgroundColor:  themegreen,
         onPressed: (){
           Navigator.push(
@@ -98,6 +99,7 @@ class _FancyFabState extends State<FancyFab>
   Widget image() { 
     return Container(
       child: FloatingActionButton(backgroundColor: themegreen,
+      heroTag: 'button2',
         onPressed: (){
            Navigator.push(
                      context,
@@ -129,6 +131,7 @@ class _FancyFabState extends State<FancyFab>
   Widget toggle() {
     return Container(
       child: FloatingActionButton(
+        heroTag: 'button3',
         backgroundColor: _buttonColor.value,
         onPressed: animate,
         tooltip: 'Toggle',
