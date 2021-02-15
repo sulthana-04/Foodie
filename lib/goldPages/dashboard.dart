@@ -22,11 +22,6 @@ class _DashboardState extends State<Dashboard> {
       backgroundColor: themecolor,
       appBar: FoodieAppbar(),
       body: SingleChildScrollView(
-<<<<<<< HEAD
-              child: Column(
-          children:[
-          FoodieTitle(title: 'Dashboard')  ,        
-=======
         child: Column(children: [
           Container(
             padding: EdgeInsets.only(top: 30, left: 33),
@@ -42,7 +37,6 @@ class _DashboardState extends State<Dashboard> {
               ),
             ),
           ),
->>>>>>> akhiljose
           SizedBox(height: 40),
           Container(
             margin: EdgeInsets.symmetric(horizontal: 30),
