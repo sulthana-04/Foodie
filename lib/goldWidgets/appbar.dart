@@ -1,4 +1,8 @@
+
+
 import 'package:flutter/material.dart';
+import 'package:foodieadmin/goldPages/login.dart';
+import 'package:foodieadmin/goldPages/setting.dart';
 import 'package:foodieadmin/goldWidgets/constraints.dart';
 import 'package:foodieadmin/goldWidgets/goldSetting.dart';
 
@@ -33,20 +37,63 @@ class _FoodieAppbarState extends State<FoodieAppbar> {
             padding: EdgeInsets.only(top:5),
             child:PopupMenuButton<String>(
               icon: Image.asset('images/arrowdown.png',),
-            onSelected:choiceAction,
-            itemBuilder: (BuildContext context){
-              return Constants.choices.map((String choice){
-                return PopupMenuItem<String>(
-                  value: choice,
-                  child: Text(choice),
-                );
-              }).toList();
+            
+              itemBuilder: (context) => [
+        PopupMenuItem(
+          
+            child: Row(
+            children: <Widget>[
+            // Padding(
+            //   padding: const EdgeInsets.fromLTRB(2, 2, 8, 2),
+              
+            // ),
+            GestureDetector(
+              child:  Text('Setting',style: TextStyle(fontSize:18),),
+              onTap:(){
+              Navigator.push(context, MaterialPageRoute(builder: (context){
+                return Settings();
+              }));
+            }
+            
+             ),
+            
+      ],
+    )),
+  
+        PopupMenuItem(
+           
+            child: Row(
+          children: <Widget>[
+            // Padding(
+            //   padding: const EdgeInsets.fromLTRB(2, 2, 8, 2),
+            
+            // ),
+            GestureDetector(
+                onTap:(){
+              Navigator.push(context, MaterialPageRoute(builder: (context){
+                return Login();
+              }));
             },
+              child: Text('Log Out',style: TextStyle(fontSize:18)))
+          ],
+        )),
+      ])
+
+
+            // itemBuilder: (BuildContext context){
+            //   return Constants.choices.map((String choice){
+            //     return PopupMenuItem<String>(
+            //       value: choice,
+            //       child: Text(choice),
+                  
+            //     );
+            //   }).toList();
+            // },
           ) ,
             // child: AdminOptions(),
             // child: IconButton(icon:Image.asset('images/arrowdown.png',),onPressed: (){},)
             
-            ),
+            
             
                 ],
                 );
@@ -56,15 +103,15 @@ class _FoodieAppbarState extends State<FoodieAppbar> {
   
 }
 
-void choiceAction(String choice){
-    if(choice == Constants.Settings){
-    print("Setting");
+// void choiceAction(String choice){
+//     if(choice == Constants.Settings){
+//      Settings();
+ 
     
-    }else if(choice == Constants.SignOut){
+//    }else if(choice == Constants.SignOut){
       
-      print('SignOut');
-    }
-    }
-    
+//       print('SignOut');
+//     }
+//     }
 
-    
+
