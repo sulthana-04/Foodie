@@ -1,114 +1,237 @@
-/// Example of initial hint animation behavior.
-///
-/// To see the animation, please run the example app and select
-/// "Initial hint animation".
-///
-/// This behavior is intended to be used with charts that also have pan/zoom
-/// behaviors added and/or the initial viewport set in [AxisSpec].
-///
-/// Adding this behavior will cause the chart to animate from a scale and/or
-/// offset of the desired final viewport. If the user taps the widget prior
-/// to the animation being completed, animation will stop.
-///
-/// [maxHintScaleFactor] is the amount the domain axis will be scaled at the
-/// start of te hint. By default, this is null, indicating that there will be
-/// no scale factor hint. A value of 1.0 means the viewport is showing all
-/// domains in the viewport. If a value is provided, it cannot be less than 1.0.
-///
-/// [maxHintTranslate] is the amount of ordinal values to translate the viewport
-/// from the desired initial viewport. Currently only works for ordinal axis.
-///
-/// In this example, the series list has ordinal data from year 2014 to 2030,
-/// and we have the initial viewport set to start at 2018 that shows 4 values by
-/// specifying an [OrdinalViewport] in [OrdinalAxisSpec]. We can add the hint
-/// animation by adding behavior [InitialHintBehavior] with [maxHintTranslate]
-/// of 4. When the chart is drawn for the first time, the viewport will show
-/// 2022 as the first value and the viewport will animate by panning values to
-/// the right until 2018 is the first value in the viewport.
-
-import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:flutter/material.dart';
+import 'package:charts_flutter/flutter.dart' as charts;
+import 'package:foodieadmin/goldWidgets/appbar.dart';
+import 'package:foodieadmin/goldWidgets/goldSetting.dart';
 
-class InitialHintAnimation extends StatelessWidget {
-  final List<charts.Series> seriesList;
-  final bool animate;
 
-  InitialHintAnimation(this.seriesList, {this.animate});
+class GraphReport extends StatefulWidget {
+  final Widget child;
 
-  /// Creates a [BarChart] with sample data and no transition.
-  factory InitialHintAnimation.withSampleData() {
-    return new InitialHintAnimation(
-      _createSampleData(),
-      // Disable animations for image tests.
-      animate: false,
+  GraphReport({Key key, this.child}) : super(key: key);
+
+  _GraphReportState createState() => _GraphReportState();
+}
+
+class _GraphReportState extends State<GraphReport> {
+  List<charts.Series<Pollution, String>> _seriesData;
+  List<charts.Series<Task, String>> _seriesPieData;
+  List<charts.Series<Sales, int>> _seriesLineData;
+
+  _generateData() {
+    var data1 = [
+      new Pollution(1980, 'USA', 30),
+      new Pollution(1980, 'Asia', 40),
+      new Pollution(1980, 'Europe', 10),
+    ];
+    var data2 = [
+      new Pollution(1985, 'USA', 100),
+      new Pollution(1980, 'Asia', 150),
+      new Pollution(1985, 'Europe', 80),
+    ];
+    var data3 = [
+      new Pollution(1985, 'USA', 200),
+      new Pollution(1980, 'Asia', 300),
+      new Pollution(1985, 'Europe', 180),
+    ];
+
+    var piedata = [
+      new Task('Work', 35.8, Color(0xff3366cc)),
+      new Task('Eat', 8.3, Color(0xff990099)),
+      new Task('Profit', 10.8, Color(0xff109618)),
+      new Task('TV', 15.6, Color(0xfffdbe19)),
+      new Task('Sleep', 19.2, Color(0xffff9900)),
+      new Task('Other', 10.3, Color(0xffdc3912)),
+    ];
+
+    var linesalesdata = [
+      new Sales(0, 45),
+      new Sales(1, 56),
+      new Sales(2, 55),
+      new Sales(3, 60),
+      new Sales(4, 61),
+      new Sales(5, 70),
+    ];
+    var linesalesdata1 = [
+      new Sales(0, 35),
+      new Sales(1, 46),
+      new Sales(2, 45),
+      new Sales(3, 50),
+      new Sales(4, 51),
+      new Sales(5, 60),
+    ];
+
+    var linesalesdata2 = [
+      new Sales(0, 20),
+      new Sales(1, 24),
+      new Sales(2, 25),
+      new Sales(3, 40),
+      new Sales(4, 45),
+      new Sales(5, 60),
+    ];
+
+    _seriesData.add(
+      charts.Series(
+        domainFn: (Pollution pollution, _) => pollution.place,
+        measureFn: (Pollution pollution, _) => pollution.quantity,
+        id: '2017',
+        data: data1,
+        fillPatternFn: (_, __) => charts.FillPatternType.solid,
+        fillColorFn: (Pollution pollution, _) =>
+            charts.ColorUtil.fromDartColor(Color(0xffffffff)),
+      ), 
+    );
+
+    _seriesData.add(
+      charts.Series(
+        domainFn: (Pollution pollution, _) => pollution.place,
+        measureFn: (Pollution pollution, _) => pollution.quantity,
+        id: '2018',
+        data: data2,
+        fillPatternFn: (_, __) => charts.FillPatternType.solid,
+        fillColorFn: (Pollution pollution, _) =>
+           charts.ColorUtil.fromDartColor(Color(0xff109618)),
+      ),
+    );
+
+    _seriesData.add(
+      charts.Series(
+        domainFn: (Pollution pollution, _) => pollution.place,
+        measureFn: (Pollution pollution, _) => pollution.quantity,
+        id: '2019',
+        data: data3,
+        fillPatternFn: (_, __) => charts.FillPatternType.solid,
+       fillColorFn: (Pollution pollution, _) =>
+          charts.ColorUtil.fromDartColor(Color(0xffff9900)),
+      ),
+    );
+
+    _seriesPieData.add(
+      charts.Series(
+        domainFn: (Task task, _) => task.task,
+        measureFn: (Task task, _) => task.taskvalue,
+        colorFn: (Task task, _) =>
+            charts.ColorUtil.fromDartColor(task.colorval),
+        id: 'Air Pollution',
+        data: piedata,
+         labelAccessorFn: (Task row, _) => '${row.taskvalue}',
+      ),
+    );
+
+    _seriesLineData.add(
+      charts.Series(
+        colorFn: (__, _) => charts.ColorUtil.fromDartColor(Color(0xff990099)),
+        id: 'Air Pollution',
+        data: linesalesdata,
+        domainFn: (Sales sales, _) => sales.yearval,
+        measureFn: (Sales sales, _) => sales.salesval,
+      ),
+    );
+    _seriesLineData.add(
+      charts.Series(
+        colorFn: (__, _) => charts.ColorUtil.fromDartColor(Color(0xff109618)),
+        id: 'Air Pollution',
+        data: linesalesdata1,
+        domainFn: (Sales sales, _) => sales.yearval,
+        measureFn: (Sales sales, _) => sales.salesval,
+      ),
+    );
+    _seriesLineData.add(
+      charts.Series(
+        colorFn: (__, _) => charts.ColorUtil.fromDartColor(Color(0xffff9900)),
+        id: 'Air Pollution',
+        data: linesalesdata2,
+        domainFn: (Sales sales, _) => sales.yearval,
+        measureFn: (Sales sales, _) => sales.salesval,
+      ),
     );
   }
 
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _seriesData = List<charts.Series<Pollution, String>>();
+    _seriesPieData = List<charts.Series<Task, String>>();
+    _seriesLineData = List<charts.Series<Sales, int>>();
+    _generateData();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return new charts.BarChart(
-      seriesList,
-      animate: animate,
-      // Optionally turn off the animation that animates values up from the
-      // bottom of the domain axis. If animation is on, the bars will animate up
-      // and then animate to the final viewport.
-      animationDuration: Duration.zero,
-      // Set the initial viewport by providing a new AxisSpec with the
-      // desired viewport: a starting domain and the data size.
-      domainAxis: new charts.OrdinalAxisSpec(
-          viewport: new charts.OrdinalViewport('2018', 4)),
-      behaviors: [
-        // Add this behavior to show initial hint animation that will pan to the
-        // final desired viewport.
-        // The duration of the animation can be adjusted by pass in
-        // [hintDuration]. By default this is 3000ms.
-        new charts.InitialHintBehavior(maxHintTranslate: 4.0),
-        // Optionally add a pan or pan and zoom behavior.
-        // If pan/zoom is not added, the viewport specified remains the viewport
-        new charts.PanAndZoomBehavior(),
-      ],
+    return MaterialApp(
+      home: DefaultTabController(
+        length: 3,
+        child: Scaffold(
+          backgroundColor: themecolor,
+          appBar: FoodieAppbar(),
+          
+          body:
+         
+              Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Container(
+                  child: Center(
+                    child: Column(
+                      children: <Widget>[
+                        SizedBox(height:20),
+                        Text(
+                            ' daily Report',style: TextStyle(color: themewhite, fontSize: 24.0,fontWeight: FontWeight.bold),),
+                            SizedBox(height: 10.0,),
+                        Expanded(
+                          child: charts.PieChart(
+                            _seriesPieData,
+                            animate: true,
+                            animationDuration: Duration(seconds: 5),
+                             behaviors: [
+                            new charts.DatumLegend(
+                              outsideJustification: charts.OutsideJustification.endDrawArea,
+                              horizontalFirst: false,
+                              desiredMaxRows: 2,
+                              cellPadding: new EdgeInsets.only(right: 4.0, bottom: 4.0),
+                              entryTextStyle: charts.TextStyleSpec(
+                                  color: charts.MaterialPalette.purple.shadeDefault,
+                                  fontFamily: 'Georgia',
+                                  fontSize: 11),
+                            )
+                          ],
+                           defaultRenderer: new charts.ArcRendererConfig(
+                              arcWidth: 100,
+                             arcRendererDecorators: [
+          new charts.ArcLabelDecorator(
+              labelPosition: charts.ArcLabelPosition.inside)
+        ])),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+   
+        ),
+      ),
     );
-  }
-
-  /// Create one series with sample hard coded data.
-  static List<charts.Series<OrdinalSales, String>> _createSampleData() {
-    final data = [
-      new OrdinalSales('2014', 5),
-      new OrdinalSales('2015', 25),
-      new OrdinalSales('2016', 100),
-      new OrdinalSales('2017', 75),
-      new OrdinalSales('2018', 33),
-      new OrdinalSales('2019', 80),
-      new OrdinalSales('2020', 21),
-      new OrdinalSales('2021', 77),
-      new OrdinalSales('2022', 8),
-      new OrdinalSales('2023', 12),
-      new OrdinalSales('2024', 42),
-      new OrdinalSales('2025', 70),
-      new OrdinalSales('2026', 77),
-      new OrdinalSales('2027', 55),
-      new OrdinalSales('2028', 19),
-      new OrdinalSales('2029', 66),
-      new OrdinalSales('2030', 27),
-    ];
-
-    return [
-      new charts.Series<OrdinalSales, String>(
-        id: 'Sales',
-        colorFn: (_, __) => charts.MaterialPalette.blue.shadeDefault,
-        domainFn: (OrdinalSales sales, _) => sales.year,
-        measureFn: (OrdinalSales sales, _) => sales.sales,
-        data: data,
-      )
-    ];
   }
 }
 
-/// Sample ordinal data type.
-class OrdinalSales {
-  final String year;
-  final int sales;
+class Pollution {
+  String place;
+  int year;
+  int quantity;
 
-  OrdinalSales(this.year, this.sales);
+  Pollution(this.year, this.place, this.quantity);
+}
+
+class Task {
+  String task;
+  double taskvalue;
+  Color colorval;
+
+  Task(this.task, this.taskvalue, this.colorval);
+}
+
+class Sales {
+  int yearval;
+  int salesval;
+
+  Sales(this.yearval, this.salesval);
 }
