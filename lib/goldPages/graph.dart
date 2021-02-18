@@ -35,12 +35,12 @@ class _GraphReportState extends State<GraphReport> {
     ];
 
     var piedata = [
-      new Task('Work', 35.8, Color(0xff3366cc)),
+      new Task('All Orders', 35.8, Color(0xff3366cc)),
       new Task('Eat', 8.3, Color(0xff990099)),
       new Task('Profit', 10.8, Color(0xff109618)),
       new Task('TV', 15.6, Color(0xfffdbe19)),
       new Task('Sleep', 19.2, Color(0xffff9900)),
-      new Task('Other', 10.3, Color(0xffdc3912)),
+      new Task('Pending Orders', 10.3, Color(0xffdc3912)),
     ];
 
     var linesalesdata = [
@@ -119,7 +119,7 @@ class _GraphReportState extends State<GraphReport> {
 
     _seriesLineData.add(
       charts.Series(
-        colorFn: (__, _) => charts.ColorUtil.fromDartColor(Color(0xff990099)),
+        colorFn: (__, _) => charts.ColorUtil.fromDartColor(Color(0xffffffff)),
         id: 'Air Pollution',
         data: linesalesdata,
         domainFn: (Sales sales, _) => sales.yearval,
@@ -148,7 +148,7 @@ class _GraphReportState extends State<GraphReport> {
 
   @override
   void initState() {
-    // TODO: implement initState
+    
     super.initState();
     _seriesData = List<charts.Series<Pollution, String>>();
     _seriesPieData = List<charts.Series<Task, String>>();
@@ -225,7 +225,7 @@ class Task {
   String task;
   double taskvalue;
   Color colorval;
-
+  
   Task(this.task, this.taskvalue, this.colorval);
 }
 
