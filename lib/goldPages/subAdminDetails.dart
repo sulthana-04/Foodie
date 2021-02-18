@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:foodieadmin/animations/sizeAnimation.dart';
+import 'package:foodieadmin/goldPages/accounts.dart';
 import 'package:foodieadmin/goldPages/admin.dart';
 import 'package:foodieadmin/goldWidgets/appbar.dart';
 import 'package:foodieadmin/goldWidgets/colorButton.dart';
@@ -45,14 +47,10 @@ class SubAdminDetails extends StatelessWidget {
                 buttonColor: Colors.red,
                 buttonText: ('Yes'),
                 buttonAction: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) {
-                      return Admin();
+                 Navigator.pop(context);
+                  Navigator.pop(context, SizeRoute(page: AdminAccounts()));
                     }),
-                  );
-                },
-              ),
+            
             ],
           );
         },

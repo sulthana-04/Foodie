@@ -1,8 +1,8 @@
-
 import 'package:flutter/material.dart';
 import 'package:foodieadmin/animations/enterExitAniation.dart';
 import 'package:foodieadmin/goldPages/graph.dart';
 import 'package:foodieadmin/goldPages/orders.dart';
+import 'package:foodieadmin/goldPages/restaurants.dart';
 import 'package:foodieadmin/goldWidgets/appbar.dart';
 import 'package:foodieadmin/goldWidgets/goldSetting.dart';
 import 'package:foodieadmin/goldWidgets/orderCard.dart';
@@ -22,9 +22,8 @@ class _DashboardState extends State<Dashboard> {
       backgroundColor: themecolor,
       appBar: FoodieAppbar(),
       body: SingleChildScrollView(
-              child: Column(
-          children:[
-          FoodieTitle(title: 'Dashboard')  ,        
+        child: Column(children: [
+          FoodieTitle(title: 'Dashboard'),
           SizedBox(height: 40),
           Container(
             margin: EdgeInsets.symmetric(horizontal: 30),
@@ -71,14 +70,6 @@ class _DashboardState extends State<Dashboard> {
                 Navigator.push(context,
                     EnterExitRoute(exitPage: Dashboard(), enterPage: Orders()));
               },
-              hotelName: "Orders",
-              orderAmount: "20",
-              redorgreen: themegreen,
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.symmetric(horizontal: 27),
-            child: OrderCard(
               hotelName: "Pending Orders",
               orderAmount: "20",
               redorgreen: Colors.red,
@@ -87,8 +78,12 @@ class _DashboardState extends State<Dashboard> {
           Container(
             margin: EdgeInsets.symmetric(horizontal: 27),
             child: OrderCard(
+              onPressed: () {
+                Navigator.push(context,
+                    EnterExitRoute(exitPage: Dashboard(), enterPage: Restaurants()));
+              },
               hotelName: "Restaurants",
-              orderAmount: "20",
+              orderAmount: "15",
               redorgreen: themegreen,
             ),
           ),
@@ -105,8 +100,8 @@ class _DashboardState extends State<Dashboard> {
               hotelName: "Graphic Report",
               orderAmount: ">",
               redorgreen: themegreen,
-              onPressed: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context){
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
                   return GraphReport();
                 }));
               },

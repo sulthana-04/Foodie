@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:foodieadmin/animations/sizeAnimation.dart';
 import 'package:foodieadmin/goldPages/shopDetails.dart';
 import 'package:foodieadmin/goldPages/shopEdit.dart';
 import 'package:foodieadmin/goldWidgets/goldSetting.dart';
@@ -23,12 +24,8 @@ class _ShopCardState extends State<ShopCard> {
     final width = MediaQuery.of(context).size.width;
     return GestureDetector(
       onTap: (){
-            Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context1) {
-                return ShopDetails();
-                      }),
-                );
+                      Navigator.push(context, SizeRoute(page: ShopDetails()));
+
               },
           child: Card(
         color: themedimbalck,
@@ -56,12 +53,8 @@ class _ShopCardState extends State<ShopCard> {
               left: width*0.300,top: height*0.15,
               child:IconButton(icon: Image.asset('images/edit.png',width:35,height: 35,),
               onPressed: (){
-                 Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) {
-                        return ShopEdit();
-                      }),
-                    );
+                  Navigator.push(context, SizeRoute(page: ShopEdit()));
+
               },
               splashRadius: 1,)
               ), 

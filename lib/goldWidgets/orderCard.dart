@@ -9,7 +9,7 @@ class OrderCard extends StatelessWidget {
   const OrderCard(
       {Key key,
       this.hotelName = '',
-      this.orderAmount = '0',
+      this.orderAmount = '',
       this.redorgreen,
       this.onPressed})
       : super(key: key);

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:foodieadmin/animations/enterExitAniation.dart';
-import 'package:foodieadmin/goldPages/pendingOrders.dart';
+import 'package:foodieadmin/goldPages/orderDetails.dart';
 import 'package:foodieadmin/goldWidgets/appbar.dart';
 import 'package:foodieadmin/goldWidgets/goldSetting.dart';
 import 'package:foodieadmin/goldWidgets/searchbar.dart';
 import 'package:foodieadmin/goldWidgets/orderCard.dart';
 
-class Orders extends StatelessWidget {
+class PendingOrders extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,17 +29,16 @@ class Orders extends StatelessWidget {
                     style: commonTextStyle,
                   ),
                 ),
-                SearchBar(),
                 Expanded(
-                  child: ListView.builder(itemCount: 10,
+                  child: ListView.builder(itemCount: 2,
                   itemBuilder: (context, index){
                     return  OrderCard(
                      onPressed: () {
                   Navigator.push(context,
-                      EnterExitRoute(exitPage: this , enterPage: PendingOrders()));
+                      EnterExitRoute(exitPage: this , enterPage: OrderDetails()));
               },
-                    hotelName: 'Spoon',
-                    orderAmount: '2',
+                    hotelName: 'Chicken 65',
+                    orderAmount: '1',
                     redorgreen: Colors.red,
                   );
                   },),

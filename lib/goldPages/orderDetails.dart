@@ -142,7 +142,7 @@ class ItemCard extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    'Price :          900/-',
+                    'Price :          150/-',
                     style: cardTextRight,
                   ),
                   Text(
@@ -202,7 +202,7 @@ class BillCard extends StatelessWidget {
                               style: normal,
                             ),
                             Text(
-                              '900',
+                              '150',
                               style: bold,
                             ),
                           ]),
@@ -246,7 +246,7 @@ class BillCard extends StatelessWidget {
                 style: normal,
               ),
               Text(
-                '942.0',
+                '192.0',
                 style: bold,
               ),
             ]),

@@ -1,7 +1,7 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:foodieadmin/goldPages/subAdmin.dart';
+import 'package:foodieadmin/animations/enterExitAniation.dart';
 import 'package:foodieadmin/goldPages/subAdminDetails.dart';
 import 'package:foodieadmin/goldWidgets/appbar.dart';
 import 'package:foodieadmin/goldWidgets/goldSetting.dart';
@@ -20,25 +20,19 @@ class AdminAccounts extends StatelessWidget {
             FoodieTitle(title:"SubAdmin List"),
             SizedBox(height:20),
             OrderCard(hotelName: 'SubAdmin Name 1',orderAmount: '',onPressed: (){
-               Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) {
-                      return SubAdminDetails();
-                    }));
+                Navigator.push(context,
+                    EnterExitRoute(exitPage: this, enterPage: SubAdminDetails()));
+            
             },),
             OrderCard(hotelName: 'SubAdmin Name 2',orderAmount: '',onPressed: (){
-               Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) {
-                      return SubAdminDetails();
-                    }));
+                Navigator.push(context,
+                    EnterExitRoute(exitPage: this, enterPage: SubAdminDetails()));
+            
             }),
             OrderCard(hotelName: 'SubAdmin Name 3',orderAmount: '',onPressed: (){
-               Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) {
-                      return SubAdminDetails();
-                    }));
+                Navigator.push(context,
+                    EnterExitRoute(exitPage: this, enterPage: SubAdminDetails()));
+            
             },),
           ]
         ),

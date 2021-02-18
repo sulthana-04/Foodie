@@ -52,10 +52,6 @@ class ShopAdd extends StatelessWidget {
                 buttonColor: Colors.red,
                 buttonText: ('Yes'),
                 buttonAction: () {
-                  // Navigator.push(
-                  //   context,
-                  //   MaterialPageRoute(builder: (context) => Admin()),
-                  // );
                   Navigator.pop(context);
                   Navigator.pop(context, SizeRoute(page: Admin()));
                 },
@@ -72,7 +68,7 @@ class ShopAdd extends StatelessWidget {
         leading: IconButton(
             icon: Icon(Icons.arrow_back),
             onPressed: () {
-               _showMyDialog();
+              _showMyDialog();
             }),
         automaticallyImplyLeading: false,
       ),

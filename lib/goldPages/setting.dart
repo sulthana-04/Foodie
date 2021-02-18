@@ -1,6 +1,7 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:foodieadmin/animations/enterExitAniation.dart';
 import 'package:foodieadmin/goldPages/accounts.dart';
 import 'package:foodieadmin/goldPages/subAdmin.dart';
 import 'package:foodieadmin/goldWidgets/appbar.dart';
@@ -18,15 +19,16 @@ class Settings extends StatelessWidget {
           children:[
             OrderCard(hotelName: 'SubAdmin',orderAmount: '',onPressed: (){
             
-            Navigator.push(context, MaterialPageRoute(builder: (contex){
-            return SubAdmin();
-            }));
+           Navigator.push(context,
+                    EnterExitRoute(exitPage: this, enterPage: SubAdmin()
+              
+            ));
 
             },),
             OrderCard(hotelName: 'Accounts',orderAmount: '',onPressed: (){
-               Navigator.push(context, MaterialPageRoute(builder: (contex){
-            return AdminAccounts();
-            }));
+               Navigator.push(context,
+                    EnterExitRoute(exitPage: this, enterPage: AdminAccounts()
+            ));
             },),
          
           ]
