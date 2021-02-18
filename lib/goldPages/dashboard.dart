@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:foodieadmin/animations/enterExitAniation.dart';
+import 'package:foodieadmin/goldPages/graph.dart';
 import 'package:foodieadmin/goldPages/orders.dart';
 import 'package:foodieadmin/goldWidgets/appbar.dart';
 import 'package:foodieadmin/goldWidgets/goldSetting.dart';
@@ -106,7 +107,7 @@ class _DashboardState extends State<Dashboard> {
               redorgreen: themegreen,
               onPressed: (){
                 Navigator.push(context, MaterialPageRoute(builder: (context){
-                  return ;
+                  return GraphReport();
                 }));
               },
             ),
