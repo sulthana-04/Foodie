@@ -35,11 +35,11 @@ class _GraphReportState extends State<GraphReport> {
     ];
 
     var piedata = [
-      new Task('All Orders', 35.8, Color(0xff3366cc)),
-      new Task('Eat', 8.3, Color(0xff990099)),
-      new Task('Profit', 10.8, Color(0xff109618)),
-      new Task('TV', 15.6, Color(0xfffdbe19)),
-      new Task('Sleep', 19.2, Color(0xffff9900)),
+      new Task('All Orders', 35.8, Color( 0xff109618)),
+      // new Task('Eat', 8.3, Color(0xff990099)),
+      new Task('Profit', 10.8, Color(0xff3366cc)),
+      // new Task('TV', 15.6, Color(0xfffdbe19)),
+      // new Task('Sleep', 19.2, Color(0xffff9900)),
       new Task('Pending Orders', 10.3, Color(0xffdc3912)),
     ];
 
@@ -159,6 +159,7 @@ class _GraphReportState extends State<GraphReport> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: DefaultTabController(
         length: 3,
         child: Scaffold(
@@ -176,7 +177,7 @@ class _GraphReportState extends State<GraphReport> {
                         SizedBox(height:20),
                         Text(
                             ' daily Report',style: TextStyle(color: themewhite, fontSize: 24.0,fontWeight: FontWeight.bold),),
-                            SizedBox(height: 10.0,),
+                            SizedBox(height: 20.0,),
                         Expanded(
                           child: charts.PieChart(
                             _seriesPieData,
@@ -189,7 +190,7 @@ class _GraphReportState extends State<GraphReport> {
                               desiredMaxRows: 2,
                               cellPadding: new EdgeInsets.only(right: 4.0, bottom: 4.0),
                               entryTextStyle: charts.TextStyleSpec(
-                                  color: charts.MaterialPalette.purple.shadeDefault,
+                                  color: charts.MaterialPalette.white,
                                   fontFamily: 'Georgia',
                                   fontSize: 11),
                             )
@@ -227,6 +228,7 @@ class Task {
   Color colorval;
   
   Task(this.task, this.taskvalue, this.colorval);
+  
 }
 
 class Sales {
