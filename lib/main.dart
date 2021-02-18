@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:foodieadmin/goldPages/setting.dart';
+
 import 'package:foodieadmin/goldPages/splashScreen.dart';
 
 void main() {

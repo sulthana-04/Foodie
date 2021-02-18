@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:foodieadmin/animations/enterExitAniation.dart';
 import 'package:foodieadmin/goldPages/orders.dart';
@@ -103,6 +104,11 @@ class _DashboardState extends State<Dashboard> {
               hotelName: "Graphic Report",
               orderAmount: ">",
               redorgreen: themegreen,
+              onPressed: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context){
+                  return ;
+                }));
+              },
             ),
           ),
         ]),
