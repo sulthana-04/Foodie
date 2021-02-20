@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:foodieadmin/goldPages/sliverlist.dart';
 import 'package:foodieadmin/goldWidgets/appbar.dart';
 import 'package:foodieadmin/goldWidgets/goldSetting.dart';
 import 'package:foodieadmin/goldWidgets/orderCard.dart';
@@ -11,31 +12,35 @@ class TodayOverView extends StatelessWidget {
     return Scaffold(
       backgroundColor: themecolor,
       appBar: FoodieAppbar(),
-      body: SizedBox(
-        height: double.maxFinite,
-        width: double.maxFinite,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-                'Spoon Restaurant',
-                style: TextStyle(
-                    fontSize: 30,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold),
-              ),
-          PageCard(
-            cardTitle: 'Delivered Orders',
-            amount: '35',
-            numberColor: themegreen,
-          ),
-          
-          PageCard( cardTitle: 'Pending Orders',
-            amount: '3',
-            numberColor: Colors.red,
-          ),
-        ]),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10),
+        child: CollapsingList(),
       ),
+      // body: SizedBox(
+      //   height: double.maxFinite,
+      //   width: double.maxFinite,
+      //   child: Column(
+      //     mainAxisAlignment: MainAxisAlignment.center,
+      //     children: [
+      //       Text(
+      //           'Spoon Restaurant',
+      //           style: TextStyle(
+      //               fontSize: 30,
+      //               color: Colors.white,
+      //               fontWeight: FontWeight.bold),
+      //         ),
+      //     PageCard(
+      //       cardTitle: 'Delivered Orders',
+      //       amount: '35',
+      //       numberColor: themegreen,
+      //     ),
+          
+      //     PageCard( cardTitle: 'Pending Orders',
+      //       amount: '3',
+      //       numberColor: Colors.red,
+      //     ),
+      //   ]),
+      // ),
     );
   }
 }
