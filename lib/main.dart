@@ -9,4 +9,4 @@ void main() {
     SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   runApp(MaterialApp(debugShowCheckedModeBanner: false, home: Foodie()));
-}
+}  
