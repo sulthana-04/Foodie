@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:foodieadmin/goldPages/accounts.dart';
+import 'package:foodieadmin/goldPages/deliveryBoys.dart';
 import 'package:foodieadmin/goldPages/subAdmin.dart';
 import 'package:foodieadmin/goldWidgets/appbar.dart';
 import 'package:foodieadmin/goldWidgets/goldSetting.dart';
@@ -21,8 +22,14 @@ class Settings extends StatelessWidget {
             Navigator.push(context, MaterialPageRoute(builder: (contex){
             return SubAdmin();
             }));
-
             },),
+
+            OrderCard(hotelName: 'Delivery Boys',orderAmount: '',onPressed: (){
+               Navigator.push(context, MaterialPageRoute(builder: (contex){
+            return DeliveryBoys();
+            }));
+            },),
+
             OrderCard(hotelName: 'Accounts',orderAmount: '',onPressed: (){
                Navigator.push(context, MaterialPageRoute(builder: (contex){
             return AdminAccounts();
