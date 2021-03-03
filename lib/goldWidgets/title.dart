@@ -10,12 +10,12 @@ class FoodieTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     final width=MediaQuery.of(context).size.width;
     return Container(
-              padding: EdgeInsets.only(top:30,left:33),
-              // color: Colors.red,
+              padding: EdgeInsets.only(top:20,left:35),
+              //  color: Colors.red,
               height: 50,
               width: width,
               child: Text('$title',
-              style: TextStyle(fontSize:20,
+              style: TextStyle(fontSize:18,
               fontWeight: FontWeight.bold,
               color: themewhite,
               ),

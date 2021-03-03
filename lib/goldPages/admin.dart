@@ -11,18 +11,6 @@ class Admin extends StatelessWidget {
       backgroundColor: themecolor,
       appBar: FoodieAppbar(),
       floatingActionButton:FancyFab() ,
-      // FloatingActionButton(
-      //   child: Icon(Icons.add),
-      //   backgroundColor: themegreen,
-      //   onPressed: () {
-      //     Navigator.push(
-      //       context,
-      //       MaterialPageRoute(builder: (context) {
-      //         return ShopAdd();
-      //       }),
-      //     );
-      //   },
-      // ),
       body: Admincontents(),
     );
   }

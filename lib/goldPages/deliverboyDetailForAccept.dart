@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:foodieadmin/goldPages/admin.dart';
+import 'package:foodieadmin/goldPages/shopDetails.dart';
 import 'package:foodieadmin/goldWidgets/appbar.dart';
+import 'package:foodieadmin/goldWidgets/attachmentButton.dart';
 import 'package:foodieadmin/goldWidgets/colorButton.dart';
 import 'package:foodieadmin/goldWidgets/goldSetting.dart';
-import 'package:foodieadmin/goldWidgets/textBox.dart';
+import 'package:foodieadmin/goldWidgets/title.dart';
 
-
-class AddDeliveryBoys extends StatelessWidget {
+class DeliveryBoyDetailsForAccept extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double wt = MediaQuery.of(context).size.width;
@@ -68,45 +69,38 @@ class AddDeliveryBoys extends StatelessWidget {
       backgroundColor: themecolor,
       appBar: FoodieAppbar(),
       body: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.only(top: 20, left: 25, right: 25),
-          child: SizedBox(
-            width: double.maxFinite,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'ADD NEW DELIVERY BOY',
-                  style: commonTextStyle,
-                ),
-               
-              
-                SizedBox(height: 30,),
-                TextBox(
-                  margin: EdgeInsets.only(top: 25, bottom: 15),
-                  hintText: 'Name',
-                ),  
-                 TextBox(
-                  hintText: 'Mobile Number',
-                ),  
-                  TextBox(
-                  hintText: 'Salary',
-                ),         
-                TextBox(
-                  height: 90,
-                  hintText: 'Notes.',
-                  maxLines: 5,
-                ),
-                   
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 15),
-                  child: Divider(
-                    color: themegreen,
-                    thickness: 3,
-                  ),
-                ),
-                
-                SizedBox(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                // crossAxisAlignment: CrossAxisAlignment.start,
+          children:[
+            FoodieTitle(title: 'PERSONAL INFO',),
+            SizedBox(height:30),
+            FoodieList(data: "Steve Jobs",),
+            FoodieAddress(address: 'Thrissur , Town \n 680680 ',multiline: true,),
+            FoodieList(data: "Age: 21",),
+            FoodieList(data: "Mob : 9898989898",),
+            FoodieList(data: "Blood Group : A+",),
+            line,
+            FoodieTitle(title:'Vechicle Details'),
+            SizedBox(height:30),
+            FoodieList(data: "License Number : 0000/0000/0000",),
+            FoodieList(data: "Vechile Name :  FZ",),
+            FoodieAddress(address: 'Vechicle Colour : Green',),
+            FoodieList(data: "Reg.no : KL08AB 1231",),
+            SizedBox(
+              width: wt*.82,
+              child: Row(
+
+                children:[
+                AttachmentButton(title:"Download License"),
+                VerticalDivider(),
+                AttachmentButton(title:"Download RC"),
+              ]),
+            ),
+            SizedBox(height:20),
+            line, 
+            SizedBox(height:10),
+            SizedBox(
                   width: double.maxFinite,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -118,7 +112,7 @@ class AddDeliveryBoys extends StatelessWidget {
                             _showMyDialog();
                           },
                           buttonColor: Colors.red,
-                          buttonText: 'CANCEL',
+                          buttonText: 'REJECT',
                           padding: wt > 600
                               ? EdgeInsets.symmetric(
                                   horizontal: 100, vertical: 20)
@@ -134,7 +128,7 @@ class AddDeliveryBoys extends StatelessWidget {
                             print('Create a new hotel entry');
                           },
                           buttonColor: themegreen,
-                          buttonText: 'CREATE',
+                          buttonText: 'ACCEPT',
                           padding: wt > 600
                               ? EdgeInsets.symmetric(
                                   horizontal: 100, vertical: 20)
@@ -145,11 +139,11 @@ class AddDeliveryBoys extends StatelessWidget {
                     ],
                   ),
                 )
-              ],
-            ),
-          ),
+          ]
         ),
-      ),
+      )
+                
+        
     );
   }
 }

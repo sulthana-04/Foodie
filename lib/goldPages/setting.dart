@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:foodieadmin/goldPages/accounts.dart';
 import 'package:foodieadmin/goldPages/deliveryBoys.dart';
@@ -18,15 +16,18 @@ class Settings extends StatelessWidget {
               child: Column(
           children:[
             OrderCard(hotelName: 'SubAdmin',orderAmount: '',onPressed: (){
-            
             Navigator.push(context, MaterialPageRoute(builder: (contex){
             return SubAdmin();
             }));
             },),
 
-            OrderCard(hotelName: 'Delivery Boys',orderAmount: '',onPressed: (){
+            OrderCard(
+              
+              hotelName: 'Delivery Boys',orderAmount: '2',
+              redorgreen: Colors.red,
+              onPressed: (){
                Navigator.push(context, MaterialPageRoute(builder: (contex){
-            return DeliveryBoys();
+               return DeliveryBoys();
             }));
             },),
 
