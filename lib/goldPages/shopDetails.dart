@@ -12,6 +12,7 @@ class ShopDetails extends StatelessWidget {
       
       body: SingleChildScrollView(
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
           children:[
             FoodieTitle(title: 'Shop Details',),
             SizedBox(height:30),
@@ -46,7 +47,7 @@ class FoodieList extends StatelessWidget {
   Widget build(BuildContext context) {
     final width=MediaQuery.of(context).size.width;
     return Container(
-            // color: Colors.red,
+            //  color: Colors.red,
             height: height,
             width: width,
             padding: EdgeInsets.only(left:40,top:12),
@@ -58,13 +59,15 @@ class FoodieList extends StatelessWidget {
 
 class FoodieAddress extends StatelessWidget {
   final String address;
-  const FoodieAddress({Key key, this.address}) : super(key: key);
+  final bool multiline;
+  const FoodieAddress({Key key, this.address, this.multiline=false,}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     final width=MediaQuery.of(context).size.width;
+    final height=MediaQuery.of(context).size.height;
     return Container(
             // color: Colors.purple,
-            height: 90,
+            height:multiline?null:50,
             width: width*0.82,
             padding: EdgeInsets.only(left:0,top:12),
             child: Text("$address",style: TextStyle(fontSize: 23,color: themewhite),),

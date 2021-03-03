@@ -48,6 +48,8 @@ class _ShopCardState extends State<ShopCard> {
               left: width*0.040,top: height*0.09,
               child: Text(widget.mobile,style:TextStyle(color: themewhite,fontSize: 14,))
               ), 
+
+           
               
               Positioned(
               left: width*0.300,top: height*0.15,
