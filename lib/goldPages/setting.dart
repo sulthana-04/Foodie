@@ -23,8 +23,7 @@ class Settings extends StatelessWidget {
 
             OrderCard(
               
-              hotelName: 'Delivery Boys',orderAmount: '2',
-              redorgreen: Colors.red,
+              hotelName: 'Delivery Boys',orderAmount: '',
               onPressed: (){
                Navigator.push(context, MaterialPageRoute(builder: (contex){
                return DeliveryBoys();
