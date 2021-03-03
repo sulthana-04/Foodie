@@ -26,7 +26,7 @@ class ShopEdit extends StatelessWidget {
               child: ListBody(
                 children: <Widget>[
                   Text(
-                    'Would you like to discard all changes',
+                    'Would you like to delete this shop',
                     style: commonTextStyle,
                   ),
                 ],
