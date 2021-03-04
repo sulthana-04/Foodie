@@ -8,18 +8,20 @@ class DeliverboysRequest extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: themecolor,
-      appBar: FoodieAppbar(),
-      body:ListView.builder(itemCount: 5, itemBuilder: (BuildContext context,int index){
-        return  OrderCard(
-              hotelName: 'Delivery Boy',orderAmount: '',
-              redorgreen: Colors.red,
-              onPressed: (){
-               Navigator.push(context, MaterialPageRoute(builder: (contex){
-               return DeliveryBoyDetailsForAccept();
+        backgroundColor: themecolor,
+        appBar: FoodieAppbar(),
+        body: ListView.builder(
+            itemCount: 5,
+            itemBuilder: (BuildContext context, int index) {
+              return OrderCard(
+                hotelName: 'Delivery Boy',
+                orderAmount: '',
+                redorgreen: Colors.red,
+                onPressed: () {
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (context) => DeliveryBoyDetailsForAccept()));
+                },
+              );
             }));
-            },);
-      })
-    );
   }
 }

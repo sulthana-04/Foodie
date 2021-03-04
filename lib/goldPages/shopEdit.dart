@@ -142,6 +142,10 @@ class ShopEdit extends StatelessWidget {
                         flex: 1,
                         child: ColorButton(
                           buttonAction: () {
+                            Navigator.of(context).pushAndRemoveUntil(
+                                MaterialPageRoute(
+                                    builder: (context) => Admin()),
+                                (Route<dynamic> route) => false);
                             //TODO: update hotel/shop details in database !!!!
                           },
                           buttonColor: themegreen,

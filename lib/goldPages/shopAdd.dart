@@ -155,6 +155,10 @@ class ShopAdd extends StatelessWidget {
                         flex: 1,
                         child: ColorButton(
                           buttonAction: () {
+                            Navigator.of(context).pushAndRemoveUntil(
+                                MaterialPageRoute(
+                                    builder: (context) => Admin()),
+                                (Route<dynamic> route) => false);
                             //TODO: Add new hotel/shop to the database !!!!
                             print('Create a new hotel entry');
                           },

@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:foodieadmin/animations/enterExitAniation.dart';
 import 'package:foodieadmin/goldPages/subAdminDetails.dart';
@@ -12,33 +10,32 @@ class AdminAccounts extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: themecolor,
-      appBar: FoodieAppbar(),
-      body:SingleChildScrollView(
-              child: Column(
-          children:[
-            FoodieTitle(title:"SubAdmin List"),
-            SizedBox(height:20),
-            OrderCard(hotelName: 'SubAdmin Name 1',orderAmount: '',onPressed: (){
-                Navigator.push(context,
-                    EnterExitRoute(exitPage: this, enterPage: SubAdminDetails()));
-            
-            },),
-            OrderCard(hotelName: 'SubAdmin Name 2',orderAmount: '',onPressed: (){
-                Navigator.push(context,
-                    EnterExitRoute(exitPage: this, enterPage: SubAdminDetails()));
-            
-            }),
-            OrderCard(hotelName: 'SubAdmin Name 3',orderAmount: '',onPressed: (){
-                Navigator.push(context,
-                    EnterExitRoute(exitPage: this, enterPage: SubAdminDetails()));
-            
-            },),
-          ]
-        ),
-      )
-      
-
-    );
+        backgroundColor: themecolor,
+        appBar: FoodieAppbar(),
+        body: SingleChildScrollView(
+          child: SizedBox(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
+            child: Column(children: [
+              FoodieTitle(title: "SubAdmin List"),
+              SizedBox(height: 20),
+              Expanded(
+                child: ListView.builder(
+                    itemCount: 4,
+                    itemBuilder: (context, index) {
+                      return OrderCard(
+                        hotelName: 'SubAdmin Name 1',
+                        orderAmount: '',
+                        onPressed: () {
+                          Navigator.of(context).pushReplacement(
+                              MaterialPageRoute(
+                                  builder: (context) => SubAdminDetails()));
+                        },
+                      );
+                    }),
+              ),
+            ]),
+          ),
+        ));
   }
 }

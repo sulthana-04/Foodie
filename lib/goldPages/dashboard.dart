@@ -79,8 +79,10 @@ class _DashboardState extends State<Dashboard> {
             margin: EdgeInsets.symmetric(horizontal: 27),
             child: OrderCard(
               onPressed: () {
-                Navigator.push(context,
-                    EnterExitRoute(exitPage: Dashboard(), enterPage: Restaurants()));
+                Navigator.push(
+                    context,
+                    EnterExitRoute(
+                        exitPage: Dashboard(), enterPage: Restaurants()));
               },
               hotelName: "Restaurants",
               orderAmount: "15",
@@ -101,9 +103,10 @@ class _DashboardState extends State<Dashboard> {
               orderAmount: ">",
               redorgreen: themegreen,
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return GraphReport();
-                }));
+                Navigator.push(
+                    context,
+                    EnterExitRoute(
+                        exitPage: Dashboard(), enterPage: GraphReport()));
               },
             ),
           ),

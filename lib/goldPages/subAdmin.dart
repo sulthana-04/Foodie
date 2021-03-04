@@ -42,16 +42,14 @@ class SubAdmin extends StatelessWidget {
                 },
               ),
               ColorButton(
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-                buttonColor: Colors.red,
-                buttonText: ('Yes'),
-                buttonAction: () {
-                 Navigator.pop(context);
-                  Navigator.pop(context, SizeRoute(page: Settings()));
-                    }),
-                 
-                
-             
+                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                  buttonColor: Colors.red,
+                  buttonText: ('Yes'),
+                  buttonAction: () {
+                    Navigator.of(context).pop();
+                    Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(builder: (context) => Settings()));
+                  }),
             ],
           );
         },
@@ -101,7 +99,7 @@ class SubAdmin extends StatelessWidget {
                 TextBox(
                   hintText: 'Password for SubAdmin',
                 ),
-                SizedBox(height:20),
+                SizedBox(height: 20),
                 SizedBox(
                   width: double.maxFinite,
                   child: Row(
@@ -126,8 +124,10 @@ class SubAdmin extends StatelessWidget {
                         flex: 1,
                         child: ColorButton(
                           buttonAction: () {
-                            //Add new hotel/shope to the database !!!!
-                            print('Create a new hotel entry');
+                            Navigator.of(context).pushReplacement(
+                                MaterialPageRoute(
+                                    builder: (context) => Settings()));
+                            //TODO: Add new admin to the database !!!!
                           },
                           buttonColor: themegreen,
                           buttonText: 'CREATE',

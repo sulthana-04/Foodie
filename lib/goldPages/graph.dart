@@ -3,7 +3,6 @@ import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:foodieadmin/goldWidgets/appbar.dart';
 import 'package:foodieadmin/goldWidgets/goldSetting.dart';
 
-
 class GraphReport extends StatefulWidget {
   final Widget child;
 
@@ -35,7 +34,7 @@ class _GraphReportState extends State<GraphReport> {
     ];
 
     var piedata = [
-      new Task('All Orders', 35.8, Color( 0xff109618)),
+      new Task('All Orders', 35.8, Color(0xff109618)),
       // new Task('Eat', 8.3, Color(0xff990099)),
       new Task('Profit', 10.8, Color(0xff3366cc)),
       // new Task('TV', 15.6, Color(0xfffdbe19)),
@@ -78,7 +77,7 @@ class _GraphReportState extends State<GraphReport> {
         fillPatternFn: (_, __) => charts.FillPatternType.solid,
         fillColorFn: (Pollution pollution, _) =>
             charts.ColorUtil.fromDartColor(Color(0xffffffff)),
-      ), 
+      ),
     );
 
     _seriesData.add(
@@ -89,7 +88,7 @@ class _GraphReportState extends State<GraphReport> {
         data: data2,
         fillPatternFn: (_, __) => charts.FillPatternType.solid,
         fillColorFn: (Pollution pollution, _) =>
-           charts.ColorUtil.fromDartColor(Color(0xff109618)),
+            charts.ColorUtil.fromDartColor(Color(0xff109618)),
       ),
     );
 
@@ -100,8 +99,8 @@ class _GraphReportState extends State<GraphReport> {
         id: '2019',
         data: data3,
         fillPatternFn: (_, __) => charts.FillPatternType.solid,
-       fillColorFn: (Pollution pollution, _) =>
-          charts.ColorUtil.fromDartColor(Color(0xffff9900)),
+        fillColorFn: (Pollution pollution, _) =>
+            charts.ColorUtil.fromDartColor(Color(0xffff9900)),
       ),
     );
 
@@ -113,7 +112,7 @@ class _GraphReportState extends State<GraphReport> {
             charts.ColorUtil.fromDartColor(task.colorval),
         id: 'Air Pollution',
         data: piedata,
-         labelAccessorFn: (Task row, _) => '${row.taskvalue}',
+        labelAccessorFn: (Task row, _) => '${row.taskvalue}',
       ),
     );
 
@@ -148,7 +147,6 @@ class _GraphReportState extends State<GraphReport> {
 
   @override
   void initState() {
-    
     super.initState();
     _seriesData = List<charts.Series<Pollution, String>>();
     _seriesPieData = List<charts.Series<Task, String>>();
@@ -165,49 +163,54 @@ class _GraphReportState extends State<GraphReport> {
         child: Scaffold(
           backgroundColor: themecolor,
           appBar: FoodieAppbar(),
-          
-          body:
-         
-              Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Container(
-                  child: Center(
-                    child: Column(
-                      children: <Widget>[
-                        SizedBox(height:20),
-                        Text(
-                            ' daily Report',style: TextStyle(color: themewhite, fontSize: 24.0,fontWeight: FontWeight.bold),),
-                            SizedBox(height: 20.0,),
-                        Expanded(
-                          child: charts.PieChart(
-                            _seriesPieData,
-                            animate: true,
-                            animationDuration: Duration(seconds: 5),
-                             behaviors: [
+          body: Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Container(
+              child: Center(
+                child: Column(
+                  children: <Widget>[
+                    SizedBox(height: 20),
+                    Text(
+                      ' daily Report',
+                      style: TextStyle(
+                          color: themewhite,
+                          fontSize: 24.0,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(
+                      height: 20.0,
+                    ),
+                    Expanded(
+                      child: charts.PieChart(_seriesPieData,
+                          animate: true,
+                          animationDuration: Duration(seconds: 5),
+                          behaviors: [
                             new charts.DatumLegend(
-                              outsideJustification: charts.OutsideJustification.endDrawArea,
+                              outsideJustification:
+                                  charts.OutsideJustification.endDrawArea,
                               horizontalFirst: false,
                               desiredMaxRows: 2,
-                              cellPadding: new EdgeInsets.only(right: 4.0, bottom: 4.0),
+                              cellPadding:
+                                  new EdgeInsets.only(right: 4.0, bottom: 4.0),
                               entryTextStyle: charts.TextStyleSpec(
                                   color: charts.MaterialPalette.white,
                                   fontFamily: 'Georgia',
                                   fontSize: 11),
                             )
                           ],
-                           defaultRenderer: new charts.ArcRendererConfig(
+                          defaultRenderer: new charts.ArcRendererConfig(
                               arcWidth: 100,
-                             arcRendererDecorators: [
-          new charts.ArcLabelDecorator(
-              labelPosition: charts.ArcLabelPosition.inside)
-        ])),
-                        ),
-                      ],
+                              arcRendererDecorators: [
+                                new charts.ArcLabelDecorator(
+                                    labelPosition:
+                                        charts.ArcLabelPosition.inside)
+                              ])),
                     ),
-                  ),
+                  ],
                 ),
               ),
-   
+            ),
+          ),
         ),
       ),
     );
@@ -226,9 +229,8 @@ class Task {
   String task;
   double taskvalue;
   Color colorval;
-  
+
   Task(this.task, this.taskvalue, this.colorval);
-  
 }
 
 class Sales {

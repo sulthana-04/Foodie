@@ -3,7 +3,6 @@ import 'package:foodieadmin/animations/enterExitAniation.dart';
 import 'package:foodieadmin/goldPages/orderDetails.dart';
 import 'package:foodieadmin/goldWidgets/appbar.dart';
 import 'package:foodieadmin/goldWidgets/goldSetting.dart';
-import 'package:foodieadmin/goldWidgets/searchbar.dart';
 import 'package:foodieadmin/goldWidgets/orderCard.dart';
 
 class PendingOrders extends StatelessWidget {
@@ -30,21 +29,23 @@ class PendingOrders extends StatelessWidget {
                   ),
                 ),
                 Expanded(
-                  child: ListView.builder(itemCount: 2,
-                  itemBuilder: (context, index){
-                    return  OrderCard(
-                     onPressed: () {
-                  Navigator.push(context,
-                      EnterExitRoute(exitPage: this , enterPage: OrderDetails()));
-              },
-                    hotelName: 'Chicken 65',
-                    orderAmount: '1',
-                    redorgreen: Colors.red,
-                  );
-                  },),
+                  child: ListView.builder(
+                    itemCount: 2,
+                    itemBuilder: (context, index) {
+                      return OrderCard(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              EnterExitRoute(
+                                  exitPage: this, enterPage: OrderDetails()));
+                        },
+                        hotelName: 'Chicken 65',
+                        orderAmount: '1',
+                        redorgreen: Colors.red,
+                      );
+                    },
+                  ),
                 )
-               
-               
               ],
             ),
           ),

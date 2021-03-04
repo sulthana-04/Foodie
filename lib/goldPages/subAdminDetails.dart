@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:foodieadmin/animations/enterExitAniation.dart';
 import 'package:foodieadmin/animations/sizeAnimation.dart';
 import 'package:foodieadmin/goldPages/accounts.dart';
-import 'package:foodieadmin/goldPages/admin.dart';
+import 'package:foodieadmin/goldPages/setting.dart';
 import 'package:foodieadmin/goldWidgets/appbar.dart';
 import 'package:foodieadmin/goldWidgets/colorButton.dart';
 import 'package:foodieadmin/goldWidgets/goldSetting.dart';
@@ -20,14 +21,14 @@ class SubAdminDetails extends StatelessWidget {
           return AlertDialog(
             backgroundColor: themecolor,
             title: Text(
-              'Discard Changes ?',
+              'Delete SubAdmin ?',
               style: commonTextStyle,
             ),
             content: SingleChildScrollView(
               child: ListBody(
                 children: <Widget>[
                   Text(
-                    'Would you like to discard all changes',
+                    'Would you like to delete this SubAdmin',
                     style: commonTextStyle,
                   ),
                 ],
@@ -43,14 +44,14 @@ class SubAdminDetails extends StatelessWidget {
                 },
               ),
               ColorButton(
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-                buttonColor: Colors.red,
-                buttonText: ('Yes'),
-                buttonAction: () {
-                 Navigator.pop(context);
-                  Navigator.pop(context, SizeRoute(page: AdminAccounts()));
-                    }),
-            
+                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                  buttonColor: Colors.red,
+                  buttonText: ('Yes'),
+                  buttonAction: () {
+                    Navigator.pop(context);
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(
+                        builder: (context) => AdminAccounts()));
+                  }),
             ],
           );
         },
@@ -100,7 +101,7 @@ class SubAdminDetails extends StatelessWidget {
                 TextBox(
                   hintText: 'Password for SubAdmin',
                 ),
-                SizedBox(height:20),
+                SizedBox(height: 20),
                 SizedBox(
                   width: double.maxFinite,
                   child: Row(
@@ -125,8 +126,10 @@ class SubAdminDetails extends StatelessWidget {
                         flex: 1,
                         child: ColorButton(
                           buttonAction: () {
-                            //Add new hotel/shope to the database !!!!
-                            print('Create a new hotel entry');
+                            Navigator.of(context).pushReplacement(
+                                MaterialPageRoute(
+                                    builder: (context) => AdminAccounts()));
+                            //TODO: Update subadmin details
                           },
                           buttonColor: themegreen,
                           buttonText: 'UPDATE',

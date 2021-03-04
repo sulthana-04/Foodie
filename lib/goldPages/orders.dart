@@ -25,7 +25,7 @@ class Orders extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 10),
                   child: Text(
-                    'Pending Orders',
+                    'Hotels',
                     style: commonTextStyle,
                   ),
                 ),
