@@ -16,13 +16,11 @@ class _AdmincontentsState extends State<Admincontents> {
     final width = MediaQuery.of(context).size.width;
     return SingleChildScrollView(
       child: Container(
-        // color: Colors.red,
         height: height,
         width: width,
         child: Column(
           children: [
             Container(
-              // color: Colors.purple,
               width: width,
               height: 90,
               child: Column(

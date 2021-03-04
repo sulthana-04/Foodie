@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:foodieadmin/animations/enterExitAniation.dart';
 import 'package:foodieadmin/goldPages/accounts.dart';
 import 'package:foodieadmin/goldPages/deliveryBoys.dart';
 import 'package:foodieadmin/goldPages/subAdmin.dart';
@@ -26,8 +25,7 @@ class Settings extends StatelessWidget {
             ),
             OrderCard(
               hotelName: 'Delivery Boys',
-              orderAmount: '2',
-              redorgreen: Colors.red,
+              orderAmount: '',
               onPressed: () {
                 Navigator.push(context, MaterialPageRoute(builder: (contex) {
                   return DeliveryBoys();
@@ -38,8 +36,9 @@ class Settings extends StatelessWidget {
               hotelName: 'Accounts',
               orderAmount: '',
               onPressed: () {
-                Navigator.push(context,
-                    EnterExitRoute(exitPage: this, enterPage: AdminAccounts()));
+                Navigator.push(context, MaterialPageRoute(builder: (contex) {
+                  return AdminAccounts();
+                }));
               },
             ),
           ]),

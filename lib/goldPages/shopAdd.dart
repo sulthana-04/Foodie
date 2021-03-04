@@ -52,8 +52,9 @@ class ShopAdd extends StatelessWidget {
                 buttonColor: Colors.red,
                 buttonText: ('Yes'),
                 buttonAction: () {
-                  Navigator.pop(context);
-                  Navigator.pop(context, SizeRoute(page: Admin()));
+                  Navigator.of(context).pushAndRemoveUntil(
+                      MaterialPageRoute(builder: (context) => Admin()),
+                      (Route<dynamic> route) => false);
                 },
               ),
             ],
@@ -143,27 +144,27 @@ class ShopAdd extends StatelessWidget {
                           },
                           buttonColor: Colors.red,
                           buttonText: 'CANCEL',
-                          padding: wt > 600
+                          padding: wt > 400
                               ? EdgeInsets.symmetric(
-                                  horizontal: 100, vertical: 20)
+                                  horizontal: 45, vertical: 20)
                               : EdgeInsets.symmetric(
-                                  horizontal: 23, vertical: 8),
+                                  horizontal: 23, vertical: 16),
                         ),
                       ),
                       Expanded(
                         flex: 1,
                         child: ColorButton(
                           buttonAction: () {
-                            //Add new hotel/shope to the database !!!!
+                            //TODO: Add new hotel/shop to the database !!!!
                             print('Create a new hotel entry');
                           },
                           buttonColor: themegreen,
                           buttonText: 'CREATE',
-                          padding: wt > 600
+                          padding: wt > 400
                               ? EdgeInsets.symmetric(
-                                  horizontal: 100, vertical: 20)
+                                  horizontal: 45, vertical: 20)
                               : EdgeInsets.symmetric(
-                                  horizontal: 23, vertical: 8),
+                                  horizontal: 23, vertical: 16),
                         ),
                       ),
                     ],
