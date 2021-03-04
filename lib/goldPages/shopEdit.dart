@@ -42,18 +42,15 @@ class ShopEdit extends StatelessWidget {
                 },
               ),
               ColorButton(
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-                buttonColor: Colors.red,
-                buttonText: ('Yes'),
-                buttonAction: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) {
-                      return Admin();
-                    }),
-                  );
-                },
-              ),
+                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                  buttonColor: Colors.red,
+                  buttonText: ('Yes'),
+                  buttonAction: () {
+                    Navigator.of(context).pushAndRemoveUntil(
+                        MaterialPageRoute(builder: (context) => Admin()),
+                        (Route<dynamic> route) => false);
+                    //TODO: Delete this shop
+                  }),
             ],
           );
         },
@@ -145,8 +142,7 @@ class ShopEdit extends StatelessWidget {
                         flex: 1,
                         child: ColorButton(
                           buttonAction: () {
-                            //Add new hotel/shope to the database !!!!
-                            print('Create a new hotel entry');
+                            //TODO: update hotel/shop details in database !!!!
                           },
                           buttonColor: themegreen,
                           buttonText: 'UPDATE',

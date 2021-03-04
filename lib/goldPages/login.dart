@@ -12,8 +12,6 @@ class Login extends StatelessWidget {
   Widget build(BuildContext context) {
     double ht = MediaQuery.of(context).size.height;
     double wd = MediaQuery.of(context).size.width;
-    print('ht $ht');
-    print('wd $wd');
 
     return Scaffold(
       backgroundColor: themecolor,
