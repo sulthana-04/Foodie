@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:foodieadmin/animations/enterExitAniation.dart';
-import 'package:foodieadmin/animations/sizeAnimation.dart';
 import 'package:foodieadmin/goldPages/accounts.dart';
-import 'package:foodieadmin/goldPages/setting.dart';
 import 'package:foodieadmin/goldWidgets/appbar.dart';
 import 'package:foodieadmin/goldWidgets/colorButton.dart';
 import 'package:foodieadmin/goldWidgets/goldSetting.dart';
@@ -119,7 +116,7 @@ class SubAdminDetails extends StatelessWidget {
                               ? EdgeInsets.symmetric(
                                   horizontal: 45, vertical: 20)
                               : EdgeInsets.symmetric(
-                                  horizontal: 15, vertical: 8),
+                                  horizontal: 23, vertical: 16),
                         ),
                       ),
                       Expanded(

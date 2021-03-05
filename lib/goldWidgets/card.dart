@@ -34,51 +34,110 @@ class _ShopCardState extends State<ShopCard> {
         color: themedimbalck,
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadiusDirectional.circular(20)),
-        child: Stack(children: [
-          Positioned(
-              left: width * 0.040,
-              top: height * 0.02,
-              child: Text(widget.hotelname,
-                  style: TextStyle(
-                      color: themewhite,
-                      fontSize: 22,
-                      fontWeight: FontWeight.w800))),
-          Positioned(
-              left: width * 0.040,
-              top: height * 0.06,
-              child: Text(widget.location,
-                  style: TextStyle(
-                    color: themewhite,
-                    fontSize: 14,
-                  ))),
-          Positioned(
-              left: width * 0.040,
-              top: height * 0.09,
-              child: Text(widget.mobile,
-                  style: TextStyle(
-                    color: themewhite,
-                    fontSize: 14,
-                  ))),
-          Positioned(
-              left: width * 0.300,
-              top: height * 0.15,
-              child: IconButton(
-                icon: Image.asset(
-                  'images/edit.png',
-                  width: 35,
-                  height: 35,
+        child: Container(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Container(
+                margin: EdgeInsets.only(top: 7, left: 7),
+                // color: Colors.red,
+                height: 73,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      widget.hotelname,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                          color: themewhite,
+                          fontSize: 22,
+                          fontWeight: FontWeight.w800),
+                    ),
+                    Text(
+                      widget.location,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        color: themewhite,
+                        fontSize: 14,
+                      ),
+                    ),
+                    Text(
+                      widget.mobile,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        color: themewhite,
+                        fontSize: 14,
+                      ),
+                    ),
+                  ],
                 ),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) {
-                      return ShopEdit();
-                    }),
-                  );
-                },
-                splashRadius: 1,
-              )),
-        ]),
+              ),
+              Container(
+                alignment: Alignment.centerRight,
+                child: GestureDetector(
+                  child: Image.asset(
+                    'images/edit.png',
+                    width: 27,
+                    height: 27,
+                  ),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      SizeRoute(page: ShopEdit()),
+                    );
+                  },
+                ),
+              ),
+            ],
+          ),
+        ),
+        // child: Stack(children: [
+        //   Positioned(
+        //       left: width * 0.040,
+        //       top: height * 0.02,
+        //       child: Text(widget.hotelname,
+        //           style: TextStyle(
+        //               color: themewhite,
+        //               fontSize: 22,
+        //               fontWeight: FontWeight.w800))),
+        //   Positioned(
+        //       left: width * 0.040,
+        //       top: height * 0.06,
+        //       child: Text(widget.location,
+        //           style: TextStyle(
+        //             color: themewhite,
+        //             fontSize: 14,
+        //           ))),
+        //   Positioned(
+        //       left: width * 0.040,
+        //       top: height * 0.09,
+        //       child: Text(widget.mobile,
+        //           style: TextStyle(
+        //             color: themewhite,
+        //             fontSize: 14,
+        //           ))),
+        //   Positioned(
+        //       left: width * 0.300,
+        //       top: height * 0.15,
+        //       child: IconButton(
+        //         icon: Image.asset(
+        //           'images/edit.png',
+        //           width: 35,
+        //           height: 35,
+        //         ),
+        //         onPressed: () {
+        //           Navigator.push(
+        //             context,
+        //             MaterialPageRoute(builder: (context) {
+        //               return ShopEdit();
+        //             }),
+        //           );
+        //         },
+        //         splashRadius: 1,
+        //       )),
+        // ]),
       ),
     );
   }
