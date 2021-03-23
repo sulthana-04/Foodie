@@ -5,7 +5,12 @@ import 'package:foodieadmin/goldWidgets/colorButton.dart';
 import 'package:foodieadmin/goldWidgets/goldSetting.dart';
 import 'package:foodieadmin/goldWidgets/textBox.dart';
 
-class SubAdminDetails extends StatelessWidget {
+class SubAdminDetails extends StatefulWidget {
+  @override
+  _SubAdminDetailsState createState() => _SubAdminDetailsState();
+}
+
+class _SubAdminDetailsState extends State<SubAdminDetails> {
   @override
   Widget build(BuildContext context) {
     double wt = MediaQuery.of(context).size.width;

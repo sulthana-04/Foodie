@@ -1,16 +1,22 @@
 import 'package:flutter/material.dart';
 
-class PasswordBox extends StatelessWidget {
+class PasswordBox extends StatefulWidget {
   final double width;
 
   const PasswordBox({Key key, this.width = double.maxFinite}) : super(key: key);
+
+  @override
+  _PasswordBoxState createState() => _PasswordBoxState();
+}
+
+class _PasswordBoxState extends State<PasswordBox> {
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.only(left: 15),
       margin: EdgeInsets.only(bottom: 25, top: 10),
       alignment: Alignment.center,
-      width: width,
+      width: widget.width,
       height: 50,
       color: Color.fromRGBO(16, 16, 16, 8),
       child: TextField(
@@ -27,3 +33,4 @@ class PasswordBox extends StatelessWidget {
     );
   }
 }
+

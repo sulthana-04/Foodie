@@ -2,7 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:foodieadmin/goldWidgets/appbar.dart';
 import 'package:foodieadmin/goldWidgets/goldSetting.dart';
 
-class OrderDetails extends StatelessWidget {
+class OrderDetails extends StatefulWidget {
+  @override
+  _OrderDetailsState createState() => _OrderDetailsState();
+}
+
+class _OrderDetailsState extends State<OrderDetails> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,7 +39,14 @@ class OrderDetails extends StatelessWidget {
   }
 }
 
-class OrderSummary extends StatelessWidget {
+
+
+class OrderSummary extends StatefulWidget {
+  @override
+  _OrderSummaryState createState() => _OrderSummaryState();
+}
+
+class _OrderSummaryState extends State<OrderSummary> {
   @override
   Widget build(BuildContext context) {
     TextStyle cardTextleft = TextStyle(
@@ -94,7 +106,14 @@ class OrderSummary extends StatelessWidget {
   }
 }
 
-class ItemCard extends StatelessWidget {
+
+
+class ItemCard extends StatefulWidget {
+  @override
+  _ItemCardState createState() => _ItemCardState();
+}
+
+class _ItemCardState extends State<ItemCard> {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -107,7 +126,7 @@ class ItemCard extends StatelessWidget {
     return Card(
       child: Container(
         height: width < 330 ? 75 : 100,
-        width: width < 330 ? null : width*.78,
+        width: width < 330 ? null : width * .78,
         color: themedimbalck,
         child: Row(
           children: [
@@ -159,7 +178,14 @@ class ItemCard extends StatelessWidget {
   }
 }
 
-class BillCard extends StatelessWidget {
+
+
+class BillCard extends StatefulWidget {
+  @override
+  _BillCardState createState() => _BillCardState();
+}
+
+class _BillCardState extends State<BillCard> {
   @override
   Widget build(BuildContext context) {
     // Widget padding = Padding(padding: EdgeInsets.symmetric(vertical: 10));

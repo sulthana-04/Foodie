@@ -5,8 +5,12 @@ import 'package:foodieadmin/goldWidgets/colorButton.dart';
 import 'package:foodieadmin/goldWidgets/goldSetting.dart';
 import 'package:foodieadmin/goldWidgets/textBox.dart';
 
+class EditDeliveryBoys extends StatefulWidget {
+  @override
+  _EditDeliveryBoysState createState() => _EditDeliveryBoysState();
+}
 
-class  EditDeliveryBoys extends StatelessWidget {
+class _EditDeliveryBoysState extends State<EditDeliveryBoys> {
   @override
   Widget build(BuildContext context) {
     double wt = MediaQuery.of(context).size.width;
@@ -79,25 +83,24 @@ class  EditDeliveryBoys extends StatelessWidget {
                   'EDIT DELIVERY BOY',
                   style: commonTextStyle,
                 ),
-               
-              
-                SizedBox(height: 30,),
+                SizedBox(
+                  height: 30,
+                ),
                 TextBox(
                   margin: EdgeInsets.only(top: 25, bottom: 15),
                   hintText: 'Name',
-                ),  
-                 TextBox(
+                ),
+                TextBox(
                   hintText: 'Mobile Number',
-                ),  
-                  TextBox(
+                ),
+                TextBox(
                   hintText: 'Salary',
-                ),         
+                ),
                 TextBox(
                   height: 90,
                   hintText: 'Notes.',
                   maxLines: 5,
                 ),
-                   
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 15),
                   child: Divider(
@@ -105,7 +108,6 @@ class  EditDeliveryBoys extends StatelessWidget {
                     thickness: 3,
                   ),
                 ),
-                
                 SizedBox(
                   width: double.maxFinite,
                   child: Row(
@@ -153,4 +155,3 @@ class  EditDeliveryBoys extends StatelessWidget {
     );
   }
 }
-

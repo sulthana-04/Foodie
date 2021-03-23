@@ -8,7 +8,12 @@ import 'package:foodieadmin/goldWidgets/goldSetting.dart';
 import 'package:foodieadmin/goldWidgets/passwordBox.dart';
 import 'package:foodieadmin/goldWidgets/textBox.dart';
 
-class Login extends StatelessWidget {
+class Login extends StatefulWidget {
+  @override
+  _LoginState createState() => _LoginState();
+}
+
+class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     double ht = MediaQuery.of(context).size.height;
@@ -59,7 +64,7 @@ class Login extends StatelessWidget {
                                         Navigator.push(
                                             context,
                                             EnterExitRoute(
-                                                exitPage: this,
+                                                exitPage: Login(),
                                                 enterPage: Admin()));
                                       },
                                       buttonColor: themegreen,

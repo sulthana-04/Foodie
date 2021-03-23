@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:foodieadmin/goldWidgets/goldSetting.dart';
 
-class TextBox extends StatelessWidget {
+class TextBox extends StatefulWidget {
   final double height;
   final double width;
   final String hintText;
   final bool autoCorrect;
   final int maxLines;
   final EdgeInsetsGeometry margin;
+
   const TextBox(
       {Key key,
       this.height = 50,
@@ -17,23 +18,27 @@ class TextBox extends StatelessWidget {
       this.margin = const EdgeInsets.symmetric(vertical: 15),
       this.width = double.maxFinite})
       : super(key: key);
+  @override
+  _TextBoxState createState() => _TextBoxState();
+}
 
+class _TextBoxState extends State<TextBox> {
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.only(left: 15),
-      margin: margin,
+      margin: widget.margin,
       alignment: Alignment.center,
-      width: width,
-      height: height,
+      width: widget.width,
+      height: widget.height,
       color: Color.fromRGBO(16, 16, 16, 8),
       child: TextField(
-        maxLines: maxLines,
+        maxLines: widget.maxLines,
         style: commonTextStyle,
         enableSuggestions: true,
-        autocorrect: autoCorrect,
+        autocorrect: widget.autoCorrect,
         decoration: InputDecoration(
-          hintText: hintText,
+          hintText: widget.hintText,
           hintStyle: TextStyle(color: Colors.grey[700]),
           border: InputBorder.none,
         ),

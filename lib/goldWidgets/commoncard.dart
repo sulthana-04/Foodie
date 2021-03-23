@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:foodieadmin/goldPages/editDeliveryBoy.dart';
 import 'package:foodieadmin/goldWidgets/goldSetting.dart';
 
 class CommonCard extends StatefulWidget {

@@ -5,7 +5,12 @@ import 'package:foodieadmin/goldWidgets/commoncard.dart';
 import 'package:foodieadmin/goldWidgets/goldSetting.dart';
 import 'package:foodieadmin/goldWidgets/searchBar%20copy.dart';
 
-class DeliveryBoys extends StatelessWidget {
+class DeliveryBoys extends StatefulWidget {
+  @override
+  _DeliveryBoysState createState() => _DeliveryBoysState();
+}
+
+class _DeliveryBoysState extends State<DeliveryBoys> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

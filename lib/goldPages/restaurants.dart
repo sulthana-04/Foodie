@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:foodieadmin/animations/enterExitAniation.dart';
-import 'package:foodieadmin/goldPages/pendingOrders.dart';
 import 'package:foodieadmin/goldPages/todayOverView.dart';
 import 'package:foodieadmin/goldWidgets/appbar.dart';
 import 'package:foodieadmin/goldWidgets/goldSetting.dart';
 import 'package:foodieadmin/goldWidgets/orderCard.dart';
 import 'package:foodieadmin/goldWidgets/searchbar.dart';
 
-class Restaurants extends StatelessWidget {
+class Restaurants extends StatefulWidget {
+  @override
+  _RestaurantsState createState() => _RestaurantsState();
+}
+
+class _RestaurantsState extends State<Restaurants> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,7 +44,7 @@ class Restaurants extends StatelessWidget {
                             Navigator.push(
                                 context,
                                 EnterExitRoute(
-                                    exitPage: this,
+                                    exitPage: Restaurants(),
                                     enterPage: TodayOverView()));
                           },
                           hotelName: 'Spoon',

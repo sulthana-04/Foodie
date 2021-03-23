@@ -4,7 +4,12 @@ import 'package:foodieadmin/goldWidgets/appbar.dart';
 import 'package:foodieadmin/goldWidgets/goldSetting.dart';
 import 'package:foodieadmin/goldWidgets/orderCard.dart';
 
-class DeliverboysRequest extends StatelessWidget {
+class DeliverboysRequest extends StatefulWidget {
+  @override
+  _DeliverboysRequestState createState() => _DeliverboysRequestState();
+}
+
+class _DeliverboysRequestState extends State<DeliverboysRequest> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

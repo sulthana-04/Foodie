@@ -6,7 +6,12 @@ import 'package:foodieadmin/goldWidgets/goldSetting.dart';
 import 'package:foodieadmin/goldWidgets/searchbar.dart';
 import 'package:foodieadmin/goldWidgets/orderCard.dart';
 
-class Orders extends StatelessWidget {
+class Orders extends StatefulWidget {
+  @override
+  _OrdersState createState() => _OrdersState();
+}
+
+class _OrdersState extends State<Orders> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,7 +44,8 @@ class Orders extends StatelessWidget {
                           Navigator.push(
                               context,
                               EnterExitRoute(
-                                  exitPage: this, enterPage: PendingOrders()));
+                                  exitPage: Orders(),
+                                  enterPage: PendingOrders()));
                         },
                         hotelName: 'Spoon',
                         orderAmount: '2',
@@ -56,3 +62,5 @@ class Orders extends StatelessWidget {
     );
   }
 }
+
+

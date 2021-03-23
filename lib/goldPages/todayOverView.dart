@@ -2,13 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:foodieadmin/goldPages/sliverlist.dart';
 import 'package:foodieadmin/goldWidgets/appbar.dart';
 import 'package:foodieadmin/goldWidgets/goldSetting.dart';
-import 'package:foodieadmin/goldWidgets/orderCard.dart';
 
-class TodayOverView extends StatelessWidget {
+class TodayOverView extends StatefulWidget {
+  @override
+  _TodayOverViewState createState() => _TodayOverViewState();
+}
+
+class _TodayOverViewState extends State<TodayOverView> {
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
-
     return Scaffold(
       backgroundColor: themecolor,
       appBar: FoodieAppbar(),
@@ -16,42 +18,22 @@ class TodayOverView extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 10),
         child: CollapsingList(),
       ),
-      // body: SizedBox(
-      //   height: double.maxFinite,
-      //   width: double.maxFinite,
-      //   child: Column(
-      //     mainAxisAlignment: MainAxisAlignment.center,
-      //     children: [
-      //       Text(
-      //           'Spoon Restaurant',
-      //           style: TextStyle(
-      //               fontSize: 30,
-      //               color: Colors.white,
-      //               fontWeight: FontWeight.bold),
-      //         ),
-      //     PageCard(
-      //       cardTitle: 'Delivered Orders',
-      //       amount: '35',
-      //       numberColor: themegreen,
-      //     ),
-          
-      //     PageCard( cardTitle: 'Pending Orders',
-      //       amount: '3',
-      //       numberColor: Colors.red,
-      //     ),
-      //   ]),
-      // ),
     );
   }
 }
 
-class PageCard extends StatelessWidget {
+class PageCard extends StatefulWidget {
   final String cardTitle;
   final String amount;
   final Color numberColor;
 
   const PageCard({Key key, this.cardTitle, this.amount, this.numberColor})
       : super(key: key);
+  @override
+  _PageCardState createState() => _PageCardState();
+}
+
+class _PageCardState extends State<PageCard> {
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -65,17 +47,17 @@ class PageCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
-                cardTitle,
+                widget.cardTitle,
                 style: TextStyle(
                     fontSize: 30,
                     color: Colors.white,
                     fontWeight: FontWeight.bold),
               ),
               Text(
-                amount,
+                widget.amount,
                 style: TextStyle(
                     fontSize: 45,
-                    color: numberColor,
+                    color: widget.numberColor,
                     fontWeight: FontWeight.bold),
               ),
             ]),

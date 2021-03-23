@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:foodieadmin/goldPages/admin.dart';
 import 'package:foodieadmin/goldWidgets/appbar.dart';
 import 'package:foodieadmin/goldWidgets/colorButton.dart';
 import 'package:foodieadmin/goldWidgets/goldSetting.dart';
 import 'package:foodieadmin/goldWidgets/textBox.dart';
 
-class ShopEdit extends StatelessWidget {
+class ShopEdit extends StatefulWidget {
+  @override
+  _ShopEditState createState() => _ShopEditState();
+}
+
+class _ShopEditState extends State<ShopEdit> {
   @override
   Widget build(BuildContext context) {
     double wt = MediaQuery.of(context).size.width;

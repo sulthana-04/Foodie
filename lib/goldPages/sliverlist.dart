@@ -34,7 +34,12 @@ class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
   }
 }
 
-class CollapsingList extends StatelessWidget {
+class CollapsingList extends StatefulWidget {
+  @override
+  _CollapsingListState createState() => _CollapsingListState();
+}
+
+class _CollapsingListState extends State<CollapsingList> {
   SliverPersistentHeader makeHeader(String headerText, Color headerColor) {
     return SliverPersistentHeader(
       pinned: true,
@@ -61,7 +66,7 @@ class CollapsingList extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomScrollView(
       slivers: <Widget>[
-        makeHeader('Spoon Restaurant',Colors.black),
+        makeHeader('Spoon Restaurant', Colors.black),
         makeHeader('Pending Orders', Colors.red),
         SliverFixedExtentList(
           itemExtent: 80,
@@ -70,8 +75,10 @@ class CollapsingList extends StatelessWidget {
             if (index > 2) return null;
             return OrderCard(
               onPressed: () {
-                Navigator.push(context,
-                    EnterExitRoute(exitPage: this, enterPage: OrderDetails()));
+                Navigator.push(
+                    context,
+                    EnterExitRoute(
+                        exitPage: CollapsingList(), enterPage: OrderDetails()));
               },
               hotelName: 'Chicken 65',
               orderAmount: '1',
@@ -87,8 +94,10 @@ class CollapsingList extends StatelessWidget {
             if (index > 20) return null;
             return OrderCard(
               onPressed: () {
-                Navigator.push(context,
-                    EnterExitRoute(exitPage: this, enterPage: OrderDetails()));
+                Navigator.push(
+                    context,
+                    EnterExitRoute(
+                        exitPage: CollapsingList(), enterPage: OrderDetails()));
               },
               hotelName: 'Chicken 65',
               orderAmount: '1',

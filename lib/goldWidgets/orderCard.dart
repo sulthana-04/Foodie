@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:foodieadmin/goldWidgets/goldSetting.dart';
 
-class OrderCard extends StatelessWidget {
+class OrderCard extends StatefulWidget {
   final String hotelName;
   final String orderAmount;
   final Color redorgreen;
@@ -13,11 +13,15 @@ class OrderCard extends StatelessWidget {
       this.redorgreen,
       this.onPressed})
       : super(key: key);
+  @override
+  _OrderCardState createState() => _OrderCardState();
+}
 
+class _OrderCardState extends State<OrderCard> {
   @override
   Widget build(BuildContext context) {
     return FlatButton(
-      onPressed: onPressed,
+      onPressed: widget.onPressed,
       child: Padding(
         padding: EdgeInsets.symmetric(vertical: 10),
         child: Card(
@@ -29,15 +33,15 @@ class OrderCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  hotelName,
+                  widget.hotelName,
                   style: commonTextStyle,
                 ),
                 Text(
-                  orderAmount,
+                  widget.orderAmount,
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 18,
-                    color: redorgreen,
+                    color: widget.redorgreen,
                   ),
                 ),
               ],

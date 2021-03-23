@@ -5,7 +5,12 @@ import 'package:foodieadmin/goldWidgets/appbar.dart';
 import 'package:foodieadmin/goldWidgets/goldSetting.dart';
 import 'package:foodieadmin/goldWidgets/orderCard.dart';
 
-class PendingOrders extends StatelessWidget {
+class PendingOrders extends StatefulWidget {
+  @override
+  _PendingOrdersState createState() => _PendingOrdersState();
+}
+
+class _PendingOrdersState extends State<PendingOrders> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,7 +42,8 @@ class PendingOrders extends StatelessWidget {
                           Navigator.push(
                               context,
                               EnterExitRoute(
-                                  exitPage: this, enterPage: OrderDetails()));
+                                  exitPage: PendingOrders(),
+                                  enterPage: OrderDetails()));
                         },
                         hotelName: 'Chicken 65',
                         orderAmount: '1',

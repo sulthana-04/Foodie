@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
 
-class AdminText extends StatelessWidget {
+class AdminText extends StatefulWidget {
   final double width;
 
   const AdminText({Key key, this.width = double.maxFinite}) : super(key: key);
   @override
+  _AdminTextState createState() => _AdminTextState();
+}
+
+class _AdminTextState extends State<AdminText> {
+  @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: width,
+      width: widget.width,
       child: Row(children: [
         Text(
           'Admin Account',

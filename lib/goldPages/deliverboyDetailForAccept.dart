@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:foodieadmin/goldPages/DeliveryBoysRequests.dart';
-import 'package:foodieadmin/goldPages/admin.dart';
 import 'package:foodieadmin/goldPages/shopDetails.dart';
 import 'package:foodieadmin/goldWidgets/appbar.dart';
 import 'package:foodieadmin/goldWidgets/attachmentButton.dart';
@@ -8,7 +7,14 @@ import 'package:foodieadmin/goldWidgets/colorButton.dart';
 import 'package:foodieadmin/goldWidgets/goldSetting.dart';
 import 'package:foodieadmin/goldWidgets/title.dart';
 
-class DeliveryBoyDetailsForAccept extends StatelessWidget {
+class DeliveryBoyDetailsForAccept extends StatefulWidget {
+  @override
+  _DeliveryBoyDetailsForAcceptState createState() =>
+      _DeliveryBoyDetailsForAcceptState();
+}
+
+class _DeliveryBoyDetailsForAcceptState
+    extends State<DeliveryBoyDetailsForAccept> {
   @override
   Widget build(BuildContext context) {
     double wt = MediaQuery.of(context).size.width;

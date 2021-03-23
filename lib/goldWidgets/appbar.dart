@@ -26,8 +26,6 @@ class FoodieAppbar extends StatefulWidget implements PreferredSizeWidget {
 class _FoodieAppbarState extends State<FoodieAppbar> {
   @override
   Widget build(BuildContext context) {
-    var a;
-    var b;
     return AppBar(
         elevation: 0,
         shadowColor: themecolor,
