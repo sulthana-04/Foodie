@@ -3,13 +3,15 @@ import 'package:foodieadmin/animations/sizeAnimation.dart';
 import 'package:foodieadmin/goldPages/shopDetails.dart';
 import 'package:foodieadmin/goldPages/shopEdit.dart';
 import 'package:foodieadmin/goldWidgets/goldSetting.dart';
+import 'package:foodieadmin/model/shopdetails.dart';
 
 class ShopCard extends StatefulWidget {
   final String hotelname;
   final String location;
   final String mobile;
+  final Shop shop;
 
-  const ShopCard({Key key, this.hotelname, this.location, this.mobile})
+  const ShopCard({Key key, this.hotelname, this.location, this.mobile, this.shop})
       : super(key: key);
 
   @override
@@ -24,7 +26,9 @@ class _ShopCardState extends State<ShopCard> {
         Navigator.push(
           context,
           MaterialPageRoute(builder: (context1) {
-            return ShopDetails();
+            return ShopDetails(
+              shop: widget.shop,
+            );
           }),
         );
       },

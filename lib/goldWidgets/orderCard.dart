@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:foodieadmin/goldWidgets/goldSetting.dart';
+import 'package:foodieadmin/model/shopdetails.dart';
 
 class OrderCard extends StatefulWidget {
   final String hotelName;
@@ -11,7 +12,7 @@ class OrderCard extends StatefulWidget {
       this.hotelName = '',
       this.orderAmount = '',
       this.redorgreen,
-      this.onPressed})
+      this.onPressed, Shop shop})
       : super(key: key);
   @override
   _OrderCardState createState() => _OrderCardState();
@@ -20,6 +21,7 @@ class OrderCard extends StatefulWidget {
 class _OrderCardState extends State<OrderCard> {
   @override
   Widget build(BuildContext context) {
+    // ignore: deprecated_member_use
     return FlatButton(
       onPressed: widget.onPressed,
       child: Padding(

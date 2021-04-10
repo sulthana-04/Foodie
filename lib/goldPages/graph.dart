@@ -148,8 +148,11 @@ class _GraphReportState extends State<GraphReport> {
   @override
   void initState() {
     super.initState();
+    // ignore: deprecated_member_use
     _seriesData = List<charts.Series<Pollution, String>>();
+    // ignore: deprecated_member_use
     _seriesPieData = List<charts.Series<Task, String>>();
+    // ignore: deprecated_member_use
     _seriesLineData = List<charts.Series<Sales, int>>();
     _generateData();
   }

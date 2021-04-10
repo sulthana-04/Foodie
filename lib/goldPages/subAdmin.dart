@@ -131,6 +131,7 @@ class _SubAdminState extends State<SubAdmin> {
                             Navigator.of(context).pushReplacement(
                                 MaterialPageRoute(
                                     builder: (context) => Settings()));
+                            // ignore: todo
                             //TODO: Add new admin to the database !!!!
                           },
                           buttonColor: themegreen,

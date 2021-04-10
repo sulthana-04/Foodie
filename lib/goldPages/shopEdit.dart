@@ -53,6 +53,7 @@ class _ShopEditState extends State<ShopEdit> {
                     Navigator.of(context).pushAndRemoveUntil(
                         MaterialPageRoute(builder: (context) => Admin()),
                         (Route<dynamic> route) => false);
+                    // ignore: todo
                     //TODO: Delete this shop
                   }),
             ],
@@ -150,6 +151,7 @@ class _ShopEditState extends State<ShopEdit> {
                                 MaterialPageRoute(
                                     builder: (context) => Admin()),
                                 (Route<dynamic> route) => false);
+                            // ignore: todo
                             //TODO: update hotel/shop details in database !!!!
                           },
                           buttonColor: themegreen,

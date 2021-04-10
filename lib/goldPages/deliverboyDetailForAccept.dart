@@ -61,6 +61,7 @@ class _DeliveryBoyDetailsForAcceptState
                     Navigator.of(context).pop();
                     Navigator.of(context).pushReplacement(MaterialPageRoute(
                         builder: (context) => DeliverboysRequest()));
+                    // ignore: todo
                     //TODO: remove request from list
                   }),
             ],
@@ -150,7 +151,9 @@ class _DeliveryBoyDetailsForAcceptState
                                 MaterialPageRoute(
                                     builder: (context) =>
                                         DeliverboysRequest()));
+                            // ignore: todo
                             //TODO: Add new delivery boy to the database !!!!
+                            // ignore: todo
                             //TODO: Remove this entry from requests list
                           },
                           buttonColor: themegreen,

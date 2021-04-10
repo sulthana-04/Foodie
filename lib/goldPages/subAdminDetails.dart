@@ -131,6 +131,7 @@ class _SubAdminDetailsState extends State<SubAdminDetails> {
                             Navigator.of(context).pushReplacement(
                                 MaterialPageRoute(
                                     builder: (context) => AdminAccounts()));
+                            // ignore: todo
                             //TODO: Update subadmin details
                           },
                           buttonColor: themegreen,

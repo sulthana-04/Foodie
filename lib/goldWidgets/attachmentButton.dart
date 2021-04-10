@@ -7,6 +7,7 @@ class AttachmentButton extends StatelessWidget {
   const AttachmentButton({Key key, this.title}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    // ignore: deprecated_member_use
     return FlatButton(
         color: themegreen,
         onPressed: () {},

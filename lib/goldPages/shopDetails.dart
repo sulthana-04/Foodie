@@ -2,13 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:foodieadmin/goldWidgets/appbar.dart';
 import 'package:foodieadmin/goldWidgets/goldSetting.dart';
 import 'package:foodieadmin/goldWidgets/title.dart';
+import 'package:foodieadmin/model/shopdetails.dart';
+import 'package:foodieadmin/services/getshopdetails.dart';
 
 class ShopDetails extends StatefulWidget {
+  final Shop shop;
+
+  const ShopDetails({Key key, this.shop}) : super(key: key);
   @override
   _ShopDetailsState createState() => _ShopDetailsState();
+
+
 }
 
 class _ShopDetailsState extends State<ShopDetails> {
+  
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,29 +29,29 @@ class _ShopDetailsState extends State<ShopDetails> {
               title: 'Shop Details',
             ),
             SizedBox(height: 30),
-            FoodieList(
-              data: "Spoon",
+           FoodieList(
+             data: widget.shop.hotelsname,
             ),
             FoodieAddress(
-              address: 'Thrissur , Town ',
+              address: widget.shop.hotelsaddress,
             ),
             FoodieList(
-              data: "680680",
+              data: widget.shop.pincode.toString(),
             ),
             line,
             FoodieTitle(title: 'Owner Detail'),
             SizedBox(height: 30),
             FoodieList(
-              data: "AKHIL",
+              data: widget.shop.ownersname,
             ),
             FoodieAddress(
-              address: 'Thrissur , Town',
+              address: widget.shop.ownersaddress,
             ),
             FoodieList(
-              data: "9898989898",
+              data: widget.shop.contactnumber.toString(),
             ),
             FoodieList(
-              data: "akhil@gmail.com",
+              data: widget.shop.email,
             ),
             line,
           ]),
@@ -103,3 +112,4 @@ class _FoodieAddressState extends State<FoodieAddress> {
     );
   }
 }
+
