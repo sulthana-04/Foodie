@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:foodieadmin/goldWidgets/appbar.dart';
 import 'package:foodieadmin/goldWidgets/goldSetting.dart';
+import 'package:foodieadmin/model/pendingorders.dart';
 
 class OrderDetails extends StatefulWidget {
+  final Pendingorders pendingorders;
+
+  const OrderDetails({Key key, this.pendingorders}) : super(key: key);
   @override
+
   _OrderDetailsState createState() => _OrderDetailsState();
 }
 
@@ -42,6 +47,9 @@ class _OrderDetailsState extends State<OrderDetails> {
 
 
 class OrderSummary extends StatefulWidget {
+  final Pendingorders pendingorders;
+
+  const OrderSummary({Key key, this.pendingorders}) : super(key: key);
   @override
   _OrderSummaryState createState() => _OrderSummaryState();
 }
@@ -73,7 +81,7 @@ class _OrderSummaryState extends State<OrderSummary> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text('Order Date', style: cardTextleft),
-                  Text('14/02/2020', style: cardTextRight),
+                  Text(widget.pendingorders.orderdate, style: cardTextRight),
                 ],
               ),
               Row(
@@ -109,6 +117,9 @@ class _OrderSummaryState extends State<OrderSummary> {
 
 
 class ItemCard extends StatefulWidget {
+  final Pendingorders pendingorders;
+
+  const ItemCard({Key key, this.pendingorders}) : super(key: key);
   @override
   _ItemCardState createState() => _ItemCardState();
 }
@@ -153,7 +164,7 @@ class _ItemCardState extends State<ItemCard> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Text(
-                    'Chicken 65',
+                    widget.pendingorders.item,
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 20,

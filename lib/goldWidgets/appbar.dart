@@ -3,6 +3,7 @@ import 'package:foodieadmin/animations/sizeAnimation.dart';
 import 'package:foodieadmin/goldPages/login.dart';
 import 'package:foodieadmin/goldPages/setting.dart';
 import 'package:foodieadmin/goldWidgets/goldSetting.dart';
+import 'package:foodieadmin/services/loginService.dart';
 
 class FoodieAppbar extends StatefulWidget implements PreferredSizeWidget {
   final String title;
@@ -66,6 +67,7 @@ class _FoodieAppbarState extends State<FoodieAppbar> {
                   Navigator.of(context).pushAndRemoveUntil(
                       MaterialPageRoute(builder: (context) => Login()),
                       (Route<dynamic> route) => false);
+                      removeToken();
                   break;
               }
             },

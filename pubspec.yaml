@@ -25,6 +25,10 @@ dependencies:
     sdk: flutter
   flutter_rating_bar: ^3.2.0+1
   http: ^0.13.1
+  dio:
+  fluttertoast:
+  shared_preferences: ^2.0.5
+
 
 
   # The following adds the Cupertino Icons font to your application.

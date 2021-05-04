@@ -4,13 +4,35 @@ import 'package:foodieadmin/goldWidgets/appbar.dart';
 import 'package:foodieadmin/goldWidgets/colorButton.dart';
 import 'package:foodieadmin/goldWidgets/goldSetting.dart';
 import 'package:foodieadmin/goldWidgets/textBox.dart';
+import 'package:foodieadmin/model/shopdetails.dart';
+import 'package:foodieadmin/services/deleteshopdetails.dart';
+import 'package:foodieadmin/services/deleteshopdetails.dart';
+import 'package:foodieadmin/services/editshopdetails.dart';
 
 class ShopEdit extends StatefulWidget {
+
+  final Shop shop;
+
+
+
+    const ShopEdit ({Key key, this.shop}) : super(key: key);
   @override
   _ShopEditState createState() => _ShopEditState();
 }
 
 class _ShopEditState extends State<ShopEdit> {
+    Future<Shop> _response;
+  String hotelsname;
+  String hotelslocation;
+  String hotelsaddress;
+  String pincode;
+  String ownersname;
+  String ownersaddress;
+  String contactnumber;
+  String email;
+  String password;
+
+
   @override
   Widget build(BuildContext context) {
     double wt = MediaQuery.of(context).size.width;
@@ -50,6 +72,13 @@ class _ShopEditState extends State<ShopEdit> {
                   buttonColor: Colors.red,
                   buttonText: ('Yes'),
                   buttonAction: () {
+                  deleteshopdetails(widget.shop.id).then((value) {
+                          if (value == true) {
+                            setState(() {});
+                          } else {
+                            print('Delete Failed');
+                          }
+                        });
                     Navigator.of(context).pushAndRemoveUntil(
                         MaterialPageRoute(builder: (context) => Admin()),
                         (Route<dynamic> route) => false);
@@ -76,21 +105,46 @@ class _ShopEditState extends State<ShopEdit> {
                 Text(
                   'Edit Shop Account',
                   style: commonTextStyle,
+                  
                 ),
                 TextBox(
                   margin: EdgeInsets.only(top: 25, bottom: 15),
                   hintText: 'Hotel\'s Name',
+                  initialvalue: widget.shop.hotelsname,
+                  onChanged: (value){
+                  setState(() {
+                    hotelsname=value;
+                  });
+                },
                 ),
                 TextBox(
                   hintText: 'Hotel\'s Location, Landmark',
+                  initialvalue: widget.shop.hotelslocation,
+                  onChanged: (value){
+                  setState(() {
+                    hotelslocation=value;
+                  });
+                },
                 ),
                 TextBox(
                   height: 90,
                   hintText: 'Hotel\'s Address',
+                  initialvalue: widget.shop.hotelsaddress,
                   maxLines: 5,
+                  onChanged: (value){
+                  setState(() {
+                    hotelsaddress=value;
+                  });
+                },
                 ),
                 TextBox(
                   hintText: 'pincode',
+                  initialvalue: widget.shop.pincode.toString(),
+                  onChanged: (value){
+                  setState(() {
+                    pincode=value;
+                  });
+                },
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 15),
@@ -101,14 +155,32 @@ class _ShopEditState extends State<ShopEdit> {
                 ),
                 TextBox(
                   hintText: 'Owner\'s Name',
+                  initialvalue: widget.shop.ownersname,
+                  onChanged: (value){
+                  setState(() {
+                    ownersname=value;
+                  });
+                },
                 ),
                 TextBox(
                   maxLines: 5,
                   height: 90,
                   hintText: 'Owner\'s Address',
+                  initialvalue: widget.shop.ownersaddress,
+                  onChanged: (value){
+                  setState(() {
+                    ownersaddress=value;
+                  });
+                },
                 ),
                 TextBox(
                   hintText: 'Contact Number',
+                  initialvalue: widget.shop.contactnumber.toString(),
+                  onChanged: (value){
+                  setState(() {
+                    contactnumber=value;
+                  });
+                },
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 15),
@@ -119,9 +191,21 @@ class _ShopEditState extends State<ShopEdit> {
                 ),
                 TextBox(
                   hintText: 'Email',
+                  initialvalue: widget.shop.email,
+                  onChanged: (value){
+                  setState(() {
+                    email=value;
+                  });
+                },
                 ),
                 TextBox(
                   hintText: 'Password',
+                  initialvalue: widget.shop.password,
+                  onChanged: (value){
+                  setState(() {
+                    password=value;
+                  });
+                },
                 ),
                 SizedBox(
                   width: double.maxFinite,
@@ -147,13 +231,19 @@ class _ShopEditState extends State<ShopEdit> {
                         flex: 1,
                         child: ColorButton(
                           buttonAction: () {
-                            Navigator.of(context).pushAndRemoveUntil(
-                                MaterialPageRoute(
-                                    builder: (context) => Admin()),
-                                (Route<dynamic> route) => false);
+                             editshopdetails(hotelsname, widget.shop.id).then((value) {
+                           if (value == true) {
+                             print("updated");
+                             Navigator.of(context).pushReplacement(
+                             MaterialPageRoute(
+                             builder: (context) => Admin()));
+                            } else {
+                              print("update failed");
+                              }          
+                              });
+                               },
                             // ignore: todo
-                            //TODO: update hotel/shop details in database !!!!
-                          },
+                            //TODO: update hotel/shop details in database !
                           buttonColor: themegreen,
                           buttonText: 'UPDATE',
                           padding: wt > 400

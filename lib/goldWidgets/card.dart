@@ -87,7 +87,10 @@ class _ShopCardState extends State<ShopCard> {
                   onTap: () {
                     Navigator.push(
                       context,
-                      SizeRoute(page: ShopEdit()),
+                      SizeRoute(
+                        page: ShopEdit(
+                          shop: widget.shop,
+                        )),
                     );
                   },
                 ),

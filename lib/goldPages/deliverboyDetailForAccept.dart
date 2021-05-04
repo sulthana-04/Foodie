@@ -6,8 +6,13 @@ import 'package:foodieadmin/goldWidgets/attachmentButton.dart';
 import 'package:foodieadmin/goldWidgets/colorButton.dart';
 import 'package:foodieadmin/goldWidgets/goldSetting.dart';
 import 'package:foodieadmin/goldWidgets/title.dart';
+import 'package:foodieadmin/model/deliveryboys.dart';
+
 
 class DeliveryBoyDetailsForAccept extends StatefulWidget {
+  final Deliveryboys deliveryboys;
+
+  const DeliveryBoyDetailsForAccept({Key key, this.deliveryboys}) : super(key: key);
   @override
   _DeliveryBoyDetailsForAcceptState createState() =>
       _DeliveryBoyDetailsForAcceptState();
@@ -82,35 +87,35 @@ class _DeliveryBoyDetailsForAcceptState
                 ),
                 SizedBox(height: 30),
                 FoodieList(
-                  data: "Steve Jobs",
+                  data:widget.deliveryboys.name,
                 ),
                 FoodieAddress(
-                  address: 'Thrissur , Town \n 680680 ',
+                  address: widget.deliveryboys.houseName   ,
                   multiline: true,
                 ),
                 FoodieList(
-                  data: "Age: 21",
+                  data: widget.deliveryboys.age,
                 ),
                 FoodieList(
-                  data: "Mob : 9898989898",
+                  data: widget.deliveryboys.phone,
                 ),
                 FoodieList(
-                  data: "Blood Group : A+",
+                  data: widget.deliveryboys.bloodGroup,
                 ),
                 line,
                 FoodieTitle(title: 'Vechicle Details'),
                 SizedBox(height: 30),
                 FoodieList(
-                  data: "License Number : 0000/0000/0000",
+                  data: widget.deliveryboys.licenceNo,
                 ),
                 FoodieList(
-                  data: "Vechile Name :  FZ",
+                  data: widget.deliveryboys.vehicleModel,
                 ),
                 FoodieAddress(
-                  address: 'Vechicle Colour : Green',
+                  address: widget.deliveryboys.vehicleColor,
                 ),
                 FoodieList(
-                  data: "Reg.no : KL08AB 1231",
+                  data: widget.deliveryboys.regNo,
                 ),
                 SizedBox(
                   width: wt * .82,

@@ -4,8 +4,11 @@ import 'package:foodieadmin/goldPages/orderDetails.dart';
 import 'package:foodieadmin/goldWidgets/appbar.dart';
 import 'package:foodieadmin/goldWidgets/goldSetting.dart';
 import 'package:foodieadmin/goldWidgets/orderCard.dart';
+import 'package:foodieadmin/model/pendingorders.dart';
+import 'package:foodieadmin/services/getpendingorders.dart';
 
 class PendingOrders extends StatefulWidget {
+ 
   @override
   _PendingOrdersState createState() => _PendingOrdersState();
 }
@@ -34,29 +37,41 @@ class _PendingOrdersState extends State<PendingOrders> {
                   ),
                 ),
                 Expanded(
-                  child: ListView.builder(
-                    itemCount: 2,
-                    itemBuilder: (context, index) {
+                  child:FutureBuilder(
+              future: getdata(),
+                          builder:(context,snapShot){
+                            if(snapShot.hasData){
+                            return ListView.builder(
+                   itemCount:snapShot.data.length ,
+                    itemBuilder: (BuildContext context, int index) {
+                      Pendingorders pendingorders = snapShot.data[index];
+                      print(snapShot.data);
                       return OrderCard(
+                  pendingorders:pendingorders,
+                  hotelName: pendingorders.item??"",
+                        orderAmount: pendingorders.quantity??"",
+                        redorgreen: Colors.red,
                         onPressed: () {
                           Navigator.push(
                               context,
                               EnterExitRoute(
                                   exitPage: PendingOrders(),
-                                  enterPage: OrderDetails()));
+                                  enterPage: OrderDetails(pendingorders:pendingorders)));
                         },
-                        hotelName: 'Chicken 65',
-                        orderAmount: '1',
-                        redorgreen: Colors.red,
+                        
                       );
                     },
-                  ),
+                 );}else if(snapShot.hasError){
+               return Center(child:Text('Loading Failed'));
+              } else {
+                return Center(child: CircularProgressIndicator(),);
+              }},
                 )
+                ),
               ],
-            ),
           ),
         ),
       ),
-    );
+    ));
   }
-}
+} 

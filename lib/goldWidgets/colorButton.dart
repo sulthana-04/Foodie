@@ -11,7 +11,7 @@ class ColorButton extends StatelessWidget {
       this.buttonAction,
       this.buttonText,
       this.buttonColor,
-      this.padding})
+      this.padding, Null Function() onPressed})
       : super(key: key);
   @override
   Widget build(BuildContext context) {

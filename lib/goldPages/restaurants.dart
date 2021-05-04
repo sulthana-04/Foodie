@@ -5,6 +5,8 @@ import 'package:foodieadmin/goldWidgets/appbar.dart';
 import 'package:foodieadmin/goldWidgets/goldSetting.dart';
 import 'package:foodieadmin/goldWidgets/orderCard.dart';
 import 'package:foodieadmin/goldWidgets/searchbar.dart';
+import 'package:foodieadmin/model/deliveredorders.dart';
+import 'package:foodieadmin/services/getrestaurants.dart';
 
 class Restaurants extends StatefulWidget {
   @override
@@ -36,28 +38,38 @@ class _RestaurantsState extends State<Restaurants> {
                   // ),
                   SearchBar(),
                   Expanded(
-                    child: ListView.builder(
-                      itemCount: 15,
-                      itemBuilder: (context, index) {
+                    child:FutureBuilder(
+              future: getdata(),
+                          builder:(context,snapShot){
+                            if(snapShot.hasData){
+                            return ListView.builder(
+                      itemCount: snapShot.data.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        Deliveredorders deliveredorders = snapShot.data[index];
                         return OrderCard(
+                        deliveredorders: deliveredorders,
                           onPressed: () {
                             Navigator.push(
                                 context,
                                 EnterExitRoute(
                                     exitPage: Restaurants(),
-                                    enterPage: TodayOverView()));
+                                    enterPage: TodayOverView( deliveredorders:deliveredorders)));
                           },
-                          hotelName: 'Spoon',
+                          hotelName: deliveredorders.hotelsname,
                           // orderAmount: '18',
                           redorgreen: themegreen,
                         );
                       },
-                    ),
+                    );}else if(snapShot.hasError){
+               return Center(child:Text('Loading Failed'));
+              } else {
+                return Center(child: CircularProgressIndicator(),);
+              }},
                   ),
-                ]),
-          ),
+                ),
+                ],
         ),
       ),
-    );
+    )));
   }
 }

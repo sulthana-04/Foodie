@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:foodieadmin/goldPages/admin.dart';
 import 'package:foodieadmin/goldPages/login.dart';
+import 'package:foodieadmin/services/loginService.dart';
 
 class Foodie extends StatefulWidget {
   @override
@@ -13,7 +15,12 @@ class _FoodieState extends State<Foodie> {
 
     _mockCheckForSession().then((status) {
       if (status) {
-        _navigateToHome();
+        getLoginStatus().then((value) {
+          if (value) {
+            _navigateToHome();
+          } else
+            _navigateToLogin();
+        });
       }
     });
   }
@@ -24,9 +31,14 @@ class _FoodieState extends State<Foodie> {
     return true;
   }
 
-  void _navigateToHome() {
+  void _navigateToLogin() {
     Navigator.of(context).pushReplacement(
         MaterialPageRoute(builder: (BuildContext context) => Login()));
+  }
+
+  void _navigateToHome() {
+    Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (BuildContext context) => Admin()));
   }
 
   Widget build(BuildContext context) {

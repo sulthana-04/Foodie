@@ -8,6 +8,10 @@ class TextBox extends StatefulWidget {
   final bool autoCorrect;
   final int maxLines;
   final EdgeInsetsGeometry margin;
+  final TextEditingController controller;
+  final String initialvalue;
+  final Function (String) onChanged;
+  
 
   const TextBox(
       {Key key,
@@ -16,7 +20,10 @@ class TextBox extends StatefulWidget {
       this.autoCorrect = true,
       this.maxLines = 1,
       this.margin = const EdgeInsets.symmetric(vertical: 15),
-      this.width = double.maxFinite})
+      this.width = double.maxFinite,
+    this.controller, this.initialvalue,
+    this.onChanged
+  })
       : super(key: key);
   @override
   _TextBoxState createState() => _TextBoxState();
@@ -32,7 +39,10 @@ class _TextBoxState extends State<TextBox> {
       width: widget.width,
       height: widget.height,
       color: Color.fromRGBO(16, 16, 16, 8),
-      child: TextField(
+      child: TextFormField(
+        initialValue: widget.initialvalue ,
+        onChanged:widget.onChanged,
+        controller: widget.controller,
         maxLines: widget.maxLines,
         style: commonTextStyle,
         enableSuggestions: true,

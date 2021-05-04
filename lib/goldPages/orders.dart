@@ -5,6 +5,8 @@ import 'package:foodieadmin/goldWidgets/appbar.dart';
 import 'package:foodieadmin/goldWidgets/goldSetting.dart';
 import 'package:foodieadmin/goldWidgets/searchbar.dart';
 import 'package:foodieadmin/goldWidgets/orderCard.dart';
+import 'package:foodieadmin/model/pendingorders.dart';
+import 'package:foodieadmin/services/getpendingorders.dart';
 
 class Orders extends StatefulWidget {
   @override
@@ -36,10 +38,16 @@ class _OrdersState extends State<Orders> {
                 ),
                 SearchBar(),
                 Expanded(
-                  child: ListView.builder(
-                    itemCount: 10,
-                    itemBuilder: (context, index) {
+                  child:FutureBuilder(
+              future: getdata(),
+                          builder:(context,snapShot){
+                            if(snapShot.hasData){
+                            return ListView.builder(
+                    itemCount: snapShot.data.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      Pendingorders pendingorders = snapShot.data[index];
                       return OrderCard(
+                        
                         onPressed: () {
                           Navigator.push(
                               context,
@@ -47,19 +55,23 @@ class _OrdersState extends State<Orders> {
                                   exitPage: Orders(),
                                   enterPage: PendingOrders()));
                         },
-                        hotelName: 'Spoon',
-                        orderAmount: '2',
+                        hotelName: pendingorders.hotelsname,
+                        orderAmount: pendingorders.orderamount,
                         redorgreen: Colors.red,
                       );
                     },
-                  ),
+                  );}else if(snapShot.hasError){
+               return Center(child:Text('Loading Failed'));
+              } else {
+                return Center(child: CircularProgressIndicator(),);
+              }},
                 )
+                ),
               ],
-            ),
           ),
         ),
       ),
-    );
+    ));
   }
 }
 

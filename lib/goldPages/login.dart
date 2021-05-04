@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:foodieadmin/animations/enterExitAniation.dart';
 import 'package:foodieadmin/goldPages/admin.dart';
 import 'package:foodieadmin/goldWidgets/adminText.dart';
@@ -7,6 +8,7 @@ import 'package:foodieadmin/goldWidgets/colorButton.dart';
 import 'package:foodieadmin/goldWidgets/goldSetting.dart';
 import 'package:foodieadmin/goldWidgets/passwordBox.dart';
 import 'package:foodieadmin/goldWidgets/textBox.dart';
+import 'package:foodieadmin/services/loginService.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -14,6 +16,7 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  var email, password, token;
   @override
   Widget build(BuildContext context) {
     double ht = MediaQuery.of(context).size.height;
@@ -102,8 +105,17 @@ class _LoginState extends State<Login> {
                                   margin: EdgeInsets.symmetric(vertical: 25),
                                   hintText: 'Email',
                                   autoCorrect: false,
+                                  onChanged: (val) {
+                                    email = val;
+                                  },
                                 ),
-                                PasswordBox(),
+                                PasswordBox(
+                                  onChanged: (value) {
+                                    setState(() {
+                                      password = value;
+                                    });
+                                  },
+                                ),
                                 wd > 750
                                     ? SizedBox(
                                         width: double.maxFinite,
@@ -115,18 +127,26 @@ class _LoginState extends State<Login> {
                                             children: [
                                               ColorButton(
                                                 buttonAction: () {
+                                                  login(email, password)
+                                                      .then((value) {
+                                                    if (value == false) {
+                                                      print('Login Failed');
+                                                    } else {
+                                                      Navigator.pushReplacement(
+                                                        context,
+                                                        PageRouteBuilder(
+                                                          pageBuilder: (context,
+                                                                  animation1,
+                                                                  animation2) =>
+                                                              Admin(),
+                                                          transitionDuration:
+                                                              Duration(
+                                                                  seconds: 0),
+                                                        ),
+                                                      );
+                                                    }
+                                                  });
                                                   //Check the login credentials and give permission to  home page !!!!!!
-                                                  Navigator.pushReplacement(
-                                                    context,
-                                                    PageRouteBuilder(
-                                                      pageBuilder: (context,
-                                                              animation1,
-                                                              animation2) =>
-                                                          Admin(),
-                                                      transitionDuration:
-                                                          Duration(seconds: 0),
-                                                    ),
-                                                  );
                                                 },
                                                 buttonColor: themegreen,
                                                 padding: EdgeInsets.symmetric(
@@ -144,19 +164,26 @@ class _LoginState extends State<Login> {
                                           CustomTextButton(),
                                           ColorButton(
                                             buttonAction: () {
+                                                  login(email, password)
+                                                  .then((value) {
+                                                if (value == false) {
+                                                  print('Login Failed');
+                                                } else {
+                                                      Navigator.pushReplacement(
+                                                        context,
+                                                        PageRouteBuilder(
+                                                          pageBuilder: (context,
+                                                                  animation1,
+                                                                  animation2) =>
+                                                              Admin(),
+                                                          transitionDuration:
+                                                              Duration(seconds: 0),
+                                                        ),
+                                                      );
+                                                    }
+                                              });
                                               //Check the login credentials and give permission to  home page !!!!!!
-                                              Navigator.pushReplacement(
-                                                context,
-                                                PageRouteBuilder(
-                                                  pageBuilder: (context,
-                                                          animation1,
-                                                          animation2) =>
-                                                      Admin(),
-                                                  transitionDuration:
-                                                      Duration(seconds: 0),
-                                                ),
-                                              );
-                                            },
+                                                },
                                             buttonColor: themegreen,
                                             padding: EdgeInsets.symmetric(
                                                 vertical: (6), horizontal: 13),

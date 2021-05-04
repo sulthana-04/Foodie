@@ -5,6 +5,9 @@ import 'package:foodieadmin/goldWidgets/commoncard.dart';
 import 'package:foodieadmin/goldWidgets/goldSetting.dart';
 import 'package:foodieadmin/goldWidgets/searchBar%20copy.dart';
 
+import 'package:foodieadmin/model/deliveryboys.dart';
+import 'package:foodieadmin/services/getdeliveryboys.dart';
+
 class DeliveryBoys extends StatefulWidget {
   @override
   _DeliveryBoysState createState() => _DeliveryBoysState();
@@ -47,19 +50,28 @@ class _DeliveryBoysState extends State<DeliveryBoys> {
                 height: 1,
               ),
               Expanded(
-                child: ListView.builder(
-                  itemCount: 10,
-                  itemBuilder: (context, index) {
+                child: FutureBuilder(
+              future: getdata(),
+                          builder:(context,snapShot){
+                            if(snapShot.hasData){
+                            return ListView.builder(
+                  itemCount: snapShot.data.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    Deliveryboys deliveryboys = snapShot.data[index];
                     return CommonCard(
-                      hotelname: "Anumodh",
-                      location: "Thrissur Root",
-                      mobile: "9895301845",
+                      hotelname: deliveryboys.name??"",
+                      location: deliveryboys.city??"",
+                      mobile: deliveryboys.phone??"",
                     );
                   },
-                ),
+                );}else if(snapShot.hasError){
+               return Center(child:Text('Loading Failed'));
+              } else {
+                return Center(child: CircularProgressIndicator(),);
+              }},
               )
-            ]),
-          ),
-        )));
+            ),
+                ],
+        )))));
   }
 }

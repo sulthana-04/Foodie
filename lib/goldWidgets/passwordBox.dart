@@ -2,14 +2,17 @@ import 'package:flutter/material.dart';
 
 class PasswordBox extends StatefulWidget {
   final double width;
+  final Function(String) onChanged;
 
-  const PasswordBox({Key key, this.width = double.maxFinite}) : super(key: key);
+  const PasswordBox({Key key, this.width = double.maxFinite, this.onChanged})
+      : super(key: key);
 
   @override
   _PasswordBoxState createState() => _PasswordBoxState();
 }
 
 class _PasswordBoxState extends State<PasswordBox> {
+  // var password, token;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -24,6 +27,7 @@ class _PasswordBoxState extends State<PasswordBox> {
         obscureText: true,
         enableSuggestions: false,
         autocorrect: false,
+        onChanged: widget.onChanged,
         decoration: InputDecoration(
           hintText: 'Password',
           hintStyle: TextStyle(color: Colors.grey[700]),
@@ -33,4 +37,3 @@ class _PasswordBoxState extends State<PasswordBox> {
     );
   }
 }
-

@@ -4,6 +4,9 @@ import 'package:foodieadmin/goldWidgets/appbar.dart';
 import 'package:foodieadmin/goldWidgets/colorButton.dart';
 import 'package:foodieadmin/goldWidgets/goldSetting.dart';
 import 'package:foodieadmin/goldWidgets/textBox.dart';
+import 'package:foodieadmin/services/postshopdetails.dart';
+
+import '../model/shopdetails.dart';
 
 class ShopAdd extends StatefulWidget {
   @override
@@ -11,12 +14,27 @@ class ShopAdd extends StatefulWidget {
 }
 
 class _ShopAddState extends State<ShopAdd> {
+  TextEditingController _hotelsnameController = TextEditingController();
+  TextEditingController _hotelslocationController = TextEditingController();
+  TextEditingController _hotelsaddressController = TextEditingController();
+  TextEditingController _pincodeController = TextEditingController();
+  TextEditingController _ownersnameController = TextEditingController();
+  TextEditingController _ownersaddressController = TextEditingController();
+  TextEditingController _contactnumberController = TextEditingController();
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+  Future<Shop> _response;
+
+  // @override
+  // void initState() {
+  // ignore: todo
+  //   // TODO: implement initState
+  //   super.initState();
+  //   _response = null;
+  // }
   @override
   Widget build(BuildContext context) {
     double wt = MediaQuery.of(context).size.width;
-    double ht = MediaQuery.of(context).size.height;
-    print('width $wt');
-    print('height $ht');
     Future<void> _showMyDialog() async {
       return showDialog<void>(
         context: context,
@@ -68,122 +86,177 @@ class _ShopAddState extends State<ShopAdd> {
     }
 
     return Scaffold(
-      backgroundColor: themecolor,
-      appBar: FoodieAppbar(
-        leading: IconButton(
-            icon: Icon(Icons.arrow_back),
-            onPressed: () {
-              _showMyDialog();
-            }),
-        automaticallyImplyLeading: false,
-      ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.only(top: 20, left: 25, right: 25),
-          child: SizedBox(
-            width: double.maxFinite,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Create Shop Account',
-                  style: commonTextStyle,
-                ),
-                TextBox(
-                  margin: EdgeInsets.only(top: 25, bottom: 15),
-                  hintText: 'Hotel\'s Name',
-                ),
-                TextBox(
-                  hintText: 'Hotel\'s Location, Landmark',
-                ),
-                TextBox(
-                  height: 90,
-                  hintText: 'Hotel\'s Address',
-                  maxLines: 5,
-                ),
-                TextBox(
-                  hintText: 'pincode',
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 15),
-                  child: Divider(
-                    color: themegreen,
-                    thickness: 3,
-                  ),
-                ),
-                TextBox(
-                  hintText: 'Owner\'s Name',
-                ),
-                TextBox(
-                  maxLines: 5,
-                  height: 90,
-                  hintText: 'Owner\'s Address',
-                ),
-                TextBox(
-                  hintText: 'Contact Number',
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 15),
-                  child: Divider(
-                    color: themegreen,
-                    thickness: 3,
-                  ),
-                ),
-                TextBox(
-                  hintText: 'Email',
-                ),
-                TextBox(
-                  hintText: 'Password',
-                ),
-                SizedBox(
-                  width: double.maxFinite,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Expanded(
-                        flex: 1,
-                        child: ColorButton(
-                          buttonAction: () {
-                            _showMyDialog();
-                          },
-                          buttonColor: Colors.red,
-                          buttonText: 'CANCEL',
-                          padding: wt > 400
-                              ? EdgeInsets.symmetric(
-                                  horizontal: 45, vertical: 20)
-                              : EdgeInsets.symmetric(
-                                  horizontal: 23, vertical: 16),
-                        ),
-                      ),
-                      Expanded(
-                        flex: 1,
-                        child: ColorButton(
-                          buttonAction: () {
-                            Navigator.of(context).pushAndRemoveUntil(
-                                MaterialPageRoute(
-                                    builder: (context) => Admin()),
-                                (Route<dynamic> route) => false);
-                            // ignore: todo
-                            //TODO: Add new hotel/shop to the database !!!!
-                            print('Create a new hotel entry');
-                          },
-                          buttonColor: themegreen,
-                          buttonText: 'CREATE',
-                          padding: wt > 400
-                              ? EdgeInsets.symmetric(
-                                  horizontal: 45, vertical: 20)
-                              : EdgeInsets.symmetric(
-                                  horizontal: 23, vertical: 16),
-                        ),
-                      ),
-                    ],
-                  ),
-                )
-              ],
-            ),
-          ),
+        backgroundColor: themecolor,
+        appBar: FoodieAppbar(
+          leading: IconButton(
+              icon: Icon(Icons.arrow_back),
+              onPressed: () {
+                _showMyDialog();
+              }),
+          automaticallyImplyLeading: false,
         ),
-      ),
-    );
+        body: (_response == null)
+            ? SingleChildScrollView(
+                child: Padding(
+                  padding: EdgeInsets.only(top: 20, left: 25, right: 25),
+                  child: SizedBox(
+                    width: double.maxFinite,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Create Shop Account',
+                          style: commonTextStyle,
+                        ),
+                        TextBox(
+                          margin: EdgeInsets.only(top: 25, bottom: 15),
+                          hintText: 'Hotel\'s Name',
+                          controller: _hotelsnameController,
+                        ),
+                        TextBox(
+                          hintText: 'Hotel\'s Location, Landmark',
+                          controller: _hotelslocationController,
+                        ),
+                        TextBox(
+                          height: 90,
+                          hintText: 'Hotel\'s Address',
+                          controller: _hotelsaddressController,
+                          maxLines: 5,
+                        ),
+                        TextBox(
+                          hintText: 'pincode',
+                          controller: _pincodeController,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 15),
+                          child: Divider(
+                            color: themegreen,
+                            thickness: 3,
+                          ),
+                        ),
+                        TextBox(
+                          hintText: 'Owner\'s Name',
+                          controller: _ownersnameController,
+                        ),
+                        TextBox(
+                          maxLines: 5,
+                          height: 90,
+                          hintText: 'Owner\'s Address',
+                          controller: _ownersaddressController,
+                        ),
+                        TextBox(
+                          hintText: 'Contact Number',
+                          controller: _contactnumberController,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 15),
+                          child: Divider(
+                            color: themegreen,
+                            thickness: 3,
+                          ),
+                        ),
+                        TextBox(
+                          hintText: 'Email',
+                          controller: _emailController,
+                        ),
+                        TextBox(
+                          hintText: 'Password',
+                          controller: _passwordController,
+                        ),
+                        SizedBox(
+                          width: double.maxFinite,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Expanded(
+                                flex: 1,
+                                child: ColorButton(
+                                  buttonAction: () {
+                                    _showMyDialog();
+                                  },
+                                  buttonColor: Colors.red,
+                                  buttonText: 'CANCEL',
+                                  padding: wt > 400
+                                      ? EdgeInsets.symmetric(
+                                          horizontal: 45, vertical: 20)
+                                      : EdgeInsets.symmetric(
+                                          horizontal: 23, vertical: 16),
+                                ),
+                              ),
+                              Expanded(
+                                flex: 1,
+                                child: ColorButton(
+                                  buttonAction: () {
+                                   
+                                    setState(() {
+                                      _response = postdata(
+                                        hotelsname: _hotelsnameController.text,
+                                        hotelslocation:
+                                            _hotelslocationController.text,
+                                        hotelsaddress:
+                                            _hotelsaddressController.text,
+                                        pincode:
+                                            _pincodeController.text.toString(),
+                                        ownersaddress:
+                                            _ownersaddressController.text,
+                                        ownersname: _ownersnameController.text,
+                                        contactnumber:
+                                            _contactnumberController.text,
+                                        email: _emailController.text.toString(),
+                                        password:
+                                            _passwordController.text.toString(),
+                                      );
+                                    });
+                                  },
+                                  buttonColor: themegreen,
+                                  buttonText: 'CREATE',
+                                  padding: wt > 400
+                                      ? EdgeInsets.symmetric(
+                                          horizontal: 45, vertical: 20)
+                                      : EdgeInsets.symmetric(
+                                          horizontal: 23, vertical: 16),
+                                ),
+                              ),
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              )
+            : FutureBuilder<Shop>(
+                future: _response,
+                builder: (context, snap) {
+                  if (snap.hasData) {
+                    // Shop shop = snap.data;
+                    print(snap.data);
+                    return Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text(
+                            snap.data.hotelsname,
+                            style: TextStyle(color: Colors.white, fontSize: 23),
+                          ),
+                          Text(
+                            'Saved successfully',
+                            style: TextStyle(color: Colors.white, fontSize: 15),
+                          ),
+                        ],
+                      ),
+                    );
+                  } else if (snap.hasError) {
+                    return Center(
+                      child: Text('Error'),
+                    );
+                  } else {
+                    return Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  }
+                },
+              ));
   }
 }
