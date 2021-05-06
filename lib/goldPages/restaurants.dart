@@ -47,7 +47,6 @@ class _RestaurantsState extends State<Restaurants> {
                       itemBuilder: (BuildContext context, int index) {
                         Deliveredorders deliveredorders = snapShot.data[index];
                         return OrderCard(
-                        deliveredorders: deliveredorders,
                           onPressed: () {
                             Navigator.push(
                                 context,

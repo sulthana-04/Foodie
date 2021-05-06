@@ -1,14 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:foodieadmin/goldWidgets/appbar.dart';
 import 'package:foodieadmin/goldWidgets/goldSetting.dart';
+import 'package:foodieadmin/model/deliveredorders.dart';
 import 'package:foodieadmin/model/pendingorders.dart';
 
 class OrderDetails extends StatefulWidget {
   final Pendingorders pendingorders;
+  final Deliveredorders deliveredorders;
+  final bool isDeliverd;
 
-  const OrderDetails({Key key, this.pendingorders}) : super(key: key);
+  const OrderDetails(
+      {Key key,
+      this.pendingorders,
+      this.deliveredorders,
+      this.isDeliverd = false})
+      : super(key: key);
   @override
-
   _OrderDetailsState createState() => _OrderDetailsState();
 }
 
@@ -32,9 +39,9 @@ class _OrderDetailsState extends State<OrderDetails> {
                     style: commonTextStyle,
                   ),
                 ),
-                OrderSummary(),
-                ItemCard(),
-                BillCard(),
+                OrderSummary(pendingorders: widget.pendingorders),
+                ItemCard(pendingorders: widget.pendingorders),
+                BillCard(pendingorders: widget.pendingorders),
               ],
             ),
           ),
@@ -43,8 +50,6 @@ class _OrderDetailsState extends State<OrderDetails> {
     );
   }
 }
-
-
 
 class OrderSummary extends StatefulWidget {
   final Pendingorders pendingorders;
@@ -113,8 +118,6 @@ class _OrderSummaryState extends State<OrderSummary> {
     );
   }
 }
-
-
 
 class ItemCard extends StatefulWidget {
   final Pendingorders pendingorders;
@@ -189,9 +192,10 @@ class _ItemCardState extends State<ItemCard> {
   }
 }
 
-
-
 class BillCard extends StatefulWidget {
+  final Pendingorders pendingorders;
+
+  const BillCard({Key key, this.pendingorders}) : super(key: key);
   @override
   _BillCardState createState() => _BillCardState();
 }

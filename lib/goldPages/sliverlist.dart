@@ -4,6 +4,8 @@ import 'package:foodieadmin/goldWidgets/goldSetting.dart';
 import 'dart:math' as math;
 
 import 'package:foodieadmin/goldWidgets/orderCard.dart';
+import 'package:foodieadmin/model/deliveredorders.dart';
+import 'package:foodieadmin/model/pendingorders.dart';
 
 import 'orderDetails.dart';
 
@@ -35,6 +37,9 @@ class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
 }
 
 class CollapsingList extends StatefulWidget {
+  final Deliveredorders deliveredorders;
+
+  const CollapsingList({Key key, this.deliveredorders}) : super(key: key);
   @override
   _CollapsingListState createState() => _CollapsingListState();
 }
@@ -66,7 +71,7 @@ class _CollapsingListState extends State<CollapsingList> {
   Widget build(BuildContext context) {
     return CustomScrollView(
       slivers: <Widget>[
-        makeHeader('Spoon Restaurant', Colors.black),
+        makeHeader(widget.deliveredorders.hotelsname, Colors.black),
         makeHeader('Pending Orders', Colors.red),
         SliverFixedExtentList(
           itemExtent: 80,
@@ -91,15 +96,18 @@ class _CollapsingListState extends State<CollapsingList> {
           itemExtent: 80,
           delegate:
               SliverChildBuilderDelegate((BuildContext context, int index) {
-            if (index > 20) return null;
+            if (index > 0) return null;
             return OrderCard(
               onPressed: () {
                 Navigator.push(
                     context,
                     EnterExitRoute(
-                        exitPage: CollapsingList(), enterPage: OrderDetails()));
+                        exitPage: CollapsingList(),
+                        enterPage: OrderDetails(
+                          deliveredorders: widget.deliveredorders,
+                        )));
               },
-              hotelName: 'Chicken 65',
+              hotelName: widget.deliveredorders.item,
               orderAmount: '1',
               redorgreen: themegreen,
             );

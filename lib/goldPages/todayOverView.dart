@@ -20,7 +20,7 @@ class _TodayOverViewState extends State<TodayOverView> {
       appBar: FoodieAppbar(),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10),
-        child: CollapsingList(),
+        child: CollapsingList(deliveredorders: widget.deliveredorders),
       ),
     );
   }
