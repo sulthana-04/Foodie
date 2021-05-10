@@ -5,7 +5,9 @@ import 'dart:math' as math;
 
 import 'package:foodieadmin/goldWidgets/orderCard.dart';
 import 'package:foodieadmin/model/deliveredorders.dart';
+import 'package:foodieadmin/model/ordersModel.dart';
 import 'package:foodieadmin/model/pendingorders.dart';
+import 'package:foodieadmin/services/orderServices.dart';
 
 import 'orderDetails.dart';
 
@@ -37,9 +39,10 @@ class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
 }
 
 class CollapsingList extends StatefulWidget {
-  final Deliveredorders deliveredorders;
+  final String hotelName;
 
-  const CollapsingList({Key key, this.deliveredorders}) : super(key: key);
+  const CollapsingList({Key key, this.hotelName}) : super(key: key);
+
   @override
   _CollapsingListState createState() => _CollapsingListState();
 }
@@ -69,51 +72,113 @@ class _CollapsingListState extends State<CollapsingList> {
 
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
-      slivers: <Widget>[
-        makeHeader(widget.deliveredorders.hotelsname, Colors.black),
-        makeHeader('Pending Orders', Colors.red),
-        SliverFixedExtentList(
-          itemExtent: 80,
-          delegate:
-              SliverChildBuilderDelegate((BuildContext context, int index) {
-            if (index > 2) return null;
-            return OrderCard(
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    EnterExitRoute(
-                        exitPage: CollapsingList(), enterPage: OrderDetails()));
-              },
-              hotelName: 'Chicken 65',
-              orderAmount: '1',
-              redorgreen: Colors.red,
-            );
-          }),
-        ),
-        makeHeader('Delivered Orders', themegreen),
-        SliverFixedExtentList(
-          itemExtent: 80,
-          delegate:
-              SliverChildBuilderDelegate((BuildContext context, int index) {
-            if (index > 0) return null;
-            return OrderCard(
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    EnterExitRoute(
-                        exitPage: CollapsingList(),
-                        enterPage: OrderDetails(
-                          deliveredorders: widget.deliveredorders,
-                        )));
-              },
-              hotelName: widget.deliveredorders.item,
-              orderAmount: '1',
-              redorgreen: themegreen,
-            );
-          }),
-        ),
-      ],
-    );
+    return FutureBuilder(
+        future: getOrders(),
+        builder: (context, AsyncSnapshot<List<OrdersModel>> snapshot) {
+          if (snapshot.hasData) {
+            final orders = snapshot.data
+                .where((s) => s.hotelname == widget.hotelName)
+                .toList();
+            final delivered = orders
+                .where((s) => s.statusdetails.toLowerCase() == 'delivered')
+                .toList();
+            final placed = orders
+                .where((s) => s.statusdetails.toLowerCase() == 'placed')
+                .toList();
+            final prepairing = orders
+                .where((s) => s.statusdetails.toLowerCase() == 'prepairing')
+                .toList();
+            final tobepicked = orders
+                .where((s) => s.statusdetails.toLowerCase() == 'tobepicked')
+                .toList();
+            final accepetedbyDB = orders
+                .where((s) => s.statusdetails == 'accepetedbyDB')
+                .toList();
+
+            final picked = orders
+                .where((s) => s.statusdetails.toLowerCase() == 'picked')
+                .toList();
+            final pendingOrders =
+                placed + prepairing + tobepicked + accepetedbyDB + picked;
+            return pendingOrders.length == 0 && delivered.length == 0
+                ? Center(
+                    child: Text(
+                      'No Orders for ${widget.hotelName}',
+                      style: TextStyle(
+                          color: themegreen,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  )
+                : CustomScrollView(
+                    slivers: <Widget>[
+                      makeHeader(widget.hotelName ?? 'hotelName', Colors.black),
+                      makeHeader('Pending Orders', Colors.red),
+                      SliverFixedExtentList(
+                        itemExtent: 70,
+                        delegate: SliverChildBuilderDelegate(
+                            (BuildContext context, int index) {
+                          if (delivered.length == 0) {
+                            return Text(
+                              'No delivered orders',
+                              style: TextStyle(color: Colors.white),
+                            );
+                          } else {
+                            if (index >= pendingOrders.length) return null;
+                            OrdersModel order = pendingOrders[index];
+                            return OrderCard(
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    EnterExitRoute(
+                                        exitPage: CollapsingList(),
+                                        enterPage: OrderDetails(order: order)));
+                              },
+                            hotelName: order.itemName,
+                              orderAmount: order.quantity,
+                              redorgreen: Colors.red,
+                            );
+                          }
+                         
+                        }),
+                      ),
+                      makeHeader('Delivered Orders', themegreen),
+                      SliverFixedExtentList(
+                        itemExtent: 80,
+                        delegate: SliverChildBuilderDelegate(
+                            (BuildContext context, int index) {
+                          if (delivered.length == 0) {
+                            return Text(
+                              'No delivered orders',
+                              style: TextStyle(color: Colors.white),
+                            );
+                          } else {
+                            if (index >= delivered.length) return null;
+                            OrdersModel order = delivered[index];
+                            return OrderCard(
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    EnterExitRoute(
+                                        exitPage: CollapsingList(),
+                                      enterPage: OrderDetails(order: order)));
+                              },
+                            hotelName: order.itemName,
+                              orderAmount: order.quantity,
+                              redorgreen: themegreen,
+                            );
+                          }
+                          
+                        }),
+                      ),
+                    ],
+                  );
+          } else if (snapshot.hasError) {
+            return Text('Some error occured',
+                style: TextStyle(color: Colors.white));
+          } else {
+            return Center(child: CircularProgressIndicator());
+          }
+        });
   }
 }

@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:foodieadmin/goldWidgets/goldSetting.dart';
 
 class SearchBar extends StatefulWidget {
+  final Function(String) onChanged;
+
+  const SearchBar({Key key, this.onChanged}) : super(key: key);
   @override
   _SearchBarState createState() => _SearchBarState();
 }
@@ -14,7 +17,8 @@ class _SearchBarState extends State<SearchBar> {
     return Column(mainAxisAlignment: MainAxisAlignment.center, children: [
       Container(
         width: width,
-        child: TextField(
+        child: TextFormField(
+          onChanged: widget.onChanged,
           style: TextStyle(color: themewhite, fontSize: 18),
           showCursor: false,
           decoration: InputDecoration(
@@ -31,9 +35,9 @@ class _SearchBarState extends State<SearchBar> {
         ),
       ), //text inputbox container
       Divider(
-        thickness: 7, color: themegreen,
+        thickness: 7,
+        color: themegreen,
       )
     ]);
   }
 }
-

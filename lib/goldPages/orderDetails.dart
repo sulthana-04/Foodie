@@ -2,19 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:foodieadmin/goldWidgets/appbar.dart';
 import 'package:foodieadmin/goldWidgets/goldSetting.dart';
 import 'package:foodieadmin/model/deliveredorders.dart';
+import 'package:foodieadmin/model/ordersModel.dart';
 import 'package:foodieadmin/model/pendingorders.dart';
 
 class OrderDetails extends StatefulWidget {
-  final Pendingorders pendingorders;
-  final Deliveredorders deliveredorders;
-  final bool isDeliverd;
+  final OrdersModel order;
 
-  const OrderDetails(
-      {Key key,
-      this.pendingorders,
-      this.deliveredorders,
-      this.isDeliverd = false})
-      : super(key: key);
+  const OrderDetails({Key key, this.order}) : super(key: key);
+
   @override
   _OrderDetailsState createState() => _OrderDetailsState();
 }
@@ -39,9 +34,9 @@ class _OrderDetailsState extends State<OrderDetails> {
                     style: commonTextStyle,
                   ),
                 ),
-                OrderSummary(pendingorders: widget.pendingorders),
-                ItemCard(pendingorders: widget.pendingorders),
-                BillCard(pendingorders: widget.pendingorders),
+                OrderSummary(order: widget.order),
+                ItemCard(order: widget.order),
+                BillCard(order: widget.order),
               ],
             ),
           ),
@@ -52,9 +47,9 @@ class _OrderDetailsState extends State<OrderDetails> {
 }
 
 class OrderSummary extends StatefulWidget {
-  final Pendingorders pendingorders;
+  final OrdersModel order;
 
-  const OrderSummary({Key key, this.pendingorders}) : super(key: key);
+  const OrderSummary({Key key, this.order}) : super(key: key);
   @override
   _OrderSummaryState createState() => _OrderSummaryState();
 }
@@ -86,7 +81,7 @@ class _OrderSummaryState extends State<OrderSummary> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text('Order Date', style: cardTextleft),
-                  Text(widget.pendingorders.orderdate, style: cardTextRight),
+                  Text(widget.order.orderdate, style: cardTextRight),
                 ],
               ),
               Row(
@@ -94,7 +89,7 @@ class _OrderSummaryState extends State<OrderSummary> {
                 children: [
                   Text('Payment', style: cardTextleft),
                   Text(
-                    'CASH',
+                   widget.order.payment,
                     style: TextStyle(
                       fontWeight: FontWeight.w700,
                       color: themegreen,
@@ -107,7 +102,12 @@ class _OrderSummaryState extends State<OrderSummary> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text('Address', style: cardTextleft),
-                  Text('Kannanaikkal (H)\nP.O.Thangaloor\nThrissur',
+                  Text(
+                      widget.order.housename +
+                          '\n' +
+                          widget.order.street +
+                          '\n' +
+                          widget.order.city,
                       style: cardTextRight),
                 ],
               ),
@@ -120,9 +120,9 @@ class _OrderSummaryState extends State<OrderSummary> {
 }
 
 class ItemCard extends StatefulWidget {
-  final Pendingorders pendingorders;
+  final OrdersModel order;
 
-  const ItemCard({Key key, this.pendingorders}) : super(key: key);
+  const ItemCard({Key key, this.order}) : super(key: key);
   @override
   _ItemCardState createState() => _ItemCardState();
 }
@@ -167,7 +167,7 @@ class _ItemCardState extends State<ItemCard> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Text(
-                    widget.pendingorders.item,
+                    widget.order.itemName,
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 20,
@@ -175,11 +175,11 @@ class _ItemCardState extends State<ItemCard> {
                     ),
                   ),
                   Text(
-                    'Price :          150/-',
+                    'Price :          ${widget.order.itemRate}/-',
                     style: cardTextRight,
                   ),
                   Text(
-                    'Quantity :    1KG    x1',
+                    'Quantity :    ${widget.order.quantity}    x1',
                     style: cardTextRight,
                   ),
                 ],
@@ -193,9 +193,9 @@ class _ItemCardState extends State<ItemCard> {
 }
 
 class BillCard extends StatefulWidget {
-  final Pendingorders pendingorders;
+  final OrdersModel order;
 
-  const BillCard({Key key, this.pendingorders}) : super(key: key);
+  const BillCard({Key key, this.order}) : super(key: key);
   @override
   _BillCardState createState() => _BillCardState();
 }
@@ -203,6 +203,13 @@ class BillCard extends StatefulWidget {
 class _BillCardState extends State<BillCard> {
   @override
   Widget build(BuildContext context) {
+
+
+
+ double tax = (int.parse(widget.order.itemRate) * .18);
+    double deliveryCharge = (int.parse(widget.order.itemRate) * .1);
+    double total = int.parse(widget.order.itemRate) + deliveryCharge + tax;
+
     // Widget padding = Padding(padding: EdgeInsets.symmetric(vertical: 10));
     TextStyle bold = TextStyle(
       color: Colors.white,
@@ -223,9 +230,9 @@ class _BillCardState extends State<BillCard> {
           width: double.maxFinite,
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            Text('ANUMODH', style: bold),
+            Text(widget.order.username, style: bold),
             Padding(padding: EdgeInsets.symmetric(vertical: 5)),
-            Text('9876543210', style: normal),
+            Text(widget.order.phno, style: normal),
             Padding(
               padding: EdgeInsets.only(
                 top: 30,
@@ -243,7 +250,7 @@ class _BillCardState extends State<BillCard> {
                               style: normal,
                             ),
                             Text(
-                              '150',
+                              widget.order.itemRate,
                               style: bold,
                             ),
                           ]),
@@ -255,7 +262,7 @@ class _BillCardState extends State<BillCard> {
                               style: normal,
                             ),
                             Text(
-                              '40.0',
+                              deliveryCharge.toString(),
                               style: bold,
                             ),
                           ]),
@@ -267,7 +274,7 @@ class _BillCardState extends State<BillCard> {
                               style: normal,
                             ),
                             Text(
-                              '2.0',
+                              tax.toString(),
                               style: bold,
                             ),
                           ]),
@@ -287,7 +294,7 @@ class _BillCardState extends State<BillCard> {
                 style: normal,
               ),
               Text(
-                '192.0',
+                total.toString(),
                 style: bold,
               ),
             ]),
