@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:foodieadmin/model/subadminmodels.dart';
+import 'package:foodieadmin/services/apiUrls.dart';
 import 'package:http/http.dart' as http;
 
 Future<Subadminals> postdata(
@@ -9,7 +10,8 @@ Future<Subadminals> postdata(
     String pincode,
     String email,
     String password}) async {
-  var url = Uri.https("admin-final.herokuapp.com", "/subadmin/");
+  var url = Uri.parse(ApiUrls.subAdmin);
+  // var url = Uri.https("foodie-main.herokuapp.com", "admin/subadmin/");
   final response = await http.post(
     url,
     headers: <String, String>{

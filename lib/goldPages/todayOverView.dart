@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:foodieadmin/goldPages/sliverlist.dart';
 import 'package:foodieadmin/goldWidgets/appbar.dart';
 import 'package:foodieadmin/goldWidgets/goldSetting.dart';
-import 'package:foodieadmin/model/deliveredorders.dart';
 
 class TodayOverView extends StatefulWidget {
   final String hotelName;

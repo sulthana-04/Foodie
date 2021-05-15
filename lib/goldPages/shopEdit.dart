@@ -6,7 +6,6 @@ import 'package:foodieadmin/goldWidgets/goldSetting.dart';
 import 'package:foodieadmin/goldWidgets/textBox.dart';
 import 'package:foodieadmin/model/shopdetails.dart';
 import 'package:foodieadmin/services/deleteshopdetails.dart';
-import 'package:foodieadmin/services/deleteshopdetails.dart';
 import 'package:foodieadmin/services/editshopdetails.dart';
 
 class ShopEdit extends StatefulWidget {
@@ -21,7 +20,7 @@ class ShopEdit extends StatefulWidget {
 }
 
 class _ShopEditState extends State<ShopEdit> {
-    Future<Shop> _response;
+    // Future<Shop> _response;
   String hotelsname;
   String hotelslocation;
   String hotelsaddress;

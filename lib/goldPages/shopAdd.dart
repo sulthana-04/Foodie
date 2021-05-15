@@ -187,7 +187,6 @@ class _ShopAddState extends State<ShopAdd> {
                                 flex: 1,
                                 child: ColorButton(
                                   buttonAction: () {
-                                   
                                     setState(() {
                                       _response = postdata(
                                         hotelsname: _hotelsnameController.text,
@@ -244,6 +243,19 @@ class _ShopAddState extends State<ShopAdd> {
                             'Saved successfully',
                             style: TextStyle(color: Colors.white, fontSize: 15),
                           ),
+                          MaterialButton(
+                            onPressed: () {
+                              Navigator.pushAndRemoveUntil(context,
+                                  MaterialPageRoute(builder: (context) {
+                                return Admin();
+                              }), (route) => false);
+                            },
+                            color: themegreen,
+                            child: Text(
+                              'Return to home',
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          )
                         ],
                       ),
                     );

@@ -74,7 +74,6 @@ class _PendingOrdersState extends State<PendingOrders> {
                         final ordersForBuild = pendingOrders
                             .where((s) => s.hotelname == widget.hotelname)
                             .toList();
-                        print(ordersForBuild);
                         return ordersForBuild.length == 0
                             ? Center(
                                 child: Text(

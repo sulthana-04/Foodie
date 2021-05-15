@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:foodieadmin/model/shopdetails.dart';
+import 'package:foodieadmin/services/apiUrls.dart';
 import 'package:http/http.dart' as http;
 
 import '../model/shopdetails.dart';
@@ -15,7 +16,8 @@ Future<Shop> postdata(
     String contactnumber,
     String email,
     String password}) async {
-  var url = Uri.https("admin-final.herokuapp.com", "/posts/");
+  var url = Uri.parse(ApiUrls.shop);
+  // var url = Uri.https("foodie-main.herokuapp.com", "admin/hoteldetails/");
   final response = await http.post(
     url,
     headers: <String, String>{

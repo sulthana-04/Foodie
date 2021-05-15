@@ -2,11 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:foodieadmin/animations/enterExitAniation.dart';
 import 'package:foodieadmin/goldWidgets/goldSetting.dart';
 import 'dart:math' as math;
-
 import 'package:foodieadmin/goldWidgets/orderCard.dart';
-import 'package:foodieadmin/model/deliveredorders.dart';
 import 'package:foodieadmin/model/ordersModel.dart';
-import 'package:foodieadmin/model/pendingorders.dart';
 import 'package:foodieadmin/services/orderServices.dart';
 
 import 'orderDetails.dart';
@@ -118,11 +115,8 @@ class _CollapsingListState extends State<CollapsingList> {
                         itemExtent: 70,
                         delegate: SliverChildBuilderDelegate(
                             (BuildContext context, int index) {
-                          if (delivered.length == 0) {
-                            return Text(
-                              'No delivered orders',
-                              style: TextStyle(color: Colors.white),
-                            );
+                          if (pendingOrders.length == 0) {
+                            return SizedBox();
                           } else {
                             if (index >= pendingOrders.length) return null;
                             OrdersModel order = pendingOrders[index];
@@ -134,12 +128,11 @@ class _CollapsingListState extends State<CollapsingList> {
                                         exitPage: CollapsingList(),
                                         enterPage: OrderDetails(order: order)));
                               },
-                            hotelName: order.itemName,
+                              hotelName: order.itemName,
                               orderAmount: order.quantity,
                               redorgreen: Colors.red,
                             );
                           }
-                         
                         }),
                       ),
                       makeHeader('Delivered Orders', themegreen),
@@ -148,10 +141,7 @@ class _CollapsingListState extends State<CollapsingList> {
                         delegate: SliverChildBuilderDelegate(
                             (BuildContext context, int index) {
                           if (delivered.length == 0) {
-                            return Text(
-                              'No delivered orders',
-                              style: TextStyle(color: Colors.white),
-                            );
+                            return SizedBox();
                           } else {
                             if (index >= delivered.length) return null;
                             OrdersModel order = delivered[index];
@@ -161,14 +151,13 @@ class _CollapsingListState extends State<CollapsingList> {
                                     context,
                                     EnterExitRoute(
                                         exitPage: CollapsingList(),
-                                      enterPage: OrderDetails(order: order)));
+                                        enterPage: OrderDetails(order: order)));
                               },
-                            hotelName: order.itemName,
+                              hotelName: order.itemName,
                               orderAmount: order.quantity,
                               redorgreen: themegreen,
                             );
                           }
-                          
                         }),
                       ),
                     ],

@@ -1,6 +1,5 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:foodieadmin/goldWidgets/adminCard.dart';
 import 'package:foodieadmin/goldWidgets/card.dart';
 import 'package:foodieadmin/goldWidgets/goldSetting.dart';
 import 'package:foodieadmin/goldWidgets/searchbar.dart';

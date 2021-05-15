@@ -1,16 +1,16 @@
 import 'dart:convert';
 
+import 'package:foodieadmin/services/apiUrls.dart';
 import 'package:http/http.dart' as http;
 
 //recieves an id and a string with function call
 //string which has to be updated in the DB
-Future<bool> editsubadmin(String name, String id,) async {
+Future<bool> editsubadmin(String name, String id) async {
+  var url = Uri.parse(ApiUrls.subAdmin + '/$id');
 
-  var url = Uri.https('admin-final.herokuapp.com', '/subadmin/$id', {'q': '{http}'});
-  //patch expects 3 parameters
-  //url
-  //headers
-  //body- in which the field to be updated is send as json
+  // var url = Uri.https(
+  //     'foodie-main.herokuapp.com', 'admin/subadmin/$id', {'q': '{http}'});
+
   final response = await http.patch(url,
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',

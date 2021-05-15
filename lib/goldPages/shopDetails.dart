@@ -3,7 +3,6 @@ import 'package:foodieadmin/goldWidgets/appbar.dart';
 import 'package:foodieadmin/goldWidgets/goldSetting.dart';
 import 'package:foodieadmin/goldWidgets/title.dart';
 import 'package:foodieadmin/model/shopdetails.dart';
-import 'package:foodieadmin/services/getshopdetails.dart';
 
 class ShopDetails extends StatefulWidget {
   final Shop shop;

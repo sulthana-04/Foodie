@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:foodieadmin/animations/enterExitAniation.dart';
 import 'package:foodieadmin/goldPages/admin.dart';
 import 'package:foodieadmin/goldWidgets/adminText.dart';

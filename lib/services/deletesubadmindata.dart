@@ -1,8 +1,10 @@
+import 'package:foodieadmin/services/apiUrls.dart';
 import 'package:http/http.dart' as http;
 
-Future<bool> deletesubadmindata( String id) async {
-  
-  var url = Uri.https('admin-final.herokuapp.com', '/subadmin/$id', {'q': '{http}'});
+Future<bool> deletesubadmindata(String id) async {
+  var url = Uri.parse(ApiUrls.subAdmin + '/$id');
+  // var url = Uri.https(
+  //     'foodie-main.herokuapp.com', 'admin/subadmin/$id', {'q': '{http}'});
   final response = await http.delete(
     url,
     headers: <String, String>{
@@ -11,12 +13,8 @@ Future<bool> deletesubadmindata( String id) async {
   );
 
   if (response.statusCode == 200) {
-  
-   
-  return true;
-  
+    return true;
   } else {
     throw Exception('failed to load');
   }
 }
-

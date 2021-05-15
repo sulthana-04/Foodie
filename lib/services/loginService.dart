@@ -1,10 +1,13 @@
 import 'dart:convert';
 
+import 'package:foodieadmin/services/apiUrls.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
 Future<bool> login(String email, String password) async {
-  var url = Uri.parse('https://admin-final.herokuapp.com/api/user/login');
+  var url = Uri.parse(ApiUrls.login);
+
+  // var url = Uri.parse('https://foodie-main.herokuapp.com/admin/api/user/login');
   String token;
   final response = await http.post(url,
       headers: <String, String>{

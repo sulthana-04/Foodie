@@ -1,10 +1,6 @@
-import 'dart:ffi';
-
-import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:foodieadmin/goldPages/accounts.dart';
-import 'package:foodieadmin/goldPages/subAdmin.dart';
 import 'package:foodieadmin/goldWidgets/appbar.dart';
 import 'package:foodieadmin/goldWidgets/colorButton.dart';
 import 'package:foodieadmin/goldWidgets/goldSetting.dart';
@@ -27,7 +23,7 @@ final Subadminals subadmin;
 }
 
 class _SubAdminDetailsState extends State<SubAdminDetails> {
-  Future<Subadminals> _response;
+  // Future<Subadminals> _response;
   String name;
   String contactNumber;
   String pincode;

@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:foodieadmin/goldWidgets/appbar.dart';
 import 'package:foodieadmin/goldWidgets/goldSetting.dart';
-import 'package:foodieadmin/model/deliveredorders.dart';
 import 'package:foodieadmin/model/ordersModel.dart';
-import 'package:foodieadmin/model/pendingorders.dart';
 
 class OrderDetails extends StatefulWidget {
   final OrdersModel order;

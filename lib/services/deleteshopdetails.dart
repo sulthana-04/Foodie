@@ -1,8 +1,11 @@
+import 'package:foodieadmin/services/apiUrls.dart';
 import 'package:http/http.dart' as http;
 
-Future<bool> deleteshopdetails( String id) async {
-  
-  var url = Uri.https('admin-final.herokuapp.com', '/posts/$id', {'q': '{http}'});
+Future<bool> deleteshopdetails(String id) async {
+  bool status = false;
+  var url = Uri.parse(ApiUrls.shop + '/$id');
+  // var url = Uri.https(
+  //     'foodie-main.herokuapp.com', 'admin/hoteldetails/$id', {'q': '{http}'});
   final response = await http.delete(
     url,
     headers: <String, String>{
@@ -11,12 +14,9 @@ Future<bool> deleteshopdetails( String id) async {
   );
 
   if (response.statusCode == 200) {
-  
-   
-  return true;
-  
+    status = true;
   } else {
-    throw Exception('failed to load');
+    status = false;
   }
+  return status;
 }
-

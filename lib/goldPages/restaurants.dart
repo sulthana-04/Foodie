@@ -5,9 +5,7 @@ import 'package:foodieadmin/goldWidgets/appbar.dart';
 import 'package:foodieadmin/goldWidgets/goldSetting.dart';
 import 'package:foodieadmin/goldWidgets/orderCard.dart';
 import 'package:foodieadmin/goldWidgets/searchbar.dart';
-import 'package:foodieadmin/model/deliveredorders.dart';
 import 'package:foodieadmin/model/shopdetails.dart';
-import 'package:foodieadmin/services/getrestaurants.dart';
 import 'package:foodieadmin/services/getshopdetails.dart';
 
 class Restaurants extends StatefulWidget {
