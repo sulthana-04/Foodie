@@ -16,7 +16,7 @@ Future<Shop> postdata(
     String contactnumber,
     String email,
     String password}) async {
-  var url = Uri.parse(ApiUrls.shop);
+  var url = Uri.parse(ApiUrls.shopregister);
   // var url = Uri.https("foodie-main.herokuapp.com", "admin/hoteldetails/");
   final response = await http.post(
     url,
@@ -38,11 +38,13 @@ Future<Shop> postdata(
   if (response.statusCode == 200) {
     print('Posted');
     print(response.statusCode);
+    print(response.body);
     // var responseBody = Shop.fromJson(jsonDecode(response.body));
     // return responseBody;
     return Shop.fromJson(jsonDecode(response.body));
   } else {
     print(response.statusCode);
+    print(response.body);
     throw Exception('Failed to post');
   }
 }

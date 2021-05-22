@@ -235,10 +235,10 @@ class _ShopAddState extends State<ShopAdd> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Text(
-                            snap.data.hotelsname,
-                            style: TextStyle(color: Colors.white, fontSize: 23),
-                          ),
+                          // Text(
+                          //   snap.data.hotelsname,
+                          //   style: TextStyle(color: Colors.white, fontSize: 23),
+                          // ),
                           Text(
                             'Saved successfully',
                             style: TextStyle(color: Colors.white, fontSize: 15),

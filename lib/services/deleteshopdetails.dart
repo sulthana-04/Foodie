@@ -4,6 +4,7 @@ import 'package:http/http.dart' as http;
 Future<bool> deleteshopdetails(String id) async {
   bool status = false;
   var url = Uri.parse(ApiUrls.shop + '/$id');
+  print(url);
   // var url = Uri.https(
   //     'foodie-main.herokuapp.com', 'admin/hoteldetails/$id', {'q': '{http}'});
   final response = await http.delete(
@@ -16,6 +17,7 @@ Future<bool> deleteshopdetails(String id) async {
   if (response.statusCode == 200) {
     status = true;
   } else {
+    print(response.statusCode);
     status = false;
   }
   return status;

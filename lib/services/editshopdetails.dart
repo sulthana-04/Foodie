@@ -7,6 +7,7 @@ import 'package:http/http.dart' as http;
 //string which has to be updated in the DB
 Future<bool> editshopdetails(String hotelsname, String id) async {
   var url = Uri.parse(ApiUrls.shop + '/$id');
+  print(url);
   // var url = Uri.https(
   //     'foodie-main.herokuapp.com', 'admin/hoteldetails/$id', {'q': '{http}'});
 

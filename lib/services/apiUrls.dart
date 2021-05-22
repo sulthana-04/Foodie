@@ -6,7 +6,9 @@ class ApiUrls {
 
   //Admin App Urls
   static String login = adminApp + '/api/user/login';
+  static String getshop = adminApp + '/hoteldetails/getallhotels';
   static String shop = adminApp + '/hoteldetails';
+  static String shopregister = adminApp + '/hoteldetails/register';
   static String subAdmin = adminApp + '/subadmin';
   static String deliveryBoys = adminApp + '/deliveryboy';
 
